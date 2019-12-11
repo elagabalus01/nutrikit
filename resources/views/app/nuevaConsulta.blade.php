@@ -8,16 +8,16 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <header>
+    <div class="col">
       <h1>Aqui va la consulta</h1>
-    </header>
+    </div>
   </div>
   <div class="row justify-content-end">
     <div class="col col-lg-1">
-      <button onclick="window.location.href='/app';" >Cancelar</button>
+      <button onclick="window.location.href='/app';" class="float-right">Cancelar</button>
     </div>
     <div class="col col-lg-1">
-      <button onclick="window.location.href='/app';" >Aceptar</button>
+      <button onclick="window.location.href='/app';" class="float-right">Aceptar</button>
     </div>
   </div>
 </div>

@@ -8,18 +8,20 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <header>
+    <div class="col">
       <h1>Próximas citas</h1>
-    </header>
+    </div>
   </div>
   <div class="row">
     <p>Aqui va la tabla</p>
   </div>
-  <div class="row">
-    <p>
-        ¿Sin previa cita? Haz click
-        <a href="/nuevaConsulta">aqui</a>
-    </p>
+  <div class="row justify-content-start">
+    <div class="col">
+      <p>
+          ¿Sin previa cita? Haz click
+          <a href="/nuevaConsulta">aqui</a>
+      </p>
+    </div>
   </div>
 </div>
 @endsection

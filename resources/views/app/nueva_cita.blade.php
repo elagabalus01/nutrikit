@@ -5,9 +5,9 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <header>
+    <div class="col">
       <h1>Datos del paciente y selección de fecha</h1>
-    </header>
+    </div>
   </div>
 </div>
 @endsection
