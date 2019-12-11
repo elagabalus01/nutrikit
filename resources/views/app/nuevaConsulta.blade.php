@@ -1,4 +1,4 @@
-@extends('layouts.plantillaLogged')
+@extends('layouts.plantillaNoLog')
 @section('titulo')
     <title>Consultorio</title>
 @endsection
