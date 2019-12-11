@@ -9,17 +9,16 @@
 <div class="container">
   <div class="row">
     <header>
-      <h1>Próximas citas</h1>
+      <h1>Aqui va la consulta</h1>
     </header>
   </div>
-  <div class="row">
-    <p>Aqui va la tabla</p>
-  </div>
-  <div class="row">
-    <p>
-        ¿Sin previa cita? Haz click
-        <a href="/nuevaConsulta">aqui</a>
-    </p>
+  <div class="row justify-content-end">
+    <div class="col col-lg-1">
+      <button onclick="window.location.href='/app';" >Cancelar</button>
+    </div>
+    <div class="col col-lg-1">
+      <button onclick="window.location.href='/app';" >Aceptar</button>
+    </div>
   </div>
 </div>
 @endsection

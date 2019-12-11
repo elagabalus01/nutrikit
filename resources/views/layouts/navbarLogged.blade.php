@@ -7,7 +7,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="/app">Citas <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="/consultas">Consultas</a>
-      <a class="nav-item nav-link" href="/nueva_cita">Consultas</a>
+      <a class="nav-item nav-link" href="/nueva_cita">Programar cita</a>
       <a class="nav-item nav-link" href="/logout">Cerrar sesión</a>
     </div>
   </div>

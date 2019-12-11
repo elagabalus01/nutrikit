@@ -21,28 +21,8 @@ Route::get('/login', 'SessionsController@create')->name('login')->middleware('gu
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy'); //posiblmente se pueda cambiar a post
 
-Route::get('/user','userController@showCurrentUser');
-
 Route::get('/app','AppController@index')->middleware('auth')->middleware('prevent-back-history');
 Route::get('/consultas','AppController@consultas')->middleware('auth')->middleware('prevent-back-history');
 Route::get('/nueva_cita','AppController@nuevaCita')->middleware('auth')->middleware('prevent-back-history');
 
-Route::get('/report',function(){
-    $pdf = PDF::loadView('invoice');
-    return $pdf->stream('invoice.pdf');
-});
-Route::get('actualizar/{id}','baseController@update');
-
-/*
-Prueba para interactuar
-con la base de datos
-*/
-Route::get('/prueba','BaseController@index');
-// Route::post('/prueba','BaseController@procesar');
-
-Route::get('/blade',function(){
-    return view('blade1');
-});
-Route::get('/blade2',function(){
-    return view('blade2');
-});
+Route::get('/nuevaConsulta','AppController@nuevaConsulta')->middleware('auth')->middleware('prevent-back-history');

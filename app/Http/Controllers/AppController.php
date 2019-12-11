@@ -18,4 +18,8 @@ class AppController extends Controller
     {
         return view('app.nueva_cita');
     }
+    public function nuevaConsulta()
+    {
+        return view('app.nuevaConsulta');
+    }
 }
