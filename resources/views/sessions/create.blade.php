@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <div class="container">
-     <h2>Log In</h2>
+     <h2>Iniciar sesión</h2>
         @if($errors->any())
         <div class="alert alert-danger" role="alert">
             {{$errors->first()}}

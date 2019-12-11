@@ -1,6 +1,6 @@
 @extends('layouts.plantillaPrincipal')
 @section('header')
-@include('layouts.navbarNoLog')
+@include('layouts.navbarLogged')
 @endsection
 @section('footer')
 <!-- @include('layouts.footer') -->

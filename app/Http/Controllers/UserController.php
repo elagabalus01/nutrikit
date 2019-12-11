@@ -14,6 +14,6 @@ class UserController extends Controller
     public function showCurrentUser()
     {
         $userPrueba = Auth::user();
-        return "Log as"."  ".$userPrueba->api_token;
+        return "Log as"."  ".$userPrueba->nombre;
     }
 }

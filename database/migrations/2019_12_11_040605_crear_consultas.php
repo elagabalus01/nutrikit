@@ -25,11 +25,11 @@ class CrearConsultas extends Migration
             $table->string('observaciones');
             $table->string('fechaHora');
 
-            $table->foreign('user_id')->refecences('id')->on('users')->onDelete('cascade');
-            $table->foreign('paciente_id')->refecences('id')->on('pacientes')->onDelete('cascade');
-            $table->foreign('cita_id')->refecences('id')->on('citas')->onDelete('cascade');
-            $table->foreign('dietaAbitual_id')->refecences('id')->on('dietasAbituales')->onDelete('cascade');
-            $table->foreign('planAlimenticio_id')->refecences('id')->on('planesAlimenticios')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
+            $table->foreign('cita_id')->references('id')->on('citas')->onDelete('cascade');
+            $table->foreign('dietaAbitual_id')->references('id')->on('dietasAbituales')->onDelete('cascade');
+            $table->foreign('planAlimenticio_id')->references('id')->on('planesAlimenticios')->onDelete('cascade');
             
         });
     }

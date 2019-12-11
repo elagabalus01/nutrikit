@@ -19,13 +19,8 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        // $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:users,email',
-        //     'password' => 'required'
-        // ]);
         $validator=Validator::make($input, [
-            'name' => 'required',
+            'nombre' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required'
         ]);
@@ -35,7 +30,7 @@ class RegistrationController extends Controller
             ]);
         }
         $user = User::create([
-            'name' => $request['name'],
+            'nombre' => $request['nombre'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
             'api_token' => Str::random(60),

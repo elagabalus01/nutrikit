@@ -19,10 +19,14 @@ Route::post('register', 'RegistrationController@store');
 
 Route::get('/login', 'SessionsController@create')->name('login')->middleware('guest');
 Route::post('/login', 'SessionsController@store');
-Route::get('/logout', 'SessionsController@destroy');
+Route::get('/logout', 'SessionsController@destroy'); //posiblmente se pueda cambiar a post
 
 Route::get('/user','userController@showCurrentUser');
-Route::get('/app','BaseController@index')->middleware('auth')->middleware('prevent-back-history');
+
+Route::get('/app','AppController@index')->middleware('auth')->middleware('prevent-back-history');
+Route::get('/consultas','AppController@consultas')->middleware('auth')->middleware('prevent-back-history');
+Route::get('/nueva_cita','AppController@nuevaCita')->middleware('auth')->middleware('prevent-back-history');
+
 Route::get('/report',function(){
     $pdf = PDF::loadView('invoice');
     return $pdf->stream('invoice.pdf');
