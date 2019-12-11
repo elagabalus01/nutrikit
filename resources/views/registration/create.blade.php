@@ -1,6 +1,9 @@
-@extends('layouts.plantillaPrincipal')
+@extends('layouts.plantillaNoLog')
 @section('titulo')
 <title>Registro</title>
+@endsection
+@section('buttonNavbar')
+<a class="nav-item nav-link" href="/login">Iniciar sesión</a>
 @endsection
 @section('content')
 <div class="container">

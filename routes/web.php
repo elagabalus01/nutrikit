@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/app');
 });
 Route::get('/register', 'RegistrationController@create')->middleware('guest')->middleware('prevent-back-history');
 Route::post('register', 'RegistrationController@store');
