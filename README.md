@@ -2,7 +2,7 @@
 
 ## Programas necesarios
 * Git
-* Wampserver (agregar todos los archivos binarios a las variables de entorno)
+* Wampserver (agregar todos los archivos binarios a las variables de entorno, este tiene MySQL 5.7.26, PHP 7.3.5, apache2) (solo sirve para windows si usan otro SO busquen los suyos ;v)
 * composser (php)
 ## Configuraciones una vez clonado
 * crear la base de datos CREATE DATABASE nombreDB;
