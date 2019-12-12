@@ -8,6 +8,8 @@ class AppController extends Controller
 {
     public function index()
     {
+
+        return view('app.citas');
         return view('app.citas');
     }
     public function consultas()
