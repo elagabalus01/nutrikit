@@ -5,9 +5,21 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/app">Citas <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="/consultas">Consultas</a>
-      <a class="nav-item nav-link" href="/nueva_cita">Programar cita</a>
+        @if(Request::path() === 'app')
+          <a class="nav-item nav-link active" href="/app">Citas</a>
+        @else
+        <a class="nav-item nav-link" href="/app">Citas</a>
+        @endif
+        @if(Request::path() === 'consultas')
+        <a class="nav-item nav-link active" href="/consultas">Consultas</a>
+        @else
+        <a class="nav-item nav-link" href="/consultas">Consultas</a>
+        @endif
+        @if(Request::path() === 'nueva_cita')
+        <a class="nav-item nav-link active" href="/nueva_cita">Programar cita</a>
+        @else
+        <a class="nav-item nav-link" href="/nueva_cita">Programar cita</a>
+        @endif
       <a class="nav-item nav-link" href="/logout">Cerrar sesión</a>
     </div>
   </div>

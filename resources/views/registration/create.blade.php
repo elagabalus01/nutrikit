@@ -6,18 +6,16 @@
 <a class="nav-item nav-link" href="/login">Iniciar sesión</a>
 @endsection
 @section('content')
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        {{$errors->first()}}
+    </div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-2">
             <h1>Registrar</h1>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        @if($errors->any())
-            <div class="alert alert-danger" role="alert">
-                {{$errors->first()}}
-            </div>
-        @endif
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6">

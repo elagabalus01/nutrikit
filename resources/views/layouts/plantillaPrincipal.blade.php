@@ -17,4 +17,5 @@
     @yield('footer')
 </body>
 @yield('scripts')
+<script type="text/javascript" src="/ui.js"></script>
 </html>
