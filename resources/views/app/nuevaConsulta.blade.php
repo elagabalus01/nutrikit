@@ -120,7 +120,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <table class="table">
+      <table class="table" style="width:100%">
         <thead>
           <th>Grupos de alimentos</th>
           <th>Equivalente</th>
@@ -169,7 +169,7 @@
       </table>
     </div>
     <div class="col">
-      <table class="table">
+      <table class="table" style="width:100%">
         <thead>
           <th>Nada</th>
           <th>Gramos</th>
