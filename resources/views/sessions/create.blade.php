@@ -12,12 +12,12 @@
 </div>
 @endif
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center">
         <div class="col-md-3">
             <h1>Iniciar sesión</h1>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row align-items-center justify-content-center">
         <div class="col-md-5">
             <form method="POST" action="/login">
                 {{ csrf_field() }}

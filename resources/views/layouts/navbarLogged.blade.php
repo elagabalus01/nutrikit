@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+    <div class="navbar-nav mr-auto">
         @if(Request::path() === 'app')
           <a class="nav-item nav-link active" href="/app">Citas</a>
         @else
@@ -20,7 +20,7 @@
         @else
         <a class="nav-item nav-link" href="/nueva_cita">Programar cita</a>
         @endif
-      <a class="nav-item nav-link" href="/logout">Cerrar sesión</a>
     </div>
+      <a class="nav-item nav-link my-2 my-lg-0" href="/logout">Cerrar sesión</a>
   </div>
 </nav>
