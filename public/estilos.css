@@ -14,7 +14,7 @@
 }
 .navbar-custom a.nav-item.nav-link.active{
     background-color: #009900;
-    border-radius: 25px;
+    border-radius: 12px;
 }
 .navbar-custom .navbar-nav .nav-link:hover {
     color: #ebebeb;
