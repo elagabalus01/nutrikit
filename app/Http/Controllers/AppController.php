@@ -10,7 +10,6 @@ class AppController extends Controller
     {
 
         return view('app.citas');
-        return view('app.citas');
     }
     public function consultas()
     {
