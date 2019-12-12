@@ -4,9 +4,21 @@
 .navbar-custom .navbar-brand {
     color: #ffffff;
 }
+.navbar-custom a:not([href]).navbar-brand{
+    color: #ffffff;
+    text-decoration: none;
+}
+
 .navbar-custom a.nav-item.nav-link{
     color: #ffffff;
 }
 .navbar-custom a.nav-item.nav-link.active{
     background-color: #009900;
+    border-radius: 25px;
+}
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #ebebeb;
+}
+.navbar-custom .navbar-toggler-icon {
+    background-image:#ffff url(/menu.png);
 }

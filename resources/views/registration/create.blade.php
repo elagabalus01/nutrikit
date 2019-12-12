@@ -7,20 +7,20 @@
 @endsection
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h2>Registrar</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-2">
+            <h1>Registrar</h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
         @if($errors->any())
             <div class="alert alert-danger" role="alert">
                 {{$errors->first()}}
             </div>
         @endif
     </div>
-    <div class="row">
-        <div class="col-md-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <form method="POST" action="/register">
                 {{ csrf_field() }}
                 <div class="form-group">

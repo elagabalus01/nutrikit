@@ -7,31 +7,33 @@
 @endsection
 @section('content')
 <div class="container">
-     <h2>Iniciar sesión</h2>
-        @if($errors->any())
-        <div class="alert alert-danger" role="alert">
-            {{$errors->first()}}
+    @if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        {{$errors->first()}}
+    </div>
+    @endif
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <h1>Iniciar sesión</h1>
         </div>
-        @endif
-        <div class="row">
-            <div class="col-md-3">
-                <form method="POST" action="/login">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                    </div>
-             
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-             
-                    <div class="form-group">
-                        <button style="cursor:pointer" type="submit" class="btn btn-primary">Login</button>
-                    </div>
-                </form>
-            </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <form method="POST" action="/login">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group">
+                    <button style="cursor:pointer" type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
         </div>
+    </div>
 </div>
 @endsection
