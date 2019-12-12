@@ -22,3 +22,19 @@
 .navbar-custom .navbar-toggler-icon {
     background-image:#ffff url(/menu.png);
 }
+.btn-success.custom-btn {
+    background-color: #009900;
+    border-color: #009900;
+}
+.btn-success.custom-btn:hover {
+    background-color: #549900!important;
+    border-color: #549900!important;
+}
+.btn-success.custom-btn:active:focus{
+    background-color: #549900!important;
+    border-color: #549900!important;
+}
+.btn-success.custom-btn:focus-within{
+    background-color: #549900!important;
+    border-color: #549900!important;
+}

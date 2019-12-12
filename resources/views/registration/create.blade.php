@@ -3,7 +3,7 @@
 <title>Registro</title>
 @endsection
 @section('buttonNavbar')
-<a class="nav-item nav-link" href="/login">Iniciar sesión</a>
+<a role="button" class="nav-item nav-link btn btn-success custom-btn" href="/login">Iniciar sesión</a>
 @endsection
 @section('content')
 @if($errors->any())

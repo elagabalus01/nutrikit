@@ -21,6 +21,6 @@
         <a class="nav-item nav-link" href="/nueva_cita">Programar cita</a>
         @endif
     </div>
-      <a class="nav-item nav-link my-2 my-lg-0" href="/logout">Cerrar sesión</a>
+      <a class="nav-item nav-link my-2 my-lg-0 btn btn-success custom-btn" href="/logout">Cerrar sesión</a>
   </div>
 </nav>
