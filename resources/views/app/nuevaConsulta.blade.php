@@ -34,7 +34,7 @@
     <div class="row">
       <div class="col">
         <label>Edad</label>
-        <input type="number" name="nombre">
+        <input type="number" name="edad">
       </div>
       <div class="col">
         <label>Peso</label>
@@ -43,7 +43,7 @@
       </div>
       <div class="col">
         <label>Estatura</label>
-        <input type="number" name="act_fis">
+        <input type="number" name="estatura">
         <p>cm</p>
       </div>
     </div>
@@ -68,14 +68,14 @@
       <div class="col">
         <label>Dieta habitual</label>
         <br>
-        <textarea rows="4" style="width:100%"></textarea>
+        <textarea rows="4" style="width:100%" name="dietaHabitual"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label>Observaciones</label>
         <br>
-        <textarea rows="4" style="width:100%"></textarea>
+        <textarea rows="4" style="width:100%" name="observaciones"></textarea>
       </div>
     </div>
     <div class="row">

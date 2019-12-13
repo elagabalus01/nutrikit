@@ -9,9 +9,10 @@ class Cita extends Model
     protected $table='citas';
     protected $fillable=[
         'fecha_hora',
-        'id_paciente',
+        'paciente_id',
     ];
-    public funtion paciente(){
-        return $this->hasOne('App\Paciente','id','id_paciente');
+    public $timestamps = false;
+    public function paciente(){
+        return $this->hasOne('App\Paciente','id','paciente_id');
     }
 }

@@ -10,35 +10,35 @@
   <tbody>
     <tr>
       <th>Cereales y tubérculos</th>
-      <td><input type="number" name="cer_tub_pa"></td>
+      <td><input type="number" name="plan_cereales"></td>
     </tr>
     <tr>
       <th>Leguminosas</th>
-      <td><input type="number" name="legum_pa"></td>
+      <td><input type="number" name="plan_leguminosas"></td>
     </tr>
     <tr>
       <th>Verduras</th>
-      <td><input type="number" name="ver_pa"></td>
+      <td><input type="number" name="plan_verduras"></td>
     </tr>
     <tr>
       <th>Fruta</th>
-      <td><input type="number" name="fru_pa"></td>
+      <td><input type="number" name="plan_fruta"></td>
     </tr>
     <tr>
       <th>Carne</th>
-      <td><input type="number" name="car_pa"></td>
+      <td><input type="number" name="plan_carne"></td>
     </tr>
     <tr>
       <th>Leche</th>
-      <td><input type="number" name="lec_pa"></td>
+      <td><input type="number" name="plan_leche"></td>
     </tr>
     <tr>
       <th>Grasas</th>
-      <td><input type="number" name="gra_pa"></td>
+      <td><input type="number" name="plan_grasa"></td>
     </tr>
     <tr>
       <th>Azúcares</th>
-      <td><input type="number" name="azu_pa"></td>
+      <td><input type="number" name="plan_azucar"></td>
     </tr>
     <tr>
       <th>Total</th>

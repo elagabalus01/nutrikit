@@ -12,15 +12,42 @@
       <h1>Próximas citas</h1>
     </div>
   </div>
-  <div class="row">
-    <p>Aqui va la tabla</p>
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      @if($citas)
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Paciente</th>
+            <th>Cita</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($citas as $cita)
+          <tr>
+            <td>{{ $cita->paciente->nombre }}</td>
+            <td>{{ $cita->fecha_hora }}</td>
+            <td>
+              <a id="consulta" href="#">Atender</a>
+              /
+              <a id="cancelarCita" href="#">Cancelar</a>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+      @else
+      <h3>No hay citas</h3>
+      @endif
+    </div>
   </div>
   <div class="row justify-content-start">
     <div class="col">
-      <p>
+      <h2>
           ¿Sin previa cita? Haz click
           <a href="/nuevaConsulta">aqui</a>
-      </p>
+      </h2>
     </div>
   </div>
 </div>

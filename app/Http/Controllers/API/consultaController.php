@@ -10,7 +10,6 @@ use App\DietaHabitual;
 use App\PlanAlimenticio;
 use Validator;
 
-
 class consultaController extends BaseController
 {
     public function index()
@@ -144,4 +143,3 @@ class consultaController extends BaseController
         return $this->sendResponse([], 'La consulta fue eliminada correctamente');
     }
 }
-

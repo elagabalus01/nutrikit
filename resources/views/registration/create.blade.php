@@ -35,9 +35,8 @@
                     <label for="password">Contraseña:</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
-         
                 <div class="form-group">
-                    <button style="cursor:pointer" type="submit" class="btn btn-primary">Registrar</button>
+                    <button style="cursor:pointer" type="submit" class="btn btn-primary float-right">Registrar</button>
                 </div>
             </form>
         </div>
