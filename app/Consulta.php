@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consulta extends Model
 {
-    $table='consultas';
+    protected $table='consultas';
     protected $fillable=[
         'user_id',
         'paciente_id',
@@ -17,19 +17,19 @@ class Consulta extends Model
         'fechaHora',
     ];
     public $timestamps = false;
-    public funtion user(){
+    public function user(){
         return $this->hasOne('App\User','id','user_id');
     }
-    public funtion paciente(){
+    public function paciente(){
         return $this->hasOne('App\Paciente','id','paciente_id');
     }
-    public funtion cita(){
+    public function cita(){
         return $this->hasOne('App\Cita','id','cita_id');
     }
-    public funtion dietaHabitual(){
+    public function dietaHabitual(){
         return $this->hasOne('App\DietaHabitual','id','dietaHabitual_id');
     }
-    public funtion planAlimenticio(){
+    public function planAlimenticio(){
         return $this->hasOne('App\planAlimenticio','id','planAlimenticio_id');
     }
 }
