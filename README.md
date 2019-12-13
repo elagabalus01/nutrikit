@@ -17,3 +17,8 @@
 2. En httpd.conf
 - DocumentRoot "${INSTALL_DIR}/www/consultorio/public/"
 - <Directory "${INSTALL_DIR}/www/consultorio/public/">
+## Comandos de git
+- actualizar repositorio local: git pull origin master
+- agregar actualizacion a stage: git add .
+- commit: git commit -m "Mensaje"
+- actualizar repositorio remoto: git push origin master
