@@ -13,7 +13,7 @@ class CrearDietasAbituales extends Migration
      */
     public function up()
     {
-        Schema::create('dietasAbituales', function (Blueprint $table){
+        Schema::create('dietasHabituales', function (Blueprint $table){
             $table->increments('id');
             $table->integer('verduras');
             $table->integer('frutas');
@@ -29,7 +29,7 @@ class CrearDietasAbituales extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dietasAbituales');
+        Schema::dropIfExists('dietasHabituales');
     }
 }
 
