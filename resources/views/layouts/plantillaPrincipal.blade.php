@@ -13,7 +13,9 @@
 </head>
 <body>
     @yield('header')
-    @yield("content")
+    <div class="content">
+        @yield("content")
+    </div>
     @yield('footer')
 </body>
 @yield('scripts')
