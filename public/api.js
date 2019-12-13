@@ -1,8 +1,22 @@
 console.log("Aqui se va a usar la api");
 function cancelarCita(id){
-    console.log("Se borra la cita con el id ");
-    console.log(id);
+    $.ajax({
+        headers:{
+            'accept':'aplication/json',
+            'X-Requested-With':'XMLHttpRequest',
+            'Authorization':`Bearer ${api_token}`
+        },
+        url:`/api/cita/${id}`,
+        type:'Delete'
+    }).done(function(response){
+        if(response['success']==false){
+            console.log('Hubo un error');
+        }
+        else{
+            location.reload();
+        }
+    });
 }
-$('#cancelarCita').on('click',function (argument) {
-    cancelarCita(0);
+$('.cancelar,.cita').on('click',function (argument) {
+    cancelarCita(this.id);
 });
