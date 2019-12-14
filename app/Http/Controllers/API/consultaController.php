@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Cita;
 use App\Consulta;
 use App\Paciente;
 use App\DietaHabitual;
@@ -21,38 +22,40 @@ class consultaController extends BaseController
     public function store(Request $request)
     {
         $input = $request->all();
-        
-        $validator = Validator::make($input, [
-        //     // 'nombre' => 'required|unique:animales,nombre'
-            'nombre' => 'required',
-            'estatura' => 'required',
-            'peso' => 'required',
-            'edad' => 'required',
-            'genero' => 'required',
-        ]);
-        if($validator->fails()){
-            return $this->sendErrorResponse('Error en la validacion',$validator->errors());
-        }
-        $alergias='';
-        if(array_key_exists('alergias',$input)){
-            $alergias=$input['alergias'];
-        }
-        $actividadFisica='';
-        if(array_key_exists('actividadFisica',$input)){
-            $actividadFisica=$input['actividadFisica'];
-        }
-        $paciente=Paciente::create([
-            'nombre' => $input['nombre'],
-            'estatura'=> $input['estatura'],
-            'peso' => $input['peso'],
-            'edad' => $input['edad'],
-            'genero' => $input['genero'],
-            'alergias' => $alergias,
-            'actividadFisica' => $actividadFisica,
-        ]);
         $cita_id=Null;
         if(array_key_exists('cita_id',$input)){
-            $actividadFisica=$input['cita_id'];
+            $cita_id=$input['cita_id'];
+            $paciente=Cita::find($cita_id)->paciente;
+        }
+        else{
+            $validator = Validator::make($input, [
+                // 'nombre' => 'required|unique:animales,nombre'
+                'nombre' => 'required',
+                'estatura' => 'required',
+                'peso' => 'required',
+                'edad' => 'required',
+                'genero' => 'required',
+            ]);
+            if($validator->fails()){
+                return $this->sendErrorResponse('Error en la validacion',$validator->errors());
+            }
+            $alergias='';
+            if(array_key_exists('alergias',$input)){
+                $alergias=$input['alergias'];
+            }
+            $actividadFisica='';
+            if(array_key_exists('actividadFisica',$input)){
+                $actividadFisica=$input['actividadFisica'];
+            }
+            $paciente=Paciente::create([
+                'nombre' => $input['nombre'],
+                'estatura'=> $input['estatura'],
+                'peso' => $input['peso'],
+                'edad' => $input['edad'],
+                'genero' => $input['genero'],
+                'alergias' => $alergias,
+                'actividadFisica' => $actividadFisica,
+            ]);
         }
         $validator = Validator::make($input, [
             'verduras'=> 'required',
