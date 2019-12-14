@@ -12,6 +12,7 @@ class DietaHabitual extends Model
         'frutas',
         'aoa',
         'cereales',
+        'consulta_id',
     ];
     public $timestamps = false;
 }

@@ -20,16 +20,12 @@ class CrearConsultas extends Migration
             $table->integer('cita_id')->unsigned()
                                         ->nullable()
                                         ->default(null);
-            $table->integer('dietaHabitual_id')->unsigned();
-            $table->integer('planAlimenticio_id')->unsigned();
             $table->string('observaciones');
             $table->string('fecha_hora');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
             $table->foreign('cita_id')->references('id')->on('citas')->onDelete('cascade');
-            $table->foreign('dietaHabitual_id')->references('id')->on('dietasHabituales')->onDelete('cascade');
-            $table->foreign('planAlimenticio_id')->references('id')->on('planesAlimenticios')->onDelete('cascade');  
         });
     }
 

@@ -15,6 +15,7 @@ class CrearPlanesAlimenticios extends Migration
     {
         Schema::create('planesAlimenticios', function (Blueprint $table){
             $table->increments('id');
+            $table->integer('consulta_id')->unsigned();
             $table->integer('cereales');
             $table->integer('leguminosas');
             $table->integer('verdura');
@@ -23,6 +24,8 @@ class CrearPlanesAlimenticios extends Migration
             $table->integer('leche');
             $table->integer('grasas');
             $table->integer('azucares');
+
+            $table->foreign('consulta_id')->references('id')->on('consultas')->onDelete('cascade');
         });
     }
 

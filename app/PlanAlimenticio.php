@@ -16,6 +16,8 @@ class PlanAlimenticio extends Model
         'leche',
         'grasas',
         'azucares',
+        'consulta_id',
     ];
     public $timestamps = false;
+
 }

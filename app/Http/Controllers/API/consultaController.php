@@ -143,6 +143,8 @@ class consultaController extends BaseController
     public function destroy($id)
     {
         $consulta=Consulta::where('id', $id);
+        Consulta::find($id)->dietaHabitual->delete();
+        Consulta::find($id)->planAlimenticio->delete();
         $consulta->delete();
         return $this->sendResponse([], 'La consulta fue eliminada correctamente');
     }

@@ -11,8 +11,6 @@ class Consulta extends Model
         'user_id',
         'paciente_id',
         'cita_id',
-        'dietaHabitual_id',
-        'planAlimenticio_id',
         'observaciones',
         'fecha_hora',
     ];
@@ -27,9 +25,9 @@ class Consulta extends Model
         return $this->hasOne('App\Cita','id','cita_id');
     }
     public function dietaHabitual(){
-        return $this->hasOne('App\DietaHabitual','id','dietaHabitual_id');
+        return $this->hasOne('App\DietaHabitual');
     }
     public function planAlimenticio(){
-        return $this->hasOne('App\planAlimenticio','id','planAlimenticio_id');
+        return $this->hasOne('App\planAlimenticio');
     }
 }

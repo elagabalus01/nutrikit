@@ -15,10 +15,13 @@ class CrearDietasAbituales extends Migration
     {
         Schema::create('dietasHabituales', function (Blueprint $table){
             $table->increments('id');
+            $table->integer('consulta_id')->unsigned();
             $table->integer('verduras');
             $table->integer('frutas');
             $table->integer('aoa');
             $table->integer('cereales');
+
+            $table->foreign('consulta_id')->references('id')->on('consultas')->onDelete('cascade');
         });
     }
 

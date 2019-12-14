@@ -16,5 +16,8 @@ class Paciente extends Model
         'alergias',
         'actividadFisica',
     ];
+    public function citas(){
+        return $this->hasMany('App\Cita');
+    }
     public $timestamps = false;
 }
