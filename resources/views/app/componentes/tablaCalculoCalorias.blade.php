@@ -1,4 +1,4 @@
-<table class="table" style="width:100%">
+<table class="table">
   <thead>
     <th>Grupos de alimentos</th>
     <th>Equivalente</th>

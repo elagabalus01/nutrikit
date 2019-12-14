@@ -1,4 +1,4 @@
-<table class="table" style="width:100%">
+<table class="table" width="100%">
   <thead>
     <th>Nada</th>
     <th>Gramos</th>

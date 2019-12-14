@@ -45,3 +45,10 @@
 .a-btn:hover{
     cursor: pointer;
 }
+.scrollable table{
+    table-layout: fixed;
+}
+.scrollable tbody{
+    display: block;
+    overflow: scroll;
+}

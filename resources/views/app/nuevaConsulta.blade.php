@@ -85,15 +85,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col table-responsive">
         @include('app.componentes.tablaHabitualPlan')
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-md-8 table-responsive">
         @include('app.componentes.tablaCalculoCalorias')
       </div>
-      <div class="col">
+      <div class="col-md-4">
         @include('app.componentes.tablaCaloriasGrupo')
       </div>
     </div>
