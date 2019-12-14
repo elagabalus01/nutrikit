@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-responsive fcol">
   <thead>
     <th>Grupos de alimentos</th>
     <th>Equivalente</th>
@@ -10,35 +10,35 @@
   <tbody>
     <tr>
       <th>Cereales y tubérculos</th>
-      <td><input type="number" name="plan_cereales"></td>
+      <td><input class="tableInput" type="number" name="plan_cereales"></td>
     </tr>
     <tr>
       <th>Leguminosas</th>
-      <td><input type="number" name="plan_leguminosas"></td>
+      <td><input class="tableInput" type="number" name="plan_leguminosas"></td>
     </tr>
     <tr>
       <th>Verduras</th>
-      <td><input type="number" name="plan_verduras"></td>
+      <td><input class="tableInput" type="number" name="plan_verduras"></td>
     </tr>
     <tr>
       <th>Fruta</th>
-      <td><input type="number" name="plan_fruta"></td>
+      <td><input class="tableInput" type="number" name="plan_fruta"></td>
     </tr>
     <tr>
       <th>Carne</th>
-      <td><input type="number" name="plan_carne"></td>
+      <td><input class="tableInput" type="number" name="plan_carne"></td>
     </tr>
     <tr>
       <th>Leche</th>
-      <td><input type="number" name="plan_leche"></td>
+      <td><input class="tableInput" type="number" name="plan_leche"></td>
     </tr>
     <tr>
       <th>Grasas</th>
-      <td><input type="number" name="plan_grasa"></td>
+      <td><input class="tableInput" type="number" name="plan_grasa"></td>
     </tr>
     <tr>
       <th>Azúcares</th>
-      <td><input type="number" name="plan_azucar"></td>
+      <td><input class="tableInput" type="number" name="plan_azucar"></td>
     </tr>
     <tr>
       <th>Total</th>

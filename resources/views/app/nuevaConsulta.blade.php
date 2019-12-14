@@ -20,11 +20,11 @@
     <div class="row">
       <div class="col">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-3">
             <label>Nombre del paciente</label>
           </div>
-          <div class="col-md-6">
-            <input type="text" name="nombre">
+          <div class="col-md-9">
+            <input class="inputNombre" type="text" name="nombre">
           </div>
         </div>
       </div>
@@ -40,17 +40,17 @@
     <div class="row">
       <div class="col">
         <label>Edad</label>
-        <input type="number" name="edad">
+        <input class="inputEdad" type="number" name="edad">
       </div>
       <div class="col">
         <label>Peso</label>
-        <input type="number" name="alergias">
-        <p>Kg</p>
+        <input class="inputEdad" type="number" name="alergias">
+        <label>Kg</label>
       </div>
       <div class="col">
         <label>Estatura</label>
-        <input type="number" name="estatura">
-        <p>cm</p>
+        <input class="inputEdad" type="number" name="estatura">
+        <label>cm</label>
       </div>
     </div>
     <div class="row">
@@ -85,15 +85,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="col table-responsive">
+      <div class="col-md-12">
         @include('app.componentes.tablaHabitualPlan')
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8 table-responsive">
+      <div class="col-md-7">
         @include('app.componentes.tablaCalculoCalorias')
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         @include('app.componentes.tablaCaloriasGrupo')
       </div>
     </div>

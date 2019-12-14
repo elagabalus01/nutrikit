@@ -130,10 +130,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
       @include('app.componentes.tablaCalculoCalorias')
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       @include('app.componentes.tablaCaloriasGrupo')
     </div>
   </div>

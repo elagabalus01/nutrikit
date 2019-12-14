@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-responsive">
   <thead>
     <tr>
       <th>Alimento</th>
@@ -9,22 +9,22 @@
   <tbody>
     <tr>
       <th>Verduras</th>
-      <td><input type="number" name="habitual_verdura"></td>
+      <td><input class="tableInput" type="number" name="habitual_verdura"></td>
       <td>CalculoDeTabla</td>
     </tr>
     <tr>
       <th>Frutas</th>
-      <td><input type="number" name="habitual_fruta"></td>
+      <td><input class="tableInput" type="number" name="habitual_fruta"></td>
       <td>CalculoDeTabla</td>
     </tr>
     <tr>
       <th>AOA</th>
-      <td><input type="number" name="habitual_aoa"></td>
+      <td><input class="tableInput" type="number" name="habitual_aoa"></td>
       <td>CalculoDeTabla</td>
     </tr>
     <tr>
       <th>Cerales</th>
-      <td><input type="number" name="habitual_cereal"></td>
+      <td><input class="tableInput" type="number" name="habitual_cereal"></td>
       <td>CalculoDeTabla</td>
     </tr>
   </tbody>

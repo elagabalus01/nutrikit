@@ -45,10 +45,25 @@
 .a-btn:hover{
     cursor: pointer;
 }
-.scrollable table{
-    table-layout: fixed;
+
+.table-responsive table tbody tr th:first-child {
+  background: yellow;
+  top: auto;
+  position:fixed;  /*change this*/
+  left: 0.5;
+  width: 6em;
 }
-.scrollable tbody{
-    display: block;
-    overflow: scroll;
+/*input,textarea{
+    width:100%;
+    display:block
+}*/
+.inputNombre{
+    max-width: 60ch;
+}
+.inputEdad{
+    max-width: 5ch;
+}
+.tableInput{
+    width:100%;
+    max-width: 5ch;
 }
