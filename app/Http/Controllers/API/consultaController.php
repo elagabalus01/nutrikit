@@ -105,7 +105,7 @@ class consultaController extends BaseController
             'dietaHabitual_id' => $dietaHabitual->id,
             'planAlimenticio_id' => $planAlimenticio->id,
             'observaciones' => $observaciones,
-            'fechaHora' => $fechaHora,
+            'fecha_hora' => $fechaHora,
         ]);
 
         return $this->sendResponse($consulta->toArray(), 'Consulta almacenada correctamente');
