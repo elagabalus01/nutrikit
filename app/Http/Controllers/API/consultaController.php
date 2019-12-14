@@ -59,6 +59,17 @@ class consultaController extends BaseController
             ]);
             $fechaHora="La fecha de horita we";
         }
+        $observaciones='';
+        if(array_key_exists('observaciones',$input)){
+            $actividadFisica=$input['observaciones'];
+        }
+        $consulta = Consulta::create([
+            'user_id' => Auth::user()->id,
+            'paciente_id' => $paciente->id,
+            'cita_id' => $cita_id,
+            'observaciones' => $observaciones,
+            'fecha_hora' => $fechaHora,
+        ]);
         $validator = Validator::make($input, [
             'verduras'=> 'required',
             'frutas'=> 'required',
@@ -73,6 +84,7 @@ class consultaController extends BaseController
             'frutas'=> $input['frutas'],
             'aoa'=> $input['aoa'],
             'cereales'=> $input['cereales'],
+            'consulta_id' => $consulta->id,
         ]);
         $validator = Validator::make($input,[
             'cereales' => 'required',
@@ -93,21 +105,8 @@ class consultaController extends BaseController
             'leche' => $input['leche'],
             'grasas' => $input['grasas'],
             'azucares' => $input['azucares'],
+            'consulta_id' => $consulta->id,
         ]);
-        $observaciones='';
-        if(array_key_exists('observaciones',$input)){
-            $actividadFisica=$input['observaciones'];
-        }
-        $consulta = Consulta::create([
-            'user_id' => Auth::user()->id,
-            'paciente_id' => $paciente->id,
-            'cita_id' => $cita_id,
-            'dietaHabitual_id' => $dietaHabitual->id,
-            'planAlimenticio_id' => $planAlimenticio->id,
-            'observaciones' => $observaciones,
-            'fecha_hora' => $fechaHora,
-        ]);
-
         return $this->sendResponse($consulta->toArray(), 'Consulta almacenada correctamente');
     }
     public function show($id)
@@ -143,8 +142,6 @@ class consultaController extends BaseController
     public function destroy($id)
     {
         $consulta=Consulta::where('id', $id);
-        Consulta::find($id)->dietaHabitual->delete();
-        Consulta::find($id)->planAlimenticio->delete();
         $consulta->delete();
         return $this->sendResponse([], 'La consulta fue eliminada correctamente');
     }
