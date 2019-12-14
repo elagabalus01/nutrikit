@@ -27,5 +27,7 @@ Route::get('/nueva_cita','AppController@nuevaCita')->middleware('auth')->middlew
 
 Route::get('/nuevaConsulta','AppController@nuevaConsulta')->middleware('auth')->middleware('prevent-back-history');
 
+Route::get('/consulta/{id}','AppController@citaConsulta');
+
 Route::get('search', 'SearchController@index')->name('search');
 Route::post('autocomplete', 'SearchController@autocomplete')->name('autocomplete');

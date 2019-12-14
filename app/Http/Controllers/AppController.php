@@ -28,4 +28,9 @@ class AppController extends Controller
     {
         return view('app.nuevaConsulta');
     }
+    public function citaConsulta($id)
+    {
+        $cita=Cita::find($id);
+        return view('app.citaConsulta',['cita'=>$cita]);
+    }
 }

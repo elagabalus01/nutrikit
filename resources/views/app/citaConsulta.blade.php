@@ -12,54 +12,92 @@
         <p>Datos del paciente</p>
       </div>
       <div class="col align-self-end">
-        <p class="float-right">Fecha:
-        La fecha de hoy ;v
-        </p>
+        <p class="float-right">Fecha: {{ $cita->fecha_hora }}</p>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <div class="row">
-          <div class="col-md-6">
-            <label>Nombre del paciente</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" name="nombre">
-          </div>
+            <div class="col">
+                <label>Nombre del paciente</label>
+            </div>
+            <div class="col">
+                <p>{{ $cita->paciente->nombre }} santander martinez</p>
+            </div>
+            <div class="col">
+                <button>Editar</button>
+            </div>
         </div>
       </div>
       <div class="col">
-        <label>Alegias</label>
-        <input type="text" name="alergias">
+        <div class="row">
+            <div class="col">
+                <label>Alegias</label>
+            </div>
+            <div class="col">
+                <p>{{ $cita->paciente->alergias }}</p>
+            </div>
+        </div>
       </div>
       <div class="col">
-        <label>Actividad física</label>
-        <input type="text" name="act_fis">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label>Edad</label>
-        <input type="number" name="edad">
-      </div>
-      <div class="col">
-        <label>Peso</label>
-        <input type="number" name="alergias">
-        <p>Kg</p>
-      </div>
-      <div class="col">
-        <label>Estatura</label>
-        <input type="number" name="estatura">
-        <p>cm</p>
+        <div class="row">
+            <div class="col">
+                <label>Actividad física</label>
+            </div>
+            <div class="col">
+                <p>{{ $cita->paciente->actividadFisica }}</p>
+            </div>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <label>Género</label>
-        <select name="genero">
-          <option value="masculino">H</option>
-          <option value="femenino">M</option>
-        </select>
+        <div class="row">
+            <div class="col">
+                <label>Edad</label>
+            </div>
+            <div class="col">
+                <p>{{ $cita->paciente->edad }}</p>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+            <div class="col">
+                <label>Peso</label>
+            </div>
+            <div class="col">
+                <p>{{ $cita->paciente->peso }} Kg</p>
+            </div>
+            <div class="col">
+                <button>Editar</button>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+            <div class="col">
+                <label>Estatura</label>
+            </div>
+            <div class="col">
+                <p>{{ $cita->paciente->estatura }} cm</p>
+            </div>
+            <div class="col">
+                <button>Editar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+            <div class="col">
+                <label>Género</label>
+            </div>
+            <div class="col">
+                <p>{{ $cita->paciente->genero }}</p>
+            </div>
+        </div>
       </div>
       <div class="col">
         <p>IMC: IMC_CALCULADO</p>

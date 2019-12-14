@@ -29,7 +29,7 @@
                         <td>{{ $cita->paciente->nombre }}</td>
                         <td>{{ $cita->fecha_hora }}</td>
                         <td>
-                            <a id="{{ $cita->id }}" class="consulta" href="#">Atender</a>
+                            <a id="{{ $cita->id }}" class="consulta" href="consulta/{{ $cita->id }}">Atender</a>
                             /
                             <a id="{{ $cita->id }}" class="eliminar cita" href="#">Cancelar</a>
                         </td>
