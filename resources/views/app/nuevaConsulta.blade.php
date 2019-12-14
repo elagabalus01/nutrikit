@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <p>Datos del paciente</p>
+        <h1>Datos del paciente</h1>
       </div>
       <div class="col align-self-end">
         <p class="float-right">Fecha:
@@ -67,7 +67,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <p>Consulta</p>
+        <h1>Consulta</h1>
       </div>
     </div>
     <div class="row">
