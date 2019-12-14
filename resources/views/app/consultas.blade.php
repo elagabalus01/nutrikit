@@ -24,7 +24,7 @@
                     @foreach($consultas as $consulta)
                     <tr>
                         <td>{{ $consulta->paciente->nombre }}</td>
-                        <td>{{ $consulta->cita->fecha_hora }}</td>
+                        <td>{{ $consulta->fecha_hora }}</td>
                         <td>{{ $consulta->user->nombre }}</td>
                     </tr>
                     @endforeach

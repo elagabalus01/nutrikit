@@ -26,6 +26,7 @@ class consultaController extends BaseController
         if(array_key_exists('cita_id',$input)){
             $cita_id=$input['cita_id'];
             $paciente=Cita::find($cita_id)->paciente;
+            $fechaHora=Cita::find($cita_id)->fecha_hora;
         }
         else{
             $validator = Validator::make($input, [
@@ -56,6 +57,7 @@ class consultaController extends BaseController
                 'alergias' => $alergias,
                 'actividadFisica' => $actividadFisica,
             ]);
+            $fechaHora="La fecha de horita we";
         }
         $validator = Validator::make($input, [
             'verduras'=> 'required',
@@ -96,7 +98,6 @@ class consultaController extends BaseController
         if(array_key_exists('observaciones',$input)){
             $actividadFisica=$input['observaciones'];
         }
-        $fechaHora='La fecha de ahorita';
         $consulta = Consulta::create([
             'user_id' => Auth::user()->id,
             'paciente_id' => $paciente->id,

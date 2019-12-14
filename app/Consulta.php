@@ -14,7 +14,7 @@ class Consulta extends Model
         'dietaHabitual_id',
         'planAlimenticio_id',
         'observaciones',
-        'fechaHora',
+        'fecha_hora',
     ];
     public $timestamps = false;
     public function user(){
