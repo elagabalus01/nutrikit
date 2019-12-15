@@ -30,6 +30,7 @@ Route::get('/nuevaConsulta','AppController@nuevaConsulta')->middleware('auth')->
 Route::get('/consulta/{id}','AppController@citaConsulta');
 
 Route::get('/pacientes/{id}','AppController@consultasPaciente');
+Route::get('/consultas/{id}','AppController@consulta');
 
 Route::get('search', 'SearchController@index')->name('search');
 Route::post('autocomplete', 'SearchController@autocomplete')->name('autocomplete');

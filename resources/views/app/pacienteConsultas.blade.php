@@ -26,7 +26,7 @@
                         <td>{{ $consulta->paciente->nombre }}</td>
                         <td>{{ $consulta->fecha_hora }}</td>
                         <td>
-                            <a id="{{ $consulta->id }}" class="consulta" href="#">Ver</a>
+                            <a class="consulta" href="/consultas/{{ $consulta->id }}">Ver</a>
                         </td>
                     </tr>
                     @endforeach

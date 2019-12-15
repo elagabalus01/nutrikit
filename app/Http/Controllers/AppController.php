@@ -40,4 +40,10 @@ class AppController extends Controller
         // $consultas=Paciente::find($id)->consultas::paginate(4);
         return view('app.pacienteConsultas',compact('consultas'));
     }
+    public function consulta($id)
+    {
+        $consulta=Consulta::find($id);
+        // $consultas=Paciente::find($id)->consultas::paginate(4);
+        return view('app.consulta_anterior',['consulta'=>$consulta]);
+    }
 }
