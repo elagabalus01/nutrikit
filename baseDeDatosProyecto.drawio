@@ -1,4 +1,4 @@
-<mxfile host="www.draw.io" modified="2019-12-15T04:46:31.423Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" etag="33kKkq_d5oFtWbjB1OtU" version="12.4.2" type="gitlab" pages="1">
+<mxfile host="www.draw.io" modified="2019-12-15T05:27:49.052Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36" etag="KCx1x0picyGs-08oFRrn" version="12.4.2" type="gitlab" pages="1">
   <diagram id="oVE6bmWussB_9HKteIKD" name="Page-1">
     <mxGraphModel dx="868" dy="492" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -208,7 +208,7 @@
             <mxPoint x="420" y="290" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="abFm9yk0dOPrLD0_e7VD-84" value="dietasAbituales" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;fontSize=14;" parent="1" vertex="1">
+        <mxCell id="abFm9yk0dOPrLD0_e7VD-84" value="dietasHabituales" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="630" y="62" width="160" height="196" as="geometry"/>
         </mxCell>
         <mxCell id="abFm9yk0dOPrLD0_e7VD-85" value="id" style="shape=partialRectangle;top=0;left=0;right=0;bottom=1;align=left;verticalAlign=middle;fillColor=none;spacingLeft=34;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;dropTarget=0;fontStyle=5;fontSize=12;" parent="abFm9yk0dOPrLD0_e7VD-84" vertex="1">
@@ -351,6 +351,9 @@
             <mxPoint x="470" y="550" as="sourcePoint"/>
             <mxPoint x="570" y="450" as="targetPoint"/>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="og-kodhbtXQOgZA4qNrD-11" value="Text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];;autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="593" y="69" width="40" height="20" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
