@@ -26,7 +26,9 @@
                 <tbody>
                     @foreach($citas as $cita)
                     <tr>
-                        <td>{{ $cita->paciente->nombre }}</td>
+                        <td>
+                            <a href="#" onclick="consultasAnteriores({{ $cita->paciente->id }})">{{ $cita->paciente->nombre }}</a>
+                        </td>
                         <td>{{ $cita->fecha_hora }}</td>
                         <td>
                             <a id="{{ $cita->id }}" class="consulta" href="consulta/{{ $cita->id }}">Atender</a>

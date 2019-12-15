@@ -20,3 +20,6 @@ function cancelarCita(id){
 $('.cancelar,.cita').on('click',function (argument) {
     cancelarCita(this.id);
 });
+function consultasAnteriores(id){
+    window.open(`/pacientes/${id}`,'_blank','toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=100,width=1100,height=700');
+}
