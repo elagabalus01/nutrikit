@@ -18,6 +18,14 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-md-1">
+        <label>RFC</label>
+      </div>
+      <div class="col-md-2">
+        <input type="text" name="rfc">
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
         <div class="row">
           <div class="col-md-3">
@@ -39,8 +47,11 @@
     </div>
     <div class="row">
       <div class="col">
-        <label>Edad</label>
-        <input class="inputEdad" type="number" name="edad">
+        <label>Género</label>
+        <select name="genero">
+          <option value="masculino">H</option>
+          <option value="femenino">M</option>
+        </select>
       </div>
       <div class="col">
         <label>Peso</label>
@@ -53,16 +64,16 @@
         <label>cm</label>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <label>Género</label>
-        <select name="genero">
-          <option value="masculino">H</option>
-          <option value="femenino">M</option>
-        </select>
+    <div class="form-group row">
+      <div class="col-md-3">
+        <label>Fecha de nacimiento</label>
+        <input class="form-control" type="date" value="1964-12-04" id="fecha_nacimiento">
       </div>
       <div class="col">
-        <p>IMC: IMC_CALCULADO</p>
+        <label>IMC: IMC_CALCULADO</label>
+      </div>
+      <div class="col">
+        <label>Edad: EDAD_CALCULADO</label>
       </div>
     </div>
     <div class="row">
