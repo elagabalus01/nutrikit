@@ -16,7 +16,7 @@ class CrearConsultas extends Migration
         Schema::create('consultas', function (Blueprint $table){
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('paciente_id')->unsigned();
+            $table->string('paciente_id');
             $table->integer('cita_id')->unsigned()
                                         ->nullable()
                                         ->default(null);

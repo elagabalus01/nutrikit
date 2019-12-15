@@ -20,7 +20,7 @@ class CitaController extends BaseController
     {
         $input = $request->all();
         $validator = Validator::make($input, [
-            'paciente_id' => 'required|exists:pacientes,id',
+            'paciente_id' => 'required|exists:pacientes,rfc',
             'fecha_hora' => 'required',
         ]);
         if($validator->fails()){

@@ -27,7 +27,7 @@
                     @foreach($citas as $cita)
                     <tr>
                         <td>
-                            <a href="#" onclick="consultasAnteriores({{ $cita->paciente->id }})">{{ $cita->paciente->nombre }}</a>
+                            <a href="#" onclick="consultasAnteriores('{{ $cita->paciente->rfc }}')">{{ $cita->paciente->nombre }}</a>
                         </td>
                         <td>{{ $cita->fecha_hora }}</td>
                         <td>

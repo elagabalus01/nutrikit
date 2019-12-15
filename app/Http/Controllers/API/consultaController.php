@@ -51,7 +51,7 @@ class consultaController extends BaseController
             }
             $actividad_fisica='';
             if(array_key_exists('actividad_fisica',$input)){
-                $actividadFisica=$input['actividad_fisica'];
+                $actividad_fisica=$input['actividad_fisica'];
             }
             $paciente=Paciente::create([
                 'rfc' => $input['rfc'],
@@ -61,24 +61,25 @@ class consultaController extends BaseController
                 'fecha_nacimiento' => $input['fecha_nacimiento'],
                 'genero' => $input['genero'],
                 'alergias' => $alergias,
-                'actividad_fisica' => $actividadFisica,
+                'actividad_fisica' => $actividad_fisica,
             ]);
             $fecha_hora="La fecha de horita we";
         }
         $descripcion_dieta='';
         if(array_key_exists('descripcion_dieta',$input)){
-            $actividadFisica=$input['descripcion_dieta'];
+            $descripcion_dieta=$input['descripcion_dieta'];
         }
         $observaciones='';
         if(array_key_exists('observaciones',$input)){
-            $actividadFisica=$input['observaciones'];
+            $observaciones=$input['observaciones'];
         }
         $consulta = Consulta::create([
             'user_id' => Auth::user()->id,
             'paciente_id' => $paciente->rfc,
             'cita_id' => $cita_id,
+            'descripcion_dieta' => $descripcion_dieta,
             'observaciones' => $observaciones,
-            'fecha_hora' => $fechaHora,
+            'fecha_hora' => $fecha_hora,
             'edad_actual' => $paciente->edad,
             'peso_actual' => $paciente->peso,
             'estatura_actual' => $paciente->estatura,

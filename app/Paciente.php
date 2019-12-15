@@ -13,7 +13,7 @@ class Paciente extends Model
         'nombre',
         'estatura',
         'peso',
-        'edad',
+        'fecha_nacimiento',
         'genero',
         'alergias',
         'actividad_fisica',
@@ -23,6 +23,9 @@ class Paciente extends Model
     }
     public function consultas(){
         return $this->hasMany('App\Consulta');
+    }
+    public function getEdadAttribute(){
+        return 20;
     }
     public $timestamps = false;
 }
