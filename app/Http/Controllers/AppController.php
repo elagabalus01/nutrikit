@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Consulta;
+use App\Paciente;
 
 class AppController extends Controller
 {
@@ -32,5 +33,11 @@ class AppController extends Controller
     {
         $cita=Cita::find($id);
         return view('app.citaConsulta',['cita'=>$cita]);
+    }
+    public function consultasPaciente($id)
+    {
+        $consultas=Consulta::where('paciente_id',$id)->paginate(4);
+        // $consultas=Paciente::find($id)->consultas::paginate(4);
+        return view('app.pacienteConsultas',compact('consultas'));
     }
 }

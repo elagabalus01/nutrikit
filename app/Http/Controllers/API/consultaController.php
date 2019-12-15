@@ -13,6 +13,10 @@ use Validator;
 
 class consultaController extends BaseController
 {
+    public function consultasPaciente($id){
+        $consultas=Paciente::find($id)->consultas;
+        return $this->sendResponse($consultas->toArray(),'Todas las consultas del paciente');
+    }
     public function index()
     {
         $consulta = Consulta::all();

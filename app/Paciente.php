@@ -19,5 +19,8 @@ class Paciente extends Model
     public function citas(){
         return $this->hasMany('App\Cita');
     }
+    public function consultas(){
+        return $this->hasMany('App\Consulta');
+    }
     public $timestamps = false;
 }
