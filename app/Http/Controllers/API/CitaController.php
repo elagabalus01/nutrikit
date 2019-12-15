@@ -21,14 +21,14 @@ class CitaController extends BaseController
         $input = $request->all();
         $validator = Validator::make($input, [
             'paciente_id' => 'required|exists:pacientes,id',
-            'fechaHora' => 'required',
+            'fecha_hora' => 'required',
         ]);
         if($validator->fails()){
             return $this->sendErrorResponse('Error en la validacion',$validator->errors());
         }
         $cita=Cita::create([
             'paciente_id' => $input['paciente_id'],
-            'fecha_hora'=> $input['fechaHora'],
+            'fecha_hora'=> $input['fecha_hora'],
         ]);
         return $this->sendDone('Consulta almacenada correctamente');
     }

@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Paciente extends Model
 {
     protected $table = 'pacientes';
+    public $incrementing = false;
     protected $fillable = [
+        'rfc',
         'nombre',
         'estatura',
         'peso',
         'edad',
         'genero',
         'alergias',
-        'actividadFisica',
+        'actividad_fisica',
     ];
     public function citas(){
         return $this->hasMany('App\Cita');

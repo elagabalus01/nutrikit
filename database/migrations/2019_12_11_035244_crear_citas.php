@@ -18,7 +18,7 @@ class CrearCitas extends Migration
             $table->string('fecha_hora');
             $table->boolean('atendida')->default(false);
             $table->integer('paciente_id')->unsigned();
-            $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
+            $table->foreign('paciente_id')->references('rfc')->on('pacientes')->onDelete('cascade');
         });
     }
 

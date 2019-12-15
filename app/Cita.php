@@ -13,6 +13,6 @@ class Cita extends Model
     ];
     public $timestamps = false;
     public function paciente(){
-        return $this->hasOne('App\Paciente','id','paciente_id');
+        return $this->hasOne('App\Paciente','rfc','paciente_id');
     }
 }

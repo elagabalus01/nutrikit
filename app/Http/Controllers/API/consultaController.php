@@ -30,15 +30,16 @@ class consultaController extends BaseController
         if(array_key_exists('cita_id',$input)){
             $cita_id=$input['cita_id'];
             $paciente=Cita::find($cita_id)->paciente;
-            $fechaHora=Cita::find($cita_id)->fecha_hora;
+            $fecha_hora=Cita::find($cita_id)->fecha_hora;
         }
         else{
             $validator = Validator::make($input, [
                 // 'nombre' => 'required|unique:animales,nombre'
+                'rfc' => 'required|unique:pacientes,rfc',
                 'nombre' => 'required',
                 'estatura' => 'required',
                 'peso' => 'required',
-                'edad' => 'required',
+                'fecha_nacimiento' => 'required',
                 'genero' => 'required',
             ]);
             if($validator->fails()){
@@ -48,20 +49,25 @@ class consultaController extends BaseController
             if(array_key_exists('alergias',$input)){
                 $alergias=$input['alergias'];
             }
-            $actividadFisica='';
-            if(array_key_exists('actividadFisica',$input)){
-                $actividadFisica=$input['actividadFisica'];
+            $actividad_fisica='';
+            if(array_key_exists('actividad_fisica',$input)){
+                $actividadFisica=$input['actividad_fisica'];
             }
             $paciente=Paciente::create([
+                'rfc' => $input['rfc'],
                 'nombre' => $input['nombre'],
                 'estatura'=> $input['estatura'],
                 'peso' => $input['peso'],
-                'edad' => $input['edad'],
+                'fecha_nacimiento' => $input['fecha_nacimiento'],
                 'genero' => $input['genero'],
                 'alergias' => $alergias,
-                'actividadFisica' => $actividadFisica,
+                'actividad_fisica' => $actividadFisica,
             ]);
-            $fechaHora="La fecha de horita we";
+            $fecha_hora="La fecha de horita we";
+        }
+        $descripcion_dieta='';
+        if(array_key_exists('descripcion_dieta',$input)){
+            $actividadFisica=$input['descripcion_dieta'];
         }
         $observaciones='';
         if(array_key_exists('observaciones',$input)){
@@ -69,10 +75,14 @@ class consultaController extends BaseController
         }
         $consulta = Consulta::create([
             'user_id' => Auth::user()->id,
-            'paciente_id' => $paciente->id,
+            'paciente_id' => $paciente->rfc,
             'cita_id' => $cita_id,
             'observaciones' => $observaciones,
             'fecha_hora' => $fechaHora,
+            'edad_actual' => $paciente->edad,
+            'peso_actual' => $paciente->peso,
+            'estatura_actual' => $paciente->estatura,
+            'actividad_fisica_actual' => $paciente->actividad_fisica,
         ]);
         $validator = Validator::make($input, [
             'verduras'=> 'required',
