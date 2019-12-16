@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 use App\Cita;
 use App\Consulta;
 use App\Paciente;
+use Carbon\Carbon;
 
 class AppController extends Controller
 {
     public function index()
     {
         // Dispatch::where('user_id', Auth::id())->paginate(10); ejemplo para el futuro
-        $citas=Cita::where('atendida',false)->paginate(4);
+        $citas=Cita::where('atendida',false)
+                        ->whereDate('fecha_hora','=',Carbon::today()->toDateString())
+                        ->paginate(4);
+        // $citas=Cita::where('atendida',false)->paginate(4);
         // $citas=Cita::paginate(4);
         return view('app.citas',compact('citas'));
     }

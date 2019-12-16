@@ -27,6 +27,9 @@ class CitaController extends BaseController
         if($validator->fails()){
             return $this->sendErrorResponse('Error en la validacion',$validator->errors());
         }
+        if(Carbon::createFromFormat('Y-m-d H:i:s',$input['fecha_hora'])->lessThanOrEqualTo(Carbon::now())){
+            return $this->sendErrorResponse("No puede crearse una cita para el pasado",[]);
+        }
         $cita=Cita::create([
             'paciente_id' => $input['paciente_id'],
             'fecha_hora'=> $input['fecha_hora'],
