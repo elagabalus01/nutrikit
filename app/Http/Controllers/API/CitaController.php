@@ -19,6 +19,7 @@ class CitaController extends BaseController
 
     public function store(Request $request)
     {
+
         $input = $request->all();
         $validator = Validator::make($input, [
             'paciente_id' => 'required|exists:pacientes,rfc',
@@ -30,11 +31,29 @@ class CitaController extends BaseController
         if(Carbon::createFromFormat('Y-m-d H:i:s',$input['fecha_hora'])->lessThanOrEqualTo(Carbon::now())){
             return $this->sendErrorResponse("No puede crearse una cita para el pasado",[]);
         }
+        $cita_inicio=Carbon::createFromFormat('Y-m-d H:i:s',$input['fecha_hora']);
+        $citas_dia=Cita::where('atendida',false)
+                        ->whereDate('fecha_hora','=',$cita_inicio)->get();
+        
+        foreach ($citas_dia as $cita){
+            $cita_fin=Carbon::parse($cita_inicio)->addHour();
+            $prueba_inicio=Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora);
+            $prueba_fin=Carbon::parse($prueba_inicio)->addHour();
+            if($cita_inicio->eq($prueba_inicio)){
+                return $this->sendErrorResponse("Ya hay una cita a esa hora",[]);
+            }
+            elseif($prueba_inicio->lt($cita_inicio) && $cita_inicio->lt($prueba_fin)){
+                return $this->sendErrorResponse("La cita se traslapa",[]);
+            }
+            elseif ($prueba_inicio->lt($cita_fin)&&$cita_fin->lt($prueba_fin)) {
+                return $this->sendErrorResponse("La cita se traslapa",[]);
+            }
+        }
         $cita=Cita::create([
             'paciente_id' => $input['paciente_id'],
             'fecha_hora'=> $input['fecha_hora'],
         ]);
-        return $this->sendDone('Consulta almacenada correctamente');
+        return $this->sendDone('La cita fue creada correctamente');
     }
     public function show($id)
     {
