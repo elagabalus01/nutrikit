@@ -30,8 +30,11 @@ class consultaController extends BaseController
         $cita_id=Null;
         if(array_key_exists('cita_id',$input)){
             $cita_id=$input['cita_id'];
-            $paciente=Cita::find($cita_id)->paciente;
-            $fecha_hora=Cita::find($cita_id)->fecha_hora;
+            $cita=Cita::find($cita_id);
+            $paciente=$cita->paciente;
+            $fecha_hora=$cita->fecha_hora;
+            $cita->atendida=true;
+            $cita->save();
         }
         else{
             $validator = Validator::make($input, [
@@ -64,7 +67,7 @@ class consultaController extends BaseController
                 'alergias' => $alergias,
                 'actividad_fisica' => $actividad_fisica,
             ]);
-            $fecha_hora=Carbon::now()->format('Y-m-d');
+            $fecha_hora=Carbon::now()->format('Y-m-d H:i');
         }
         $descripcion_dieta='';
         if(array_key_exists('descripcion_dieta',$input)){

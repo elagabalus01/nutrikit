@@ -24,7 +24,7 @@
                 <tbody>
                     @foreach($consultas as $consulta)
                     <tr>
-                        <td>{{ $consulta->fecha_hora}}</td>
+                        <td>{{ $consulta->fecha}} {{ $consulta->hora }}</td>
                         <td>{{ $consulta->user->nombre }}</td>
                         <td>
                             <a class="consulta" href="/consultas/{{ $consulta->id }}">Ver</a>

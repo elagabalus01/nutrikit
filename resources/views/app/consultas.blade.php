@@ -16,15 +16,18 @@
                 <thead>
                     <tr>
                         <th>Paciente</th>
-                        <th>Cita</th>
+                        <th>Fecha</th>
                         <th>Atendido por</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($consultas as $consulta)
                     <tr>
-                        <td>{{ $consulta->paciente->nombre }}</td>
-                        <td>{{ $consulta->fecha_hora }}</td>
+                        <td>
+                            <a href="#" onclick="consultasAnteriores('{{ $consulta->paciente->rfc }}')">{{ $consulta->paciente->nombre }}</a>
+                        </td>
+
+                        <td>{{ $consulta->fecha }} {{ $consulta->hora }}</td>
                         <td>{{ $consulta->user->nombre }}</td>
                     </tr>
                     @endforeach
@@ -40,4 +43,7 @@
     </div>
     @endif
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript" src="{{ asset('api.js') }}"></script>
 @endsection
