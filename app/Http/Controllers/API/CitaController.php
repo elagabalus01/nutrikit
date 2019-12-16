@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Cita;
 use App\Paciente;
+use Carbon\Carbon;
 use Validator;
 
 class CitaController extends BaseController

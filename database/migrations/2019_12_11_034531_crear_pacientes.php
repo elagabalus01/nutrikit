@@ -18,7 +18,7 @@ class CrearPacientes extends Migration
             $table->string('nombre');
             $table->integer('estatura')->unsigned();
             $table->integer('peso')->unsigned();
-            $table->string('fecha_nacimiento');
+            $table->date('fecha_nacimiento');
             $table->string('genero');
             $table->string('alergias');
             $table->string('actividad_fisica');

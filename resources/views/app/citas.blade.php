@@ -29,7 +29,7 @@
                         <td>
                             <a href="#" onclick="consultasAnteriores('{{ $cita->paciente->rfc }}')">{{ $cita->paciente->nombre }}</a>
                         </td>
-                        <td>{{ $cita->fecha_hora }}</td>
+                        <td>{{ $cita->fecha }} {{ $cita->hora }}</td>
                         <td>
                             <a id="{{ $cita->id }}" class="consulta" href="consulta/{{ $cita->id }}">Atender</a>
                             /

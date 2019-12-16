@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Consulta extends Model
 {
@@ -34,5 +35,12 @@ class Consulta extends Model
     }
     public function planAlimenticio(){
         return $this->hasOne('App\planAlimenticio');
+    }
+    public function getFechaAttribute(){
+        return Carbon::createFromFormat('Y-m-d H:i:s',$this->fecha_hora)->format('d/m/Y');
+        // return Carbon::now();
+    }
+    public function getHoraAttribute(){
+        return Carbon::createFromFormat('Y-m-d H:i:s',$this->fecha_hora)->format('H:i');
     }
 }

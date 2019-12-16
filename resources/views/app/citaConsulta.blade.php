@@ -15,7 +15,7 @@
       <p class="float-right">RFC: {{ $cita->paciente->rfc }}</p>
     </div>
     <div class="col-md-2 align-self-end">
-      <p class="float-right">Fecha: {{ $cita->fecha_hora }}</p>
+      <p class="float-right">Fecha: {{ $cita->fecha }}</p>
     </div>
   </div>
   <div class="row">

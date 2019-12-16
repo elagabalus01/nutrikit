@@ -22,7 +22,7 @@ class CrearConsultas extends Migration
                                         ->default(null);
             $table->string('descripcion_dieta');
             $table->string('observaciones');
-            $table->string('fecha_hora');
+            $table->dateTime('fecha_hora');
             $table->integer('edad_actual')->unsigned();
             $table->integer('peso_actual')->unsigned();
             $table->integer('estatura_actual')->unsigned();

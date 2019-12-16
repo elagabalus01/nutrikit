@@ -9,6 +9,7 @@ use App\Consulta;
 use App\Paciente;
 use App\DietaHabitual;
 use App\PlanAlimenticio;
+use Carbon\Carbon;
 use Validator;
 
 class consultaController extends BaseController
@@ -63,7 +64,7 @@ class consultaController extends BaseController
                 'alergias' => $alergias,
                 'actividad_fisica' => $actividad_fisica,
             ]);
-            $fecha_hora="La fecha de horita we";
+            $fecha_hora=Carbon::now()->format('Y-m-d');
         }
         $descripcion_dieta='';
         if(array_key_exists('descripcion_dieta',$input)){

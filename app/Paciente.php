@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Paciente extends Model
 {
@@ -26,7 +27,9 @@ class Paciente extends Model
         return $this->hasMany('App\Consulta');
     }
     public function getEdadAttribute(){
-        return 20;
+        $fechaDeNacimiento=Carbon::createFromFormat('Y-m-d',$this->fecha_nacimiento);
+        $fechaActual=Carbon::now();
+        return $fechaDeNacimiento->diffInYears($fechaActual);
     }
     public $timestamps = false;
 }

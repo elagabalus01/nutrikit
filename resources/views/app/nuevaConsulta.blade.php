@@ -13,7 +13,7 @@
       </div>
       <div class="col align-self-end">
         <p class="float-right">Fecha:
-        La fecha de hoy ;v
+        {{ Carbon\Carbon::now()->format('d/m/Y') }}
         </p>
       </div>
     </div>
