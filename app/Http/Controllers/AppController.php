@@ -34,11 +34,12 @@ class AppController extends Controller
         $cita=Cita::find($id);
         return view('app.citaConsulta',['cita'=>$cita]);
     }
-    public function consultasPaciente($id)
+    public function consultasPaciente($rfc)
     {
-        $consultas=Consulta::where('paciente_id',$id)->paginate(4);
+        $consultas=Consulta::where('paciente_id',$rfc)->paginate(4);
+        $paciente=Paciente::find($rfc);
         // $consultas=Paciente::find($id)->consultas::paginate(4);
-        return view('app.pacienteConsultas',compact('consultas'));
+        return view('app.pacienteConsultas',compact('paciente','consultas'));
     }
     public function consulta($id)
     {

@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col">
             <h1>Consultas anteriores</h1>
+            <label>Paciente: {{ $paciente->nombre }}</label>
         </div>
     </div>
     @if(count($consultas)>0)
@@ -15,16 +16,16 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Paciente</th>
-                        <th>Cita</th>
+                        <th>Fecha</th>
+                        <th>Médico</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($consultas as $consulta)
                     <tr>
-                        <td>{{ $consulta->paciente->nombre }}</td>
-                        <td>{{ $consulta->fecha_hora }}</td>
+                        <td>{{ $consulta->fecha_hora}}</td>
+                        <td>{{ $consulta->user->nombre }}</td>
                         <td>
                             <a class="consulta" href="/consultas/{{ $consulta->id }}">Ver</a>
                         </td>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Paciente extends Model
 {
     protected $table = 'pacientes';
+     protected $primaryKey = 'rfc';
     public $incrementing = false;
     protected $fillable = [
         'rfc',
