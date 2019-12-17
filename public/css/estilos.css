@@ -1,4 +1,3 @@
-
 .bg-custom {
     background-color: #00BB2D;
 }
@@ -45,26 +44,4 @@
 }
 .a-btn:hover{
     cursor: pointer;
-}
-
-.table-responsive table tbody tr th:first-child {
-  background: yellow;
-  top: auto;
-  position:fixed;  /*change this*/
-  left: 0.5;
-  width: 6em;
-}
-/*input,textarea{
-    width:100%;
-    display:block
-}*/
-.inputNombre{
-    max-width: 60ch;
-}
-.inputEdad{
-    max-width: 5ch;
-}
-.tableInput{
-    width:100%;
-    max-width: 5ch;
 }

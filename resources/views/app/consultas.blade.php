@@ -45,5 +45,5 @@
 </div>
 @endsection
 @section('scripts')
-<script type="text/javascript" src="{{ asset('api.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/citas_consultas.js') }}"></script>
 @endsection

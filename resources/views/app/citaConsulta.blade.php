@@ -151,5 +151,5 @@
 </div>
 @endsection
 @section('scripts')
-<script type="text/javascript" src="{{ asset('api.js') }}"></script>
+
 @endsection

@@ -32,5 +32,5 @@
 </div>
 @endsection
 @section('scripts')
-<script src="/ui.js"></script>
+<script type="text/javascript" src="{{ asset('js/nueva_cita.js') }}"></script>
 @endsection

@@ -1,4 +1,3 @@
-console.log("Aqui se va a usar la api");
 function cancelarCita(id){
     $.ajax({
         headers:{
