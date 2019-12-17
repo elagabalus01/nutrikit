@@ -33,4 +33,4 @@ Route::get('/pacientes/{id}','AppController@consultasPaciente');
 Route::get('/consultas/{id}','AppController@consulta');
 
 Route::get('search', 'SearchController@index')->name('search');
-Route::post('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
+// Route::post('autocomplete', 'SearchController@autocomplete')->name('autocomplete');

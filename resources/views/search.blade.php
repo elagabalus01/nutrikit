@@ -6,9 +6,7 @@
 <div class="container">
     <h1>Buscar nombre</h1>
     {{ csrf_field() }}
-    <div class="input-group">
-        <input id="search" name="search" type="text" class="form-control" placeholder="Search" />
-    </div>
+    <input id="search" name="search" type="text" class="form-control ui-autocomplete-input" placeholder="Search" />
 </div>
 @endsection
 @section('scripts')
@@ -32,25 +30,23 @@
     //         response(resp);
     //     });
     // };
-    $("#search").autocomplete({
-        source: function(request, response) {
+    $("#search").autocomplete(
+    {
+        source: function(request, response){
             $.ajax({
-                url: '/autocomplete',
+                url: '/api/autocomplete',
                 type:"post",
                 data: {
                     term : request.term,
-                    _token: '{{csrf_token()}}'
                 },
                 dataType: "json",
                 success: function(data){
-                    var resp = $.map(data,function(obj){
-                        return obj.nombre;
-                    });  
-                    response(resp);
+                    response(data);
                 }
             });
         },
-        minLength: 1
+        minLength: 2,
+
     });
 </script>
 @endsection

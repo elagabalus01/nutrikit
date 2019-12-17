@@ -11,6 +11,17 @@ use Validator;
 
 class CitaController extends BaseController
 {
+    public function autocomplete(Request $request){
+        $search = $request->get('term');
+        $data = Paciente::where('nombre','LIKE',"%".$search."%")
+                ->orWhere('rfc','LIKE',"%".$search."%")
+                ->get();
+        $items = array();
+        foreach($data as $paciente){
+            $items[] = array('label'=>$paciente->rfc." ".$paciente->nombre,'value'=>$paciente->rfc);
+        }
+        return response()->json($items);
+    }
     public function index()
     {
         $cita = Cita::all();

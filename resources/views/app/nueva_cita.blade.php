@@ -15,7 +15,7 @@
   <div class="form-group row justify-content-center">
     <label class="col-md-2 col-form-label">RFC del paciente</label>
     <div class="col-md-3">
-        <input class="form-control" type="text" id="nombre">
+        <input id="searchRfc" name="rfc" type="text" class="form-control ui-autocomplete-input" placeholder="nombre o rfc del paciente" />
     </div>
   </div>
   <div class="form-group row justify-content-center">
@@ -30,4 +30,7 @@
     </div>
   </div>
 </div>
+@endsection
+@section('scripts')
+<script src="/ui.js"></script>
 @endsection

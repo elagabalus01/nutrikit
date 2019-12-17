@@ -11,9 +11,8 @@ class SearchController extends Controller
     {
         return view('search');
     }
-
-    public function autocomplete(Request $request)
-    {
+    
+    public function autocomplete(Request $request){
         $data = Paciente::select("nombre")
                 ->where("nombre","LIKE","%{$request->input('query')}%")
                 ->get();

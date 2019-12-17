@@ -19,7 +19,7 @@
                 <thead>
                     <tr>
                         <th>Paciente</th>
-                        <th>Cita</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
