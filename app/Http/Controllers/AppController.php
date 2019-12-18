@@ -50,4 +50,7 @@ class AppController extends Controller
         // $consultas=Paciente::find($id)->consultas::paginate(4);
         return view('app.formulario_consulta_anterior',['consulta'=>$consulta]);
     }
+    public function formulario(){
+        return view('prueba_formulario');
+    }
 }

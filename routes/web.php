@@ -31,3 +31,4 @@ Route::get('/consulta/{id}','AppController@consultaConCita');
 
 Route::get('/pacientes/{id}','AppController@consultasPaciente');
 Route::get('/consultas/{id}','AppController@consulta');
+Route::get('/formulario','AppController@formulario');

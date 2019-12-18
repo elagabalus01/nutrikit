@@ -21,7 +21,7 @@
   <div class="form-group row justify-content-center">
     <label class="col-md-2 col-form-label">Fecha y hora</label>
     <div class="col-md-3">
-        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="dia_hora">
+        <input class="form-control" id="fechaHora" type="datetime-local" min="2019-12-17" value="2019-12-18T13:45:00" id="dia_hora">
     </div>
   </div>
   <div class="row justify-content-center">
@@ -33,4 +33,14 @@
 @endsection
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/nueva_cita.js') }}"></script>
+<script type="text/javascript">
+  var mydate = new Date().toLocaleString();
+  // var mydate = new Date().toUTCString();
+  console.log(mydate);
+  // var today = new Date().toJSON(); 
+  // $('#fechaHora').attr({
+  //   'min':today.slice(0,19),
+  //   'value':today.slice(0,19)
+  // });
+</script>
 @endsection
