@@ -16,10 +16,14 @@ class CrearDietasHabituales extends Migration
         Schema::create('dietasHabituales', function (Blueprint $table){
             $table->increments('id');
             $table->integer('consulta_id')->unsigned();
-            $table->integer('verduras');
-            $table->integer('frutas');
-            $table->integer('aoa');
-            $table->integer('cereales');
+            $table->integer('cereales')->unsigned();
+            $table->integer('leguminosas')->unsigned();
+            $table->integer('verduras')->unsigned();
+            $table->integer('frutas')->unsigned();
+            $table->integer('carnes')->unsigned();
+            $table->integer('lacteos')->unsigned();
+            $table->integer('grasas')->unsigned();
+            $table->integer('azucares')->unsigned();
 
             $table->foreign('consulta_id')->references('id')->on('consultas')->onDelete('cascade');
         });

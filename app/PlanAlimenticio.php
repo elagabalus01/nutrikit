@@ -8,15 +8,15 @@ class PlanAlimenticio extends Model
 {
     protected $table='planesAlimenticios';
     protected $fillable=[
+        'consulta_id',
         'cereales',
         'leguminosas',
-        'verdura',
+        'verduras',
         'frutas',
-        'carne',
-        'leche',
+        'carnes',
+        'lacteos',
         'grasas',
         'azucares',
-        'consulta_id',
     ];
     public $timestamps = false;
 

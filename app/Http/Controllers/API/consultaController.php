@@ -44,10 +44,22 @@ class consultaController extends BaseController
                 'estatura' => 'required',
                 'peso' => 'required',
                 'fecha_nacimiento' => 'required',
-                'genero' => 'required',
+                'sexo' => 'required',
             ]);
             if($validator->fails()){
                 return $this->sendErrorResponse('Error en la validacion',$validator->errors());
+            }
+            $telefono='';
+            if(array_key_exists('telefono',$input)){
+                $telefono=$input['telefono'];
+            }
+            $correo_electronico='';
+            if(array_key_exists('correo_electronico',$input)){
+                $correo_electronico=$input['correo_electronico'];
+            }
+            $direccion='';
+            if(array_key_exists('direccion',$input)){
+                $direccion=$input['direccion'];
             }
             $alergias='';
             if(array_key_exists('alergias',$input)){
@@ -60,10 +72,13 @@ class consultaController extends BaseController
             $paciente=Paciente::create([
                 'rfc' => $input['rfc'],
                 'nombre' => $input['nombre'],
+                'telefono' => $telefono,
+                'correo_electronico' => $correo_electronico,
+                'direccion' => $direccion,
                 'estatura'=> $input['estatura'],
                 'peso' => $input['peso'],
                 'fecha_nacimiento' => $input['fecha_nacimiento'],
-                'genero' => $input['genero'],
+                'sexo' => $input['sexo'],
                 'alergias' => $alergias,
                 'actividad_fisica' => $actividad_fisica,
             ]);
@@ -90,40 +105,48 @@ class consultaController extends BaseController
             'actividad_fisica_actual' => $paciente->actividad_fisica,
         ]);
         $validator = Validator::make($input, [
-            'verduras'=> 'required',
-            'frutas'=> 'required',
-            'aoa'=> 'required',
-            'cereales'=> 'required',
+            'dieta_cereales'=>'required',
+            'dieta_leguminosas'=>'required',
+            'dieta_verduras'=>'required',
+            'dieta_frutas'=>'required',
+            'dieta_carnes'=>'required',
+            'dieta_lacteos'=>'required',
+            'dieta_grasas'=>'required',
+            'dieta_azucares'=>'required',
         ]);
         if($validator->fails()){
             return $this->sendErrorResponse('Error en la validacion',$validator->errors());
         }
         $dietaHabitual=DietaHabitual::create([
-            'verduras'=> $input['verduras'],
-            'frutas'=> $input['frutas'],
-            'aoa'=> $input['aoa'],
-            'cereales'=> $input['cereales'],
+            'cereales' => $input['dieta_cereales'],
+            'leguminosas' => $input['dieta_leguminosas'],
+            'verduras' => $input['dieta_verduras'],
+            'frutas' => $input['dieta_frutas'],
+            'carnes' => $input['dieta_carnes'],
+            'lacteos' => $input['dieta_lacteos'],
+            'grasas' => $input['dieta_grasas'],
+            'azucares' => $input['dieta_azucares'],
             'consulta_id' => $consulta->id,
         ]);
         $validator = Validator::make($input,[
-            'cereales' => 'required',
-            'leguminosas' => 'required',
-            'verdura' => 'required',
-            'frutas' => 'required',
-            'carne' => 'required',
-            'leche' => 'required',
-            'grasas' => 'required',
-            'azucares' => 'required',
+            'plan_cereales'=>'required',
+            'plan_leguminosas'=>'required',
+            'plan_verduras'=>'required',
+            'plan_frutas'=>'required',
+            'plan_carnes'=>'required',
+            'plan_lacteos'=>'required',
+            'plan_grasas'=>'required',
+            'plan_azucares'=>'required',
         ]);
         $planAlimenticio=PlanAlimenticio::create([
-            'cereales' => $input['cereales'],
-            'leguminosas' => $input['leguminosas'],
-            'verdura' => $input['verdura'],
-            'frutas' => $input['frutas'],
-            'carne' => $input['carne'],
-            'leche' => $input['leche'],
-            'grasas' => $input['grasas'],
-            'azucares' => $input['azucares'],
+            'cereales' => $input['plan_cereales'],
+            'leguminosas' => $input['plan_leguminosas'],
+            'verduras' => $input['plan_verduras'],
+            'frutas' => $input['plan_frutas'],
+            'carnes' => $input['plan_carnes'],
+            'lacteos' => $input['plan_lacteos'],
+            'grasas' => $input['plan_grasas'],
+            'azucares' => $input['plan_azucares'],
             'consulta_id' => $consulta->id,
         ]);
         return $this->sendResponse($consulta->toArray(), 'Consulta almacenada correctamente');

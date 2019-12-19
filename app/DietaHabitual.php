@@ -8,11 +8,15 @@ class DietaHabitual extends Model
 {
     protected $table='dietasHabituales';
     protected $fillable=[
+        'consulta_id',
+        'cereales',
+        'leguminosas',
         'verduras',
         'frutas',
-        'aoa',
-        'cereales',
-        'consulta_id',
+        'carnes',
+        'lacteos',
+        'grasas',
+        'azucares',
     ];
     public $timestamps = false;
 }

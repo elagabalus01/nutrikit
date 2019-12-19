@@ -13,10 +13,13 @@ class Paciente extends Model
     protected $fillable = [
         'rfc',
         'nombre',
+        'telefono',
+        'correo_electronico',
+        'direccion',
         'estatura',
         'peso',
         'fecha_nacimiento',
-        'genero',
+        'sexo',
         'alergias',
         'actividad_fisica',
     ];
