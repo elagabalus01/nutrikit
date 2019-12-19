@@ -23,12 +23,8 @@
       <p>{{ $cita->paciente->nombre}}</p>
     </div>
     <div class="col">
-      <p>Género:
-        @if($cita->paciente->genero=='H')
-        Masculino
-        @else
-        Femenino
-        @endif
+      <p>Sexo:
+        $cita->paciente->sexo
       </p>
     </div>
     <div class="col">
