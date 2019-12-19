@@ -9,18 +9,32 @@
 <div class="container">
     <div class="row">
       <div class="col">
-        <p>Datos del paciente</p>
+        <h1>Datos del paciente</h1>
       </div>
       <div class="col align-self-end">
         <p class="float-right">Fecha:
-        La fecha de hoy ;v
+        {{ Carbon\Carbon::now()->format('d/m/Y') }}
         </p>
       </div>
     </div>
     <div class="row">
+      <div class="col-md-1">
+        <label>RFC</label>
+      </div>
+      <div class="col-md-2">
+        <input type="text" name="rfc">
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
-        <label>Nombre del paciente</label>
-        <input type="text" name="nombre">
+        <div class="row">
+          <div class="col-md-3">
+            <label>Nombre del paciente</label>
+          </div>
+          <div class="col-md-9">
+            <input class="inputNombre" type="text" name="nombre">
+          </div>
+        </div>
       </div>
       <div class="col">
         <label>Alegias</label>
@@ -33,22 +47,6 @@
     </div>
     <div class="row">
       <div class="col">
-        <label>Edad</label>
-        <input type="number" name="nombre">
-      </div>
-      <div class="col">
-        <label>Peso</label>
-        <input type="number" name="alergias">
-        <p>Kg</p>
-      </div>
-      <div class="col">
-        <label>Estatura</label>
-        <input type="number" name="act_fis">
-        <p>cm</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
         <label>Género</label>
         <select name="genero">
           <option value="masculino">H</option>
@@ -56,38 +54,57 @@
         </select>
       </div>
       <div class="col">
-        <p>IMC: IMC_CALCULADO</p>
+        <label>Peso</label>
+        <input class="inputEdad" type="number" name="alergias">
+        <label>Kg</label>
+      </div>
+      <div class="col">
+        <label>Estatura</label>
+        <input class="inputEdad" type="number" name="estatura">
+        <label>cm</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-3">
+        <label>Fecha de nacimiento</label>
+        <input class="form-control" type="date" value="1964-12-04" id="fecha_nacimiento">
+      </div>
+      <div class="col">
+        <label>IMC: IMC_CALCULADO</label>
+      </div>
+      <div class="col">
+        <label>Edad: EDAD_CALCULADO</label>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <p>Consulta</p>
+        <h1>Consulta</h1>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label>Dieta habitual</label>
         <br>
-        <textarea rows="4" style="width:100%"></textarea>
+        <textarea rows="4" style="width:100%" name="dietaHabitual"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label>Observaciones</label>
         <br>
-        <textarea rows="4" style="width:100%"></textarea>
+        <textarea rows="4" style="width:100%" name="observaciones"></textarea>
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-md-12">
         @include('app.componentes.tablaHabitualPlan')
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-md-7">
         @include('app.componentes.tablaCalculoCalorias')
       </div>
-      <div class="col">
+      <div class="col-md-5">
         @include('app.componentes.tablaCaloriasGrupo')
       </div>
     </div>

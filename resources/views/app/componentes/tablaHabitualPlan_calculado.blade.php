@@ -9,22 +9,22 @@
   <tbody>
     <tr>
       <th>Verduras</th>
-      <td><input class="tableInput" type="number" name="habitual_verdura"></td>
+      <td>{{$consulta->dietaHabitual->verduras}}</td>
       <td>CalculoDeTabla</td>
     </tr>
     <tr>
       <th>Frutas</th>
-      <td><input class="tableInput" type="number" name="habitual_fruta"></td>
+      <td>{{$consulta->dietaHabitual->frutas}}</td>
       <td>CalculoDeTabla</td>
     </tr>
     <tr>
       <th>AOA</th>
-      <td><input class="tableInput" type="number" name="habitual_aoa"></td>
+      <td>{{$consulta->dietaHabitual->aoa}}</td>
       <td>CalculoDeTabla</td>
     </tr>
     <tr>
       <th>Cerales</th>
-      <td><input class="tableInput" type="number" name="habitual_cereal"></td>
+      <td>{{$consulta->dietaHabitual->cereales}}</td>
       <td>CalculoDeTabla</td>
     </tr>
   </tbody>

@@ -15,9 +15,10 @@ class CrearCitas extends Migration
     {
         Schema::create('citas', function (Blueprint $table){
             $table->increments('id');
-            $table->string('fecha_hora');
-            $table->integer('id_paciente')->unsigned();
-            $table->foreign('id_paciente')->references('id')->on('pacientes')->onDelete('cascade');
+            $table->dateTime('fecha_hora');
+            $table->boolean('atendida')->default(false);
+            $table->string('paciente_id');
+            $table->foreign('paciente_id')->references('rfc')->on('pacientes')->onDelete('cascade');
         });
     }
 

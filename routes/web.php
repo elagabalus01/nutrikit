@@ -26,3 +26,9 @@ Route::get('/consultas','AppController@consultas')->middleware('auth')->middlewa
 Route::get('/nueva_cita','AppController@nuevaCita')->middleware('auth')->middleware('prevent-back-history');
 
 Route::get('/nuevaConsulta','AppController@nuevaConsulta')->middleware('auth')->middleware('prevent-back-history');
+
+Route::get('/consulta/{id}','AppController@consultaConCita');
+
+Route::get('/pacientes/{id}','AppController@consultasPaciente');
+Route::get('/consultas/{id}','AppController@consulta');
+Route::get('/formulario','AppController@formulario');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearDietasAbituales extends Migration
+class CrearDietasHabituales extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CrearDietasAbituales extends Migration
      */
     public function up()
     {
-        Schema::create('dietasAbituales', function (Blueprint $table){
+        Schema::create('dietasHabituales', function (Blueprint $table){
             $table->increments('id');
+            $table->integer('consulta_id')->unsigned();
             $table->integer('verduras');
             $table->integer('frutas');
             $table->integer('aoa');
             $table->integer('cereales');
+
+            $table->foreign('consulta_id')->references('id')->on('consultas')->onDelete('cascade');
         });
     }
 
@@ -29,7 +32,7 @@ class CrearDietasAbituales extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dietasAbituales');
+        Schema::dropIfExists('dietasHabituales');
     }
 }
 

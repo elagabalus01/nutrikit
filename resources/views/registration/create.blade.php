@@ -3,24 +3,22 @@
 <title>Registro</title>
 @endsection
 @section('buttonNavbar')
-<a class="nav-item nav-link" href="/login">Iniciar sesión</a>
+<a role="button" class="nav-item nav-link btn btn-success custom-btn" href="/login">Iniciar sesión</a>
 @endsection
 @section('content')
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        {{$errors->first()}}
+    </div>
+@endif
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <h2>Registrar</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-2">
+            <h1>Registrar</h1>
         </div>
     </div>
-    <div class="row">
-        @if($errors->any())
-            <div class="alert alert-danger" role="alert">
-                {{$errors->first()}}
-            </div>
-        @endif
-    </div>
-    <div class="row">
-        <div class="col-md-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <form method="POST" action="/register">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -37,9 +35,8 @@
                     <label for="password">Contraseña:</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
-         
                 <div class="form-group">
-                    <button style="cursor:pointer" type="submit" class="btn btn-primary">Registrar</button>
+                    <button style="cursor:pointer" type="submit" class="btn btn-primary float-right">Registrar</button>
                 </div>
             </form>
         </div>
