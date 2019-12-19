@@ -29,7 +29,7 @@
       <div class="col">
         <div class="row">
           <div class="col-md-3">
-            <label>Nombre del paciente</label>
+            <label>Nombre:</label>
           </div>
           <div class="col-md-9">
             <input class="inputNombre" type="text" name="nombre">
