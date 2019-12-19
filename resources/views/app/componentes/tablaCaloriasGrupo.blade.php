@@ -1,13 +1,13 @@
 <table class="table table-responsive">
   <thead>
-    <th>Nada</th>
+    <th></th>
     <th>Gramos</th>
     <th>Porcentajes</th>
     <th>Calorías</th>
   </thead>
   <tbody>
     <tr>
-      <th>Proteina</th>
+      <th>Proteína</th>
     </tr>
     <tr>
       <th>HdC</th>
