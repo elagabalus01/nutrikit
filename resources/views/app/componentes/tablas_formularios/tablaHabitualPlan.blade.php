@@ -10,22 +10,22 @@
     <tr>
       <th>Verduras</th>
       <td><input class="tableInput" type="number" name="habitual_verdura"></td>
-      <td>CalculoDeTabla</td>
+      <td>CálculoDeTabla</td>
     </tr>
     <tr>
       <th>Frutas</th>
       <td><input class="tableInput" type="number" name="habitual_fruta"></td>
-      <td>CalculoDeTabla</td>
+      <td>CálculoDeTabla</td>
     </tr>
     <tr>
       <th>AOA</th>
       <td><input class="tableInput" type="number" name="habitual_aoa"></td>
-      <td>CalculoDeTabla</td>
+      <td>CálculoDeTabla</td>
     </tr>
     <tr>
-      <th>Cerales</th>
+      <th>Cereales</th>
       <td><input class="tableInput" type="number" name="habitual_cereal"></td>
-      <td>CalculoDeTabla</td>
+      <td>CálculoDeTabla</td>
     </tr>
   </tbody>
 </table>

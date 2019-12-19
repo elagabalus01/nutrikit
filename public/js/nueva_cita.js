@@ -25,7 +25,7 @@ function crearCita(){
     data:{paciente_id:$('#searchRfc').val(),fecha_hora:$('#fechaHora').val().replace('T',' ')}
     }).done(function(response){
         if (response["success"]==false){
-            console.log("Huvo un error");
+            console.log("Hubo un error");
             console.log(response['message']);
             $('#errorMessage').empty();
             $('#errorMessage').append(response['message']);
