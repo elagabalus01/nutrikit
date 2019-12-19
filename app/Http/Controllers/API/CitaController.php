@@ -39,13 +39,17 @@ class CitaController extends BaseController
         if($validator->fails()){
             return $this->sendErrorResponse('Error en la validacion',$validator->errors());
         }
-        if(Carbon::createFromFormat('Y-m-d H:i:s',$input['fecha_hora'])->lessThanOrEqualTo(Carbon::now())){
+        try {
+            $cita_inicio=Carbon::createFromFormat('Y-m-d H:i',$input['fecha_hora']);
+        } catch (\Exception $e) {
+            return $this->sendErrorResponse('Error en el formato de la fecha',[]);
+        }
+        if($cita_inicio->lessThanOrEqualTo(Carbon::now())){
             return $this->sendErrorResponse("No puede crearse una cita para el pasado",[]);
         }
-        $cita_inicio=Carbon::createFromFormat('Y-m-d H:i:s',$input['fecha_hora']);
         $citas_dia=Cita::where('atendida',false)
                         ->whereDate('fecha_hora','=',$cita_inicio)->get();
-        
+        return $this->sendDone('La cita fue creada correctamente');
         foreach ($citas_dia as $cita){
             $cita_fin=Carbon::parse($cita_inicio)->addHour();
             $prueba_inicio=Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora);

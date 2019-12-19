@@ -13,17 +13,34 @@ $("#searchRfc").autocomplete({
     },
     minLength: 2,
 });
-function setMinDate(){
-    var mydate = new Date();
-    mydate.setDate(mydate.getDate() - 30);
-
-    var day = mydate.getDate();
-    console.log(day);
-    // var month = ("0" + (mydate.getMonth() + 1)).slice(-2)
-    // var year = mydate.getFullYear();
-
-    // var fullDate = year + '-' + month + '-' + day;
-
-    // var myDatePicker = document.getElementById('myDatePicker');
-    // myDatePicker.setAttribute('min', fullDate);
+function crearCita(){
+    $.ajax({
+      headers:{
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': `Bearer ${api_token}`
+    },
+    url:'api/cita',
+    type:'POST',
+    data:{paciente_id:$('#searchRfc').val(),fecha_hora:$('#fechaHora').val().replace('T',' ')}
+    }).done(function(response){
+        if (response["success"]==false){
+            console.log("Huvo un error");
+            console.log(response['message']);
+            $('#errorMessage').empty();
+            $('#errorMessage').append(response['message']);
+            $('#errorGenerico').modal();
+        }
+        else{
+            console.log("Todo correcto");
+            $('#successMessage').empty();
+            $('#successMessage').append('La cita fue programada correctamente');
+            $('#successGenerico').modal();
+            $('#searchRfc').val('');
+        }
+    });
 }
+$('#crearCita').on('click',function(){
+    console.log($('#fechaHora').val().replace('T',' '));
+    crearCita();
+});

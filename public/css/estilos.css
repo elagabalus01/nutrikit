@@ -45,3 +45,15 @@
 .a-btn:hover{
     cursor: pointer;
 }
+.modal-header-error{
+    background-color: #B22222;
+}
+.modal-header-error .modal-title{
+    color: white;
+}
+.modal-header-success{
+    background-color: #549900;
+}
+.modal-header-success .modal-title{
+    color: white;
+}

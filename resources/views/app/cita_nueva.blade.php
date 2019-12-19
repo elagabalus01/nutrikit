@@ -2,6 +2,9 @@
 @section('titulo')
     <title>Crear una nueva cita</title>
 @endsection
+@section('variables')
+<script>var api_token = "{{ Auth::user()->api_token }}" </script>
+@endsection
 @section('content')
 <div class="container">
   @if(count(App\Paciente::all())>0)
@@ -27,7 +30,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-md-5">
-      <button type="submit" class="btn btn-primary float-right">Aceptar</button>
+      <button type="submit" class="btn btn-primary float-right" id="crearCita">Aceptar</button>
     </div>
   </div>
   @else
@@ -37,31 +40,10 @@
     </div>
   </div>
   @endif
-
-
 </div>
+@include('app.componentes.mensajes.modalError')
+@include('app.componentes.mensajes.modalSuccess')
 @endsection
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/nueva_cita.js') }}"></script>
-<script type="text/javascript">
-  function getLocalDateTime(){
-    var d = new Date();
-    var tz = d.toString().split("GMT")[1].split(" (")[0]; // timezone, i.e. -0700
-    console.log(tz);
-    console.log(d.toJSON());
-  }
-  getLocalDateTime();
-  // var options={dateStyle:'full',hour:'2-digit'};
-  // var mydate = new Date().toLocaleString(options);
-  // mydate=mydate.split('/');
-  // mydate=mydate.join('-');
-  // mydate=mydate.split(' ');
-  // mydate=mydate.join('T');
-  // console.log(mydate);
-
-  // $('#fechaHora').attr({
-  //   'min':today.slice(0,19),
-  //   'value':today.slice(0,19)
-  // });
-</script>
 @endsection
