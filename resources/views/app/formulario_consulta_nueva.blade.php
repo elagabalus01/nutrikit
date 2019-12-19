@@ -17,56 +17,91 @@
         </p>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-1">
-        <label>RFC</label>
+        <label>RFC:</label>
       </div>
       <div class="col-md-2">
         <input type="text" name="rfc">
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-1">
+        <label>Nombre:</label>
+      </div>
+      <div class="col-md-2">
+        <input class="inputNombre" type="text" name="nombre">
+      </div>
+    </div>
+
+   <div class="row">
+        <div class="col-md-1">
+          <label>Teléfono:</label>
+        </div>
+        <div class="col-md-2">
+          <input type="tel" name="telefono">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+          <label>Correo:</label>
+        </div>
+        <div class="col-md-2">
+          <input type="email" name="correo">
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+          <label>Dirección:</label>
+        </div>
+        <div class="col-md-2">
+          <input type="text" name="direccion">
+      </div>
+    </div>
+    <br>
+    </br>
     <div class="row">
       <div class="col">
         <div class="row">
-          <div class="col-md-3">
-            <label>Nombre:</label>
+          <div class="col-md-2">
+            <label>Alergias:</label>
           </div>
-          <div class="col-md-9">
-            <input class="inputNombre" type="text" name="nombre">
+          <div class="col-md-2">
+            <input type="text" name="alergias">
           </div>
         </div>
       </div>
       <div class="col">
-        <label>Alergias</label>
-        <input type="text" name="alergias">
-      </div>
-      <div class="col">
-        <label>Actividad física</label>
+        <label>Actividad física:</label>
         <input type="text" name="act_fis">
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <label>Género</label>
+        <label>Sexo:</label>
         <select name="genero">
-          <option value="masculino">H</option>
-          <option value="femenino">M</option>
+          <option value="femenino">Femenino</option>
+          <option value="masculino">Masculino</option>
+          <option value="otro">Otro</option>
         </select>
       </div>
       <div class="col">
-        <label>Peso</label>
-        <input class="inputEdad" type="number" name="alergias">
+        <label>Peso:</label>
+        <input class="inputEdad" type="number" name="peso">
         <label>Kg</label>
       </div>
       <div class="col">
-        <label>Estatura</label>
-        <input class="inputEdad" type="number" name="estatura">
+        <label>Talla:</label>
+        <input class="inputEdad" type="number" name="talla">
         <label>cm</label>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-md-3">
-        <label>Fecha de nacimiento</label>
+        <label>Fecha de nacimiento:</label>
         <input class="form-control" type="date" value="1964-12-04" id="fecha_nacimiento">
       </div>
       <div class="col">
