@@ -20,7 +20,7 @@
 
     <div class="row">
       <div class="col-md-1">
-        <label>RFC</label>
+        <label>RFC:</label>
       </div>
       <div class="col-md-2">
         <input type="text" name="rfc">
@@ -29,7 +29,7 @@
 
     <div class="row">
       <div class="col-md-1">
-        <label>Nombre</label>
+        <label>Nombre:</label>
       </div>
       <div class="col-md-2">
         <input class="inputNombre" type="text" name="nombre">
@@ -74,13 +74,13 @@
         </div>
       </div>
       <div class="col">
-        <label>Actividad física</label>
+        <label>Actividad física:</label>
         <input type="text" name="act_fis">
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <label>Sexo</label>
+        <label>Sexo:</label>
         <select name="genero">
           <option value="femenino">Femenino</option>
           <option value="masculino">Masculino</option>
@@ -88,19 +88,19 @@
         </select>
       </div>
       <div class="col">
-        <label>Peso</label>
+        <label>Peso:</label>
         <input class="inputEdad" type="number" name="peso">
         <label>Kg</label>
       </div>
       <div class="col">
-        <label>Talla</label>
+        <label>Talla:</label>
         <input class="inputEdad" type="number" name="talla">
         <label>cm</label>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-md-3">
-        <label>Fecha de nacimiento</label>
+        <label>Fecha de nacimiento:</label>
         <input class="form-control" type="date" value="1964-12-04" id="fecha_nacimiento">
       </div>
       <div class="col">
