@@ -61,7 +61,8 @@
           <input type="text" name="direccion">
       </div>
     </div>
-
+    <br>
+    </br>
     <div class="row">
       <div class="col">
         <div class="row">
