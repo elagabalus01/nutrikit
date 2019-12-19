@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="col">
-        <label>Alegias</label>
+        <label>Alergias</label>
         <input type="text" name="alergias">
       </div>
       <div class="col">
