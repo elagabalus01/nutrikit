@@ -38,7 +38,7 @@
     </tr>
     <tr>
       <th>Azúcares</th>
-      <td><input class="tableInput" type="number" name="plan_azucar"></td>
+      <td><input min='0' class="tableInput" type="number" name="plan_azucar"></td>
     </tr>
     <tr>
       <th>Total</th>
