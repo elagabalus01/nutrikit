@@ -111,15 +111,15 @@
   </div>
   <div class="row">
     <div class="col">
-      @include('app.componentes.tablaHabitualPlan_calculado')
+      @include('app.componentes.tablas_calculada.tablaHabitualPlan_calculado')
     </div>
   </div>
   <div class="row">
     <div class="col-md-7">
-      @include('app.componentes.tablaCalculoCalorias_calculado')
+      @include('app.componentes.tablas_calculada.tablaCalculoCalorias_calculado')
     </div>
     <div class="col-md-5">
-      @include('app.componentes.tablaCaloriasGrupo_calculado')
+      @include('app.componentes.tablas_calculada.tabla_cal_res_final_calculado')
     </div>
   </div>
   <div class="row justify-content-end">

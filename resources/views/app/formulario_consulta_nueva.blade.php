@@ -97,15 +97,15 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        @include('app.componentes.tablaHabitualPlan')
+        @include('app.componentes.tablas_formularios.tablaHabitualPlan')
       </div>
     </div>
     <div class="row">
       <div class="col-md-7">
-        @include('app.componentes.tablaCalculoCalorias')
+        @include('app.componentes.tablas_formularios.tablaCalculoCalorias')
       </div>
       <div class="col-md-5">
-        @include('app.componentes.tablaCaloriasGrupo')
+        @include('app.componentes.tablas_formularios.tabla_cal_res_final')
       </div>
     </div>
     <div class="row justify-content-end">
