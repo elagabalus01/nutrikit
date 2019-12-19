@@ -49,7 +49,6 @@ class CitaController extends BaseController
         }
         $citas_dia=Cita::where('atendida',false)
                         ->whereDate('fecha_hora','=',$cita_inicio)->get();
-        return $this->sendDone('La cita fue creada correctamente');
         foreach ($citas_dia as $cita){
             $cita_fin=Carbon::parse($cita_inicio)->addHour();
             $prueba_inicio=Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora);
