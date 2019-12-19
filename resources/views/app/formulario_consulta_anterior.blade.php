@@ -32,7 +32,7 @@
       </p>
     </div>
     <div class="col">
-      <p>IMC: calculado</p>
+      <label>IMC: {{ number_format($consulta->peso_actual/pow($consulta->estatura_actual/100,2),2) }}</label>
     </div>
   </div>
   <div class="row" id="editables">

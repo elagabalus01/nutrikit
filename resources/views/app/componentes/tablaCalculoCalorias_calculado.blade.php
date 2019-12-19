@@ -74,8 +74,6 @@
     </tr>
     <tr>
       <th>Total</th>
-      <td>{{}}</td>
-      <td>{{$consulta->planAlimenticio->cereales*70+}}</td>
     </tr>
   </tbody>
 </table>
