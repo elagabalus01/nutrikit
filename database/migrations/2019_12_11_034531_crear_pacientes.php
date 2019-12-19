@@ -16,6 +16,9 @@ class CrearPacientes extends Migration
         Schema::create('pacientes', function (Blueprint $table){
             $table->string('rfc');
             $table->string('nombre');
+            $table->string('telefono');
+            $table->string('correo_electronico');
+            $table->string('direccion');
             $table->integer('estatura')->unsigned();
             $table->integer('peso')->unsigned();
             $table->date('fecha_nacimiento');
