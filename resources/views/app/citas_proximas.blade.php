@@ -10,8 +10,8 @@
     <div class="row">
         <div class="col">
             <h1>Próximas citas</h1>
-            <label id="insertar">Mi texto</label>
-            <button id="append">Change</button>
+            <!-- <label id="insertar">Mi texto</label>
+            <button id="append">Change</button> -->
         </div>
     </div>
     @if(count($citas)>0)
@@ -61,8 +61,6 @@
 <script type="text/javascript" src="{{ asset('js/citas_consultas.js') }}"></script>
 <!-- <script>
     $('#append').on('click',function(){
-        $('.container').html("@php $currentDate=\\Carbon\\Carbon::today()) @endphp");
-        $('.container').html("@php $citas=\\App\\Cita::where('atendida',false)->whereDate('fecha_hora','=',$currentDate->addDay()->toDateString())->paginate(4) @endphp");
         $('.container').html('<div class="row">'+
         '<div class="col">'+
             '<h1>Próximas citas</h1>'+
