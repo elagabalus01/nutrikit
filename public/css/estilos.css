@@ -3,6 +3,7 @@
 }
 .navbar-custom .navbar-brand {
     color: #ffffff;
+    font-family: 'Veggieburger', arial;
 }
 .navbar-custom a:not([href]).navbar-brand{
     color: #ffffff;
