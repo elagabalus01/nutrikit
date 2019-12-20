@@ -118,7 +118,7 @@
         </div>
         <div class="col-md-2">
           <input type="number" name="huesoenkl">
-          <label>kl</label>
+          <label>kg</label>
         </div>
     </div>    
 
