@@ -68,7 +68,7 @@
       </div>
       <div class="col">
         <label>Actividad física:</label>
-        <input type="text" name="act_fis">
+        <input type="text" name="actividad_fisica_actual">
       </div>
     </div>
     <div class="row">
@@ -82,12 +82,12 @@
       </div>
       <div class="col">
         <label>Peso:</label>
-        <input class="inputEdad" type="number" name="peso">
+        <input class="inputEdad" type="number" name="peso_actual">
         <label>Kg</label>
       </div>
       <div class="col">
         <label>Talla:</label>
-        <input class="inputEdad" type="number" name="talla">
+        <input class="inputEdad" type="number" name="estatura_actual">
         <label>cm</label>
       </div>
     </div>
@@ -97,7 +97,7 @@
           <label>Porcentaje de grasa:</label>
         </div>
         <div class="col-md-2">
-          <input type="number" name="porcentajedegrasa">
+          <input type="number" name="grasa_porcentaje">
           <label>%</label>
         </div>
     </div>
@@ -107,7 +107,7 @@
           <label>Porcentaje de músculo:</label>
         </div>
         <div class="col-md-2">
-          <input type="number" name="porcentajedemusculo">
+          <input type="number" name="musculo_porcentaje">
           <label>%</label>
         </div>
     </div>
@@ -117,8 +117,8 @@
           <label>Hueso:</label>
         </div>
         <div class="col-md-2">
-          <input type="number" name="huesoenkl">
-          <label>kl</label>
+          <input type="number" name="hueso_kilos">
+          <label>kg</label>
         </div>
     </div>    
 
@@ -127,7 +127,7 @@
           <label>Agua:</label>
         </div>
         <div class="col-md-2">
-          <input type="number" name="aguaenlt">
+          <input type="number" name="agua_litros">
           <label>L</label>
         </div>
     </div>
