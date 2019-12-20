@@ -20,7 +20,7 @@ class CrearPacientes extends Migration
             $table->string('correo_electronico');
             $table->string('direccion');
             $table->integer('estatura')->unsigned();
-            $table->integer('peso')->unsigned();
+            $table->float('peso')->unsigned();
             $table->date('fecha_nacimiento');
             $table->string('sexo');
             $table->string('alergias');

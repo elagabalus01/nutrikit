@@ -24,9 +24,13 @@ class CrearConsultas extends Migration
             $table->string('observaciones');
             $table->dateTime('fecha_hora');
             $table->integer('edad_actual')->unsigned();
-            $table->integer('peso_actual')->unsigned();
+            $table->float('peso_actual')->unsigned();
             $table->integer('estatura_actual')->unsigned();
             $table->string('actividad_fisica_actual');
+            $table->float('grasa_porcentaje');
+            $table->float('musculo_porcentaje');
+            $table->float('hueso_kilos');
+            $table->float('agua_litros');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('paciente_id')->references('rfc')->on('pacientes')->onDelete('cascade');

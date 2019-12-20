@@ -19,6 +19,10 @@ class Consulta extends Model
         'peso_actual',
         'estatura_actual',
         'actividad_fisica_actual',
+        'grasa_porcentaje',
+        'musculo_porcentaje',
+        'hueso_kilos',
+        'agua_litros',
     ];
     public $timestamps = false;
     public function user(){
