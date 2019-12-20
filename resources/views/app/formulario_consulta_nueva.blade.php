@@ -50,7 +50,7 @@
         </div>
         <div class="col-md-2">
           <input type="email" name="correo">
-      </div>
+       </div>
     </div>
 
     <div class="row">
@@ -99,6 +99,47 @@
         <label>cm</label>
       </div>
     </div>
+    <!-- A partir de aquí agregamos los campos nuevos  --> 
+    <div class="row">
+        <div class="col-md-1">
+          <label>Porcentaje de grasa:</label>
+        </div>
+        <div class="col-md-2">
+          <input type="number" name="porcentajedegrasa">
+          <label>%</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+          <label>Porcentaje de músculo:</label>
+        </div>
+        <div class="col-md-2">
+          <input type="number" name="porcentajedemusculo">
+          <label>%</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+          <label>Hueso:</label>
+        </div>
+        <div class="col-md-2">
+          <input type="number" name="huesoenkl">
+          <label>kl</label>
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="col-md-1">
+          <label>Agua:</label>
+        </div>
+        <div class="col-md-2">
+          <input type="number" name="aguaenlt">
+          <label>L</label>
+        </div>
+    </div>
+ <!-- Aquí termian los campos nuevos  --> 
     <div class="form-group row">
       <div class="col-md-3">
         <label>Fecha de nacimiento:</label>
@@ -111,6 +152,7 @@
         <label>Edad: EDAD_CALCULADO</label>
       </div>
     </div>
+
     <div class="row">
       <div class="col">
         <h1>Consulta</h1>
