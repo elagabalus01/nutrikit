@@ -30,7 +30,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-md-5">
-      <button type="submit" class="btn btn-primary float-right" id="crearCita">Aceptar</button>
+      <button type="submit" disabled="true" class="btn btn-primary float-right" id="crearCita">Aceptar</button>
     </div>
   </div>
   @else

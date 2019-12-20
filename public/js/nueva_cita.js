@@ -25,14 +25,13 @@ function crearCita(){
     data:{paciente_id:$('#searchRfc').val(),fecha_hora:$('#fechaHora').val().replace('T',' ')}
     }).done(function(response){
         if (response["success"]==false){
-            console.log("Hubo un error");
-            console.log(response['message']);
+            //Si hubo un error
             $('#errorMessage').empty();
             $('#errorMessage').append(response['message']);
             $('#errorGenerico').modal();
         }
         else{
-            console.log("Todo correcto");
+            //Si no hubo errores
             $('#successMessage').empty();
             $('#successMessage').append('La cita fue programada correctamente');
             $('#successGenerico').modal();
@@ -41,6 +40,33 @@ function crearCita(){
     });
 }
 $('#crearCita').on('click',function(){
-    console.log($('#fechaHora').val().replace('T',' '));
     crearCita();
+});
+function validarLongitudMinima(input,longitud){
+    if(input.length>longitud){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function validarAlfaNumerico(input){
+    var letterNumber = /^[a-zA-Z0-9]+$/;
+    if(input.match(letterNumber)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+$("#searchRfc").keyup(function(){
+  var rfc=$('#searchRfc').val();
+  if(validarAlfaNumerico(rfc) && validarLongitudMinima(rfc,1)){
+      console.log("Pasa");
+      $("#crearCita").attr("disabled", false);
+  }
+  else{
+      $("#crearCita").attr("disabled", true);
+      console.log("No pasa");
+  }
 });
