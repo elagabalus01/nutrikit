@@ -45,6 +45,10 @@ class consultaController extends BaseController
                 'peso' => 'required',
                 'fecha_nacimiento' => 'required',
                 'sexo' => 'required',
+                'grasa_porcentaje' => 'required',
+                'musculo_porcentaje' => 'required',
+                'hueso_kilos' => 'required',
+                'agua_litros' => 'required',
             ]);
             if($validator->fails()){
                 return $this->sendErrorResponse('Error en la validacion',$validator->errors());
@@ -81,6 +85,10 @@ class consultaController extends BaseController
                 'sexo' => $input['sexo'],
                 'alergias' => $alergias,
                 'actividad_fisica' => $actividad_fisica,
+                'grasa_porcentaje' => $input['grasa_porcentaje'],
+                'musculo_porcentaje' => $input['musculo_porcentaje'],
+                'hueso_kilos' => $input['hueso_kilos'],
+                'agua_litros' => $input['agua_litros'],
             ]);
             $fecha_hora=Carbon::now()->format('Y-m-d H:i');
         }
