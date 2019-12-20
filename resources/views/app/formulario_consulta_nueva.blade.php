@@ -53,14 +53,6 @@
        </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-1">
-          <label>Dirección:</label>
-        </div>
-        <div class="col-md-2">
-          <input type="text" name="direccion">
-      </div>
-    </div>
     <br>
     </br>
     <div class="row">
