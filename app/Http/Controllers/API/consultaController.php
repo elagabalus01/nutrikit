@@ -28,6 +28,10 @@ class consultaController extends BaseController
     {
         $input = $request->all();
         $cita_id=Null;
+        $messages = [
+            'required' => ':attribute es un dato requerido.',
+            'unique' => ':attribute ya esta registrado.',
+            ];
         if(array_key_exists('cita_id',$input)){
             $cita_id=$input['cita_id'];
             $cita=Cita::find($cita_id);
@@ -38,7 +42,6 @@ class consultaController extends BaseController
         }
         else{
             $validator = Validator::make($input, [
-                // 'nombre' => 'required|unique:animales,nombre'
                 'rfc' => 'required|unique:pacientes,rfc',
                 'nombre' => 'required',
                 'estatura' => 'required',
@@ -49,9 +52,9 @@ class consultaController extends BaseController
                 'musculo_porcentaje' => 'required',
                 'hueso_kilos' => 'required',
                 'agua_litros' => 'required',
-            ]);
+            ],$messages);
             if($validator->fails()){
-                return $this->sendErrorResponse('Error en la validacion',$validator->errors());
+                return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
             }
             $telefono='';
             if(array_key_exists('telefono',$input)){
@@ -85,10 +88,6 @@ class consultaController extends BaseController
                 'sexo' => $input['sexo'],
                 'alergias' => $alergias,
                 'actividad_fisica' => $actividad_fisica,
-                'grasa_porcentaje' => $input['grasa_porcentaje'],
-                'musculo_porcentaje' => $input['musculo_porcentaje'],
-                'hueso_kilos' => $input['hueso_kilos'],
-                'agua_litros' => $input['agua_litros'],
             ]);
             $fecha_hora=Carbon::now()->format('Y-m-d H:i');
         }
@@ -111,6 +110,10 @@ class consultaController extends BaseController
             'peso_actual' => $paciente->peso,
             'estatura_actual' => $paciente->estatura,
             'actividad_fisica_actual' => $paciente->actividad_fisica,
+            'grasa_porcentaje' => $input['grasa_porcentaje'],
+            'musculo_porcentaje' => $input['musculo_porcentaje'],
+            'hueso_kilos' => $input['hueso_kilos'],
+            'agua_litros' => $input['agua_litros'],
         ]);
         $validator = Validator::make($input, [
             'dieta_cereales'=>'required',
@@ -123,7 +126,7 @@ class consultaController extends BaseController
             'dieta_azucares'=>'required',
         ]);
         if($validator->fails()){
-            return $this->sendErrorResponse('Error en la validacion',$validator->errors());
+            return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
         }
         $dietaHabitual=DietaHabitual::create([
             'cereales' => $input['dieta_cereales'],
