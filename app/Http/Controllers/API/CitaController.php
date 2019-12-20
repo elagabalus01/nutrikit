@@ -30,14 +30,18 @@ class CitaController extends BaseController
 
     public function store(Request $request)
     {
-
         $input = $request->all();
-        $validator = Validator::make($input, [
+        $messages = [
+            'required' => ':attribute es un dato requerido.',
+            'exists' => ':attribute no esta registrado.',
+        ];
+        $rules=[
             'paciente_id' => 'required|exists:pacientes,rfc',
             'fecha_hora' => 'required',
-        ]);
+        ];
+        $validator = Validator::make($input,$rules,$messages);
         if($validator->fails()){
-            return $this->sendErrorResponse('Error en la validacion',$validator->errors());
+            return $this->sendErrorResponse( $validator->errors()->first(),$validator->errors());
         }
         try {
             $cita_inicio=Carbon::createFromFormat('Y-m-d H:i',$input['fecha_hora']);
