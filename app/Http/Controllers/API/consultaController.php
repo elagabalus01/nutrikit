@@ -29,9 +29,30 @@ class consultaController extends BaseController
         $input = $request->all();
         $cita_id=Null;
         $messages = [
-            'required' => ':attribute es un dato requerido.',
-            'unique' => ':attribute ya esta registrado.',
-            ];
+            'required' => 'El :attribute es un dato requerido.',
+        ];
+        $validator = Validator::make($input, [
+            'dieta_cereales'=>'required',
+            'dieta_leguminosas'=>'required',
+            'dieta_verduras'=>'required',
+            'dieta_frutas'=>'required',
+            'dieta_carnes'=>'required',
+            'dieta_lacteos'=>'required',
+            'dieta_grasas'=>'required',
+            'dieta_azucares'=>'required',
+            // Validar todos los datos del plan
+            'plan_cereales'=>'required',
+            'plan_leguminosas'=>'required',
+            'plan_verduras'=>'required',
+            'plan_frutas'=>'required',
+            'plan_carnes'=>'required',
+            'plan_lacteos'=>'required',
+            'plan_grasas'=>'required',
+            'plan_azucares'=>'required',
+        ],$messages);
+        if($validator->fails()){
+            return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
+        }
         if(array_key_exists('cita_id',$input)){
             $cita_id=$input['cita_id'];
             $cita=Cita::find($cita_id);
@@ -41,6 +62,10 @@ class consultaController extends BaseController
             $cita->save();
         }
         else{
+            $messages = [
+            'required' => ':attribute es un dato requerido.',
+            'unique' => ':attribute ya esta registrado.',
+            ];
             $validator = Validator::make($input, [
                 'rfc' => 'required|unique:pacientes,rfc',
                 'nombre' => 'required',
@@ -57,19 +82,19 @@ class consultaController extends BaseController
                 return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
             }
             $telefono='';
-            if(array_key_exists('telefono',$input)){
+            if(array_key_exists('telefono',$input) && strlen($input['telefono'])>0){
                 $telefono=$input['telefono'];
             }
             $correo_electronico='';
-            if(array_key_exists('correo_electronico',$input)){
+            if(array_key_exists('correo_electronico',$input) && strlen($input['correo_electronico'])>0){
                 $correo_electronico=$input['correo_electronico'];
             }
             $alergias='';
-            if(array_key_exists('alergias',$input)){
+            if(array_key_exists('alergias',$input) && strlen($input['alergias'])>0){
                 $alergias=$input['alergias'];
             }
             $actividad_fisica='';
-            if(array_key_exists('actividad_fisica',$input)){
+            if(array_key_exists('actividad_fisica',$input) && strlen($input['actividad_fisica'])>0){
                 $actividad_fisica=$input['actividad_fisica'];
             }
             $paciente=Paciente::create([
@@ -87,11 +112,11 @@ class consultaController extends BaseController
             $fecha_hora=Carbon::now()->format('Y-m-d H:i');
         }
         $descripcion_dieta='';
-        if(array_key_exists('descripcion_dieta',$input)){
+        if(array_key_exists('descripcion_dieta',$input) && strlen($input['descripcion_dieta'])>0 ){
             $descripcion_dieta=$input['descripcion_dieta'];
         }
         $observaciones='';
-        if(array_key_exists('observaciones',$input)){
+        if(array_key_exists('observaciones',$input) && strlen($input['observaciones'])>0){
             $observaciones=$input['observaciones'];
         }
         $consulta = Consulta::create([
@@ -110,19 +135,6 @@ class consultaController extends BaseController
             'hueso_kilos' => $input['hueso_kilos'],
             'agua_litros' => $input['agua_litros'],
         ]);
-        $validator = Validator::make($input, [
-            'dieta_cereales'=>'required',
-            'dieta_leguminosas'=>'required',
-            'dieta_verduras'=>'required',
-            'dieta_frutas'=>'required',
-            'dieta_carnes'=>'required',
-            'dieta_lacteos'=>'required',
-            'dieta_grasas'=>'required',
-            'dieta_azucares'=>'required',
-        ]);
-        if($validator->fails()){
-            return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
-        }
         $dietaHabitual=DietaHabitual::create([
             'cereales' => $input['dieta_cereales'],
             'leguminosas' => $input['dieta_leguminosas'],
@@ -133,16 +145,6 @@ class consultaController extends BaseController
             'grasas' => $input['dieta_grasas'],
             'azucares' => $input['dieta_azucares'],
             'consulta_id' => $consulta->id,
-        ]);
-        $validator = Validator::make($input,[
-            'plan_cereales'=>'required',
-            'plan_leguminosas'=>'required',
-            'plan_verduras'=>'required',
-            'plan_frutas'=>'required',
-            'plan_carnes'=>'required',
-            'plan_lacteos'=>'required',
-            'plan_grasas'=>'required',
-            'plan_azucares'=>'required',
         ]);
         $planAlimenticio=PlanAlimenticio::create([
             'cereales' => $input['plan_cereales'],
