@@ -11,7 +11,7 @@ $(':input').keyup(function(){
 });
 function validarRFC(){
   var rfc=$('#rfc').val();
-  if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-Z0-9]+$/)){
+  if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9]+$/)){
     $('#rfcValid').show();
     $('#rfcInvalid').hide();
     return true;
@@ -24,7 +24,7 @@ function validarRFC(){
 }
 function validarNombre(){
   var nombre=$('#nombre').val();
-  if(validarLongitudMinima(nombre,4) && validarRegex(nombre,/^[a-zA-Z ]+$/)){
+  if(validarLongitudMinima(nombre,4) && validarRegex(nombre,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü ]+$/)){
     $('#nombreValid').show();
     $('#nombreInvalid').hide();
     return true;
@@ -37,7 +37,7 @@ function validarNombre(){
 }
 function validarCorreo(){
   var correo_electronico=$('#correo_electronico').val();
-  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-Z0-9-_.@]+$/)){
+  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.@]+$/)){
     $('#correo_electronicoValid').show();
     $('#correo_electronicoInvalid').hide();
     return true;
@@ -50,7 +50,7 @@ function validarCorreo(){
 }
 function validarTelefono(){
   var telefono=$('#telefono').val();
-  if(validarLongitudMinima(telefono,4) && validarRegex(telefono,/^[a-zA-Z0-9-_.@]+$/)){
+  if(validarLongitudMinima(telefono,4) && validarRegex(telefono,/^[0-9]+$/)){
     $('#telefonoValid').show();
     $('#telefonoInvalid').hide();
     return true;
