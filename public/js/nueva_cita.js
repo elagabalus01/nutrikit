@@ -1,5 +1,3 @@
-import { validarLongitudMinima,
-    validarAlfaNumerico} from './validaciones.js';
 $("#searchRfc").autocomplete({
     source: function(request, response){
         $.ajax({url: '/api/autocomplete',
@@ -45,9 +43,9 @@ $('#crearCita').on('click',function(){
     crearCita();
 });
 
-$("#searchRfc").keyup(function(){
+$("#searchRfc").change(function(){
   var rfc=$('#searchRfc').val();
-  if(validarAlfaNumerico(rfc) && validarLongitudMinima(rfc,1)){
+  if(validarRegex(rfc,/^[a-zA-Z0-9]+$/) && validarLongitudMinima(rfc,13)){
       console.log("Pasa");
       $("#crearCita").attr("disabled", false);
   }

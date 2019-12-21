@@ -45,5 +45,6 @@
 @include('app.componentes.mensajes.modalSuccess')
 @endsection
 @section('scripts')
+<script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/nueva_cita.js') }}"></script>
 @endsection
