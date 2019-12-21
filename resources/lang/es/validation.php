@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -149,6 +150,22 @@ return [
     'attributes' => [
         'paciente_id' => 'El RFC del paciente',
         'fecha_hora' => 'La fecha y hora',
+        'dieta_cereales'=>'numero de cereales de la dieta',
+        'dieta_leguminosas'=>'numero de leguminosas de la dieta',
+        'dieta_verduras'=>'numero de verduras de la dieta',
+        'dieta_frutas'=>'numero de frutas de la dieta',
+        'dieta_carnes'=>'numero de carnes de la dieta',
+        'dieta_lacteos'=>'numero de lacteos de la dieta',
+        'dieta_grasas'=>'numero de grasas de la dieta',
+        'dieta_azucares'=>'numero de azucares de la dieta',
+        'plan_cereales'=>'numero de cereales del plan de alimentación',
+        'plan_leguminosas'=>'numero de leguminosas del plan de alimentación',
+        'plan_verduras'=>'numero de verduras del plan de alimentación',
+        'plan_frutas'=>'numero de frutas del plan de alimentación',
+        'plan_carnes'=>'numero de carnes del plan de alimentación',
+        'plan_lacteos'=>'numero de lacteos del plan de alimentación',
+        'plan_grasas'=>'numero de grasas del plan de alimentación',
+        'plan_azucares'=>'numero de azucares del plan de alimentación',
     ],
 
 ];

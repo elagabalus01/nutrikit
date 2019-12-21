@@ -27,10 +27,14 @@
       <div class="col">
         <label>RFC:</label>
         <input type="text" id="rfc">
+        <div id="rfcValid" class="valid-feedback">Aceptado</div>
+        <div id="rfcInvalid" class="invalid-feedback">RFC no valido</div>
       </div>
       <div class="col">
         <label>Nombre:</label>
         <input maxlength="64" class="inputNombre" type="text" id="nombre">
+        <div id="nombreValid" class="valid-feedback">Aceptado</div>
+        <div id="nombreInvalid" class="invalid-feedback">Nombre no valido</div>
       </div>
     </div>
 
@@ -46,6 +50,8 @@
       <div class="col">
         <label>Teléfono:</label>
         <input type="tel" id="telefono">
+        <div id="telefonoValid" class="valid-feedback">Aceptado</div>
+        <div id="telefonoInvalid" class="invalid-feedback">Telefono no valido</div>
       </div>
     </div>
 
@@ -53,6 +59,8 @@
         <div class="col">
           <label>Correo:</label>
           <input type="email" id="correo_electronico">
+          <div id="correo_electronicoValid" class="valid-feedback">Aceptado</div>
+          <div id="correo_electronicoInvalid" class="invalid-feedback">Correo no valido</div>
         </div>
         <div class="col">
           <label>Fecha de nacimiento:</label>
@@ -177,10 +185,62 @@
 @include('app.componentes.mensajes.modalSuccess')
 @endsection
 @section('scripts')
-<script type="text/javascript" src="{{ asset('api.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
 <!-- <script type="text/javascript" src="{{ asset('js/nueva_consulta.js') }}"></script> -->
 <script type="text/javascript">
+  $(':input').keyup(function(){
+    validarDatosDelPaciente();
+  });
+  function validarRFC(){
+    var rfc=$('#rfc').val();
+    if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-Z0-9]+$/)){
+      $('#rfcValid').show();
+      $('#rfcInvalid').hide();
+    }
+    else{
+      $('#rfcValid').hide();
+      $('#rfcInvalid').show();
+    }
+  }
+  function validarNombre(){
+    var nombre=$('#nombre').val();
+    if(validarLongitudMinima(nombre,4) && validarRegex(nombre,/^[a-zA-Z ]+$/)){
+      $('#nombreValid').show();
+      $('#nombreInvalid').hide();
+    }
+    else{
+      $('#nombreValid').hide();
+      $('#nombreInvalid').show();
+    }
+  }
+  function validarCorreo(){
+    var correo_electronico=$('#correo_electronico').val();
+    if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-Z0-9-_.@]+$/)){
+      $('#correo_electronicoValid').show();
+      $('#correo_electronicoInvalid').hide();
+    }
+    else{
+      $('#correo_electronicoValid').hide();
+      $('#correo_electronicoInvalid').show();
+    }
+  }
+  function validarTelefono(){
+    var telefono=$('#telefono').val();
+    if(validarLongitudMinima(telefono,4) && validarRegex(telefono,/^[a-zA-Z0-9-_.@]+$/)){
+      $('#telefonoValid').show();
+      $('#telefonoInvalid').hide();
+    }
+    else{
+      $('#telefonoValid').hide();
+      $('#telefonoInvalid').show();
+    }
+  }
+  function validarDatosDelPaciente(){
+    validarRFC();
+    validarNombre();
+    validarCorreo();
+    validarTelefono();
+  }
   function crearConsulta(){
     $.ajax({
       headers:{
@@ -239,7 +299,6 @@
     });
 }
 $('#crearConsulta').on('click',function(){
-  console.log('Creando cita');
   crearConsulta();
 });
 </script>

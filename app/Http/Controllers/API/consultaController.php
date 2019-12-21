@@ -28,6 +28,9 @@ class consultaController extends BaseController
     {
         $input = $request->all();
         $cita_id=Null;
+        $messages = [
+            'required' => 'El :attribute es un dato requerido.',
+        ];
         $validator = Validator::make($input, [
             'dieta_cereales'=>'required',
             'dieta_leguminosas'=>'required',
@@ -46,7 +49,7 @@ class consultaController extends BaseController
             'plan_lacteos'=>'required',
             'plan_grasas'=>'required',
             'plan_azucares'=>'required',
-        ]);
+        ],$messages);
         if($validator->fails()){
             return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
         }
