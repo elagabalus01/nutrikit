@@ -70,10 +70,10 @@
 
     <div class="form-group row">
         <div class="col">
-          <label>Edad: EDAD_CALCULADO</label>
+          <label id="edad">Edad: EDAD_CALCULADO</label>
         </div>
         <div class="col">
-          <label>IMC: IMC_CALCULADO</label>
+          <label id="imc">IMC: IMC_CALCULADO</label>
         </div>
     </div>
 
@@ -207,4 +207,15 @@
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/nueva_consulta.js') }}"></script>
+<script type="text/javascript">
+  function calcularIMC(){
+    var imc=$('#peso').val()/Math.pow($('#estatura').val()/100,2);
+    if($('#estatura').val()>0){
+      $('#imc').html(`IMC: ${imc.toFixed(2)}`);
+    }
+  }
+  $('#estatura,#peso').change(function(){
+    calcularIMC();
+  });
+</script>
 @endsection
