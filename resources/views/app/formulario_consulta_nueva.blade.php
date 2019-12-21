@@ -81,7 +81,7 @@
       <div class="col">
         <label>Peso:</label>
         <input min='0.5' max='500' class="inputEdad" type="number" name="peso_actual">
-        <label>Kg</label>
+        <label>kg</label>
       </div>
       <div class="col">
         <label>Talla:</label>
