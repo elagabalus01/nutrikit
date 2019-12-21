@@ -1,3 +1,5 @@
+import { validarLongitudMinima,
+    validarAlfaNumerico} from './validaciones.js';
 $("#searchRfc").autocomplete({
     source: function(request, response){
         $.ajax({url: '/api/autocomplete',
@@ -42,23 +44,7 @@ function crearCita(){
 $('#crearCita').on('click',function(){
     crearCita();
 });
-function validarLongitudMinima(input,longitud){
-    if(input.length>longitud){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-function validarAlfaNumerico(input){
-    var letterNumber = /^[a-zA-Z0-9]+$/;
-    if(input.match(letterNumber)){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
+
 $("#searchRfc").keyup(function(){
   var rfc=$('#searchRfc').val();
   if(validarAlfaNumerico(rfc) && validarLongitudMinima(rfc,1)){
