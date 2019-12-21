@@ -1,6 +1,6 @@
 @extends('layouts.plantillaLogged')
 @section('titulo')
-<title>Consultorio</title>
+<title>NUTRIKIT</title>
 @endsection
 @section('variables')
 <script>var api_token = "{{ Auth::user()->api_token }}" </script>

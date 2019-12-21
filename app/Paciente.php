@@ -15,7 +15,6 @@ class Paciente extends Model
         'nombre',
         'telefono',
         'correo_electronico',
-        'direccion',
         'estatura',
         'peso',
         'fecha_nacimiento',

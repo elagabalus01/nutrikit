@@ -64,10 +64,6 @@ class consultaController extends BaseController
             if(array_key_exists('correo_electronico',$input)){
                 $correo_electronico=$input['correo_electronico'];
             }
-            $direccion='';
-            if(array_key_exists('direccion',$input)){
-                $direccion=$input['direccion'];
-            }
             $alergias='';
             if(array_key_exists('alergias',$input)){
                 $alergias=$input['alergias'];
@@ -81,7 +77,6 @@ class consultaController extends BaseController
                 'nombre' => $input['nombre'],
                 'telefono' => $telefono,
                 'correo_electronico' => $correo_electronico,
-                'direccion' => $direccion,
                 'estatura'=> $input['estatura'],
                 'peso' => $input['peso'],
                 'fecha_nacimiento' => $input['fecha_nacimiento'],

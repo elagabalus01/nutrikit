@@ -14,17 +14,16 @@ class CrearPacientes extends Migration
     public function up()
     {
         Schema::create('pacientes', function (Blueprint $table){
-            $table->string('rfc');
-            $table->string('nombre');
-            $table->string('telefono');
-            $table->string('correo_electronico');
-            $table->string('direccion');
-            $table->integer('estatura')->unsigned();
-            $table->float('peso')->unsigned();
+            $table->string('rfc',13);
+            $table->string('nombre',64);
+            $table->string('telefono',10);
+            $table->string('correo_electronico',50);
+            $table->tinyInteger('estatura')->unsigned();
+            $table->float('peso',5,2)->unsigned();
             $table->date('fecha_nacimiento');
-            $table->string('sexo');
-            $table->string('alergias');
-            $table->string('actividad_fisica');
+            $table->string('sexo',9);
+            $table->string('alergias',100);
+            $table->string('actividad_fisica',100);
 
             $table->primary('rfc');
         });

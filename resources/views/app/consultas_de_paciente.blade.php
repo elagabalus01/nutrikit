@@ -1,6 +1,6 @@
 @extends('layouts.plantillaNoLog')
 @section('titulo')
-<title>Consultorio</title>
+<title>NUTRIKIT</title>
 @endsection
 @section('content')
 <div class="container">

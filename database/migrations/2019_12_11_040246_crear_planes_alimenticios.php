@@ -16,14 +16,14 @@ class CrearPlanesAlimenticios extends Migration
         Schema::create('planesAlimenticios', function (Blueprint $table){
             $table->increments('id');
             $table->integer('consulta_id')->unsigned();
-            $table->integer('cereales')->unsigned();
-            $table->integer('leguminosas')->unsigned();
-            $table->integer('verduras')->unsigned();
-            $table->integer('frutas')->unsigned();
-            $table->integer('carnes')->unsigned();
-            $table->integer('lacteos')->unsigned();
-            $table->integer('grasas')->unsigned();
-            $table->integer('azucares')->unsigned();
+            $table->smallInteger('cereales')->unsigned();
+            $table->smallInteger('leguminosas')->unsigned();
+            $table->smallInteger('verduras')->unsigned();
+            $table->smallInteger('frutas')->unsigned();
+            $table->smallInteger('carnes')->unsigned();
+            $table->smallInteger('lacteos')->unsigned();
+            $table->smallInteger('grasas')->unsigned();
+            $table->smallInteger('azucares')->unsigned();
 
             $table->foreign('consulta_id')->references('id')->on('consultas')->onDelete('cascade');
         });
