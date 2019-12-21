@@ -45,12 +45,10 @@ $('#crearCita').on('click',function(){
 
 $("#searchRfc").change(function(){
   var rfc=$('#searchRfc').val();
-  if(validarRegex(rfc,/^[a-zA-Z0-9]+$/) && validarLongitudMinima(rfc,13)){
-      console.log("Pasa");
+  if(validarRegex(rfc,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9]+$/) && validarLongitudMinima(rfc,13)){
       $("#crearCita").attr("disabled", false);
   }
   else{
       $("#crearCita").attr("disabled", true);
-      console.log("No pasa");
   }
 });
