@@ -194,7 +194,7 @@
         <button onclick="window.location.href='/app';" class="btn btn-danger float-right">Cancelar</button>
       </div>
       <div class="col col-lg-1">
-        <button id="crearConsulta" class="btn btn-primary float-right">Aceptar</button>
+        <button disabled="true" id="crearConsulta" class="btn btn-primary float-right">Aceptar</button>
       </div>
     </div>
     <div>
@@ -209,20 +209,27 @@
 <!-- <script type="text/javascript" src="{{ asset('js/nueva_consulta.js') }}"></script> -->
 <script type="text/javascript">
   $(':input').keyup(function(){
-    validarDatosDelPaciente();
-    validarCaracteristicasDelPaciente();
     validarConsulta();
-    validarTablas();
+    if(validarDatosDelPaciente() &&
+    validarCaracteristicasDelPaciente() &&
+    validarTablas()){
+      $("#crearConsulta").attr("disabled", false);
+    }
+    else{
+      $("#crearConsulta").attr("disabled", true);
+    }
   });
   function validarRFC(){
     var rfc=$('#rfc').val();
     if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-Z0-9]+$/)){
       $('#rfcValid').show();
       $('#rfcInvalid').hide();
+      return true;
     }
     else{
       $('#rfcValid').hide();
       $('#rfcInvalid').show();
+      return false;
     }
   }
   function validarNombre(){
@@ -230,10 +237,12 @@
     if(validarLongitudMinima(nombre,4) && validarRegex(nombre,/^[a-zA-Z ]+$/)){
       $('#nombreValid').show();
       $('#nombreInvalid').hide();
+      return true;
     }
     else{
       $('#nombreValid').hide();
       $('#nombreInvalid').show();
+      return false;
     }
   }
   function validarCorreo(){
@@ -241,10 +250,12 @@
     if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-Z0-9-_.@]+$/)){
       $('#correo_electronicoValid').show();
       $('#correo_electronicoInvalid').hide();
+      return true;
     }
     else{
       $('#correo_electronicoValid').hide();
       $('#correo_electronicoInvalid').show();
+      return false;
     }
   }
   function validarTelefono(){
@@ -252,27 +263,33 @@
     if(validarLongitudMinima(telefono,4) && validarRegex(telefono,/^[a-zA-Z0-9-_.@]+$/)){
       $('#telefonoValid').show();
       $('#telefonoInvalid').hide();
+      return true;
     }
     else{
       $('#telefonoValid').hide();
       $('#telefonoInvalid').show();
+      return false;
     }
   }
   function validarDatosDelPaciente(){
-    validarRFC();
-    validarNombre();
-    validarCorreo();
-    validarTelefono();
+    if(validarRFC() && validarNombre() && validarCorreo() &&
+    validarTelefono()){
+      return true;
+    }else{
+      return false;
+    }
   }
   function validarPeso(){
     var peso=$('#peso').val();
     if(peso>=0.5 && peso<=500){
       $('#pesoValid').show();
       $('#pesoInvalid').hide();
+      return true;
     }
     else{
       $('#pesoValid').hide();
       $('#pesoInvalid').show();
+      return false;
     }
   }
   function validarEstatura(){
@@ -280,10 +297,12 @@
     if(estatura>=1 && estatura<=255){
       $('#estaturaValid').show();
       $('#estaturaInvalid').hide();
+      return true;
     }
     else{
       $('#estaturaValid').hide();
       $('#estaturaInvalid').show();
+      return false;
     }
   }
   function validarActividadFisica(){
@@ -291,10 +310,12 @@
     if(validarRegex(actividad_fisica,/^[a-zA-Z ,]+$/) || actividad_fisica.length==0){
       $('#actividad_fisicaValid').show();
       $('#actividad_fisicaInvalid').hide();
+      return true;
     }
     else{
       $('#actividad_fisicaValid').hide();
       $('#actividad_fisicaInvalid').show();
+      return false;
     }
   }
   function validarAlergias(){
@@ -302,10 +323,12 @@
     if(validarRegex(alergias,/^[a-zA-Z ,]+$/) || alergias.length==0){
       $('#alergiasValid').show();
       $('#alergiasInvalid').hide();
+      return true;
     }
     else{
       $('#alergiasValid').hide();
       $('#alergiasInvalid').show();
+      return false;
     }
   }
   function validarPorcentajeGrasa(){
@@ -313,10 +336,12 @@
     if(grasa_porcentaje>=1 && grasa_porcentaje<=100){
       $('#grasa_porcentajeValid').show();
       $('#grasa_porcentajeInvalid').hide();
+      return true;
     }
     else{
       $('#grasa_porcentajeValid').hide();
       $('#grasa_porcentajeInvalid').show();
+      return false;
     }
   }
   function validarPorcentajeMusculo(){
@@ -324,10 +349,12 @@
     if(musculo_porcentaje>=1 && musculo_porcentaje<=100){
       $('#musculo_porcentajeValid').show();
       $('#musculo_porcentajeInvalid').hide();
+      return true;
     }
     else{
       $('#musculo_porcentajeValid').hide();
       $('#musculo_porcentajeInvalid').show();
+      return false;
     }
   }
   function validarHuesoKilos(){
@@ -335,10 +362,12 @@
     if(hueso_kilos>=1 && hueso_kilos<=100){
       $('#hueso_kilosValid').show();
       $('#hueso_kilosInvalid').hide();
+      return true;
     }
     else{
       $('#hueso_kilosValid').hide();
       $('#hueso_kilosInvalid').show();
+      return false;
     }
   }
   function validarAguaLitros(){
@@ -346,21 +375,24 @@
     if(agua_litros>=1 && agua_litros<=100){
       $('#agua_litrosValid').show();
       $('#agua_litrosInvalid').hide();
+      return true;
     }
     else{
       $('#agua_litrosValid').hide();
       $('#agua_litrosInvalid').show();
+      return false;
     }
   }
   function validarCaracteristicasDelPaciente(){
-     validarPeso();
-     validarEstatura();
-     validarActividadFisica();
-     validarAlergias();
-     validarPorcentajeGrasa();
-     validarPorcentajeMusculo();
-     validarHuesoKilos();
-     validarAguaLitros();
+    if(validarPeso()&&validarEstatura()&&validarActividadFisica()&&
+     validarAlergias()&&validarPorcentajeGrasa()&&
+     validarPorcentajeMusculo()&&validarHuesoKilos()&&
+     validarAguaLitros()){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
   function validarDescripcionDieta(){
     var descripcion_dieta=$('#descripcion_dieta').val();
@@ -400,9 +432,15 @@
         valido=false;
       }
     });
+    return valido;
   }
   function validarTablas(){
-    validarTableInput();
+    if(validarTableInput()){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
   function crearConsulta(){
     $.ajax({
