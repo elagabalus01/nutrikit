@@ -23,8 +23,8 @@
       <p>{{ $consulta->paciente->nombre}}</p>
     </div>
     <div class="col">
-      <p>Género:
-        @if($consulta->paciente->genero=='H')
+      <p>Sexo:
+        @if($consulta->paciente->sexo)
         Masculino
         @else
         Femenino
