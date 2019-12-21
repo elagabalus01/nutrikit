@@ -77,7 +77,6 @@ class consultaController extends BaseController
                 'nombre' => $input['nombre'],
                 'telefono' => $telefono,
                 'correo_electronico' => $correo_electronico,
-                'direccion' => $direccion,
                 'estatura'=> $input['estatura'],
                 'peso' => $input['peso'],
                 'fecha_nacimiento' => $input['fecha_nacimiento'],
