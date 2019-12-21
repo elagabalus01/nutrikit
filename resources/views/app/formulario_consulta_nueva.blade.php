@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col">
         <label>RFC:</label>
-        <input type="text" id="rfc">
+        <input maxlength="13" type="text" id="rfc">
         <div id="rfcValid" class="valid-feedback">Aceptado</div>
         <div id="rfcInvalid" class="invalid-feedback">RFC no valido</div>
       </div>
@@ -49,7 +49,7 @@
       </div>
       <div class="col">
         <label>Teléfono:</label>
-        <input type="tel" id="telefono">
+        <input maxlength="10" type="tel" id="telefono">
         <div id="telefonoValid" class="valid-feedback">Aceptado</div>
         <div id="telefonoInvalid" class="invalid-feedback">Telefono no valido</div>
       </div>
@@ -88,50 +88,66 @@
     <div class="row">
       <div class="col">
         <label>Peso:</label>
-        <input min='0.5' max='500' class="inputEdad" type="number" id="peso">
+        <input min='0.5' max='500' step="0.01" class="inputEdad" type="number" id="peso">
         <label>kg</label>
+        <div id="pesoValid" class="valid-feedback">Aceptado</div>
+        <div id="pesoInvalid" class="invalid-feedback">Peso no valido</div>
       </div>
       <div class="col">
         <label>Talla:</label>
-        <input min='1' max='255' class="inputEdad" type="number" id="estatura">
+        <input min='1' max='255' step="1" class="inputEdad" type="number" id="estatura">
         <label>cm</label>
+        <div id="estaturaValid" class="valid-feedback">Aceptado</div>
+        <div id="estaturaInvalid" class="invalid-feedback">Estatura no valida</div>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
         <label>Actividad física:</label>
-        <input type="text" id="actividad_fisica">
+        <input maxlength="100" type="text" id="actividad_fisica">
+        <div id="actividad_fisicaValid" class="valid-feedback">Aceptado</div>
+        <div id="actividad_fisicaInvalid" class="invalid-feedback">Texto no valido</div>
       </div>
       <div class="col">
         <label>Alergias:</label>
-        <input type="text" id="alergias">
+        <input maxlength="100" type="text" id="alergias">
+        <div id="alergiasValid" class="valid-feedback">Aceptado</div>
+        <div id="alergiasInvalid" class="invalid-feedback">Texto no valido</div>
       </div>
     </div>
 
     <div class="row">
         <div class="col">
           <label>Porcentaje de grasa:</label>
-          <input min='0' max='100' type="number" id="grasa_porcentaje">
+          <input min='1' step="0.01" max='100' type="number" id="grasa_porcentaje">
           <label>%</label>
+          <div id="grasa_porcentajeValid" class="valid-feedback">Aceptado</div>
+          <div id="grasa_porcentajeInvalid" class="invalid-feedback">Porcentaje no valido</div>
         </div>
         <div class="col">
           <label>Porcentaje de músculo:</label>
-          <input min='0' max='100' type="number" id="musculo_porcentaje">
+          <input min='0' step="0.01" max='100' type="number" id="musculo_porcentaje">
           <label>%</label>
+          <div id="musculo_porcentajeValid" class="valid-feedback">Aceptado</div>
+          <div id="musculo_porcentajeInvalid" class="invalid-feedback">Porcentaje no valido</div>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
           <label>Hueso:</label>
-          <input min='1' max='100' type="number" id="hueso_kilos">
+          <input min='1' step="0.01" max='100' type="number" id="hueso_kilos">
           <label>kg</label>
+          <div id="hueso_kilosValid" class="valid-feedback">Aceptado</div>
+          <div id="hueso_kilosInvalid" class="invalid-feedback">Peso no valido</div>
         </div>
         <div class="col">
           <label>Agua:</label>
-          <input min='1' max='100' type="number" id="agua_litros">
+          <input min='1.0' step="0.01" max='100' type="number" id="agua_litros">
           <label>L</label>
+          <div id="agua_litrosValid" class="valid-feedback">Aceptado</div>
+          <div id="agua_litrosInvalid" class="invalid-feedback">Cantidad no valida</div>
         </div>
     </div>    
 
@@ -146,14 +162,18 @@
       <div class="col">
         <label>Dieta habitual</label>
         <br>
-        <textarea rows="4" style="width:100%" id="descripcion_dieta"></textarea>
+        <textarea maxlength="1024" rows="4" style="width:100%" id="descripcion_dieta"></textarea>
+        <div id="descripcion_dietaValid" class="valid-feedback">Aceptado</div>
+        <div id="descripcion_dietaInvalid" class="invalid-feedback">Sólo se aceptan hasta 1024 carácteres</div>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <label>Observaciones</label>
         <br>
-        <textarea rows="4" style="width:100%" id="observaciones"></textarea>
+        <textarea maxlength="1024" rows="4" style="width:100%" id="observaciones"></textarea>
+        <div id="observacionesValid" class="valid-feedback">Aceptado</div>
+        <div id="observacionesInvalid" class="invalid-feedback">Sólo se aceptan hasta 1024 carácteres</div>
       </div>
     </div>
     <div class="row">
@@ -190,6 +210,8 @@
 <script type="text/javascript">
   $(':input').keyup(function(){
     validarDatosDelPaciente();
+    validarCaracteristicasDelPaciente();
+    validarConsulta();
   });
   function validarRFC(){
     var rfc=$('#rfc').val();
@@ -240,6 +262,130 @@
     validarNombre();
     validarCorreo();
     validarTelefono();
+  }
+  function validarPeso(){
+    var peso=$('#peso').val();
+    if(peso>=0.5 && peso<=500){
+      $('#pesoValid').show();
+      $('#pesoInvalid').hide();
+    }
+    else{
+      $('#pesoValid').hide();
+      $('#pesoInvalid').show();
+    }
+  }
+  function validarEstatura(){
+    var estatura=$('#estatura').val();
+    if(estatura>=1 && estatura<=255){
+      $('#estaturaValid').show();
+      $('#estaturaInvalid').hide();
+    }
+    else{
+      $('#estaturaValid').hide();
+      $('#estaturaInvalid').show();
+    }
+  }
+  function validarActividadFisica(){
+    var actividad_fisica=$('#actividad_fisica').val();
+    if(validarRegex(actividad_fisica,/^[a-zA-Z ,]+$/) || actividad_fisica.length==0){
+      $('#actividad_fisicaValid').show();
+      $('#actividad_fisicaInvalid').hide();
+    }
+    else{
+      $('#actividad_fisicaValid').hide();
+      $('#actividad_fisicaInvalid').show();
+    }
+  }
+  function validarAlergias(){
+    var alergias=$('#alergias').val();
+    if(validarRegex(alergias,/^[a-zA-Z ,]+$/) || alergias.length==0){
+      $('#alergiasValid').show();
+      $('#alergiasInvalid').hide();
+    }
+    else{
+      $('#alergiasValid').hide();
+      $('#alergiasInvalid').show();
+    }
+  }
+  function validarPorcentajeGrasa(){
+    var grasa_porcentaje=$('#grasa_porcentaje').val();
+    if(grasa_porcentaje>=1 && grasa_porcentaje<=100){
+      $('#grasa_porcentajeValid').show();
+      $('#grasa_porcentajeInvalid').hide();
+    }
+    else{
+      $('#grasa_porcentajeValid').hide();
+      $('#grasa_porcentajeInvalid').show();
+    }
+  }
+  function validarPorcentajeMusculo(){
+    var musculo_porcentaje=$('#musculo_porcentaje').val();
+    if(musculo_porcentaje>=1 && musculo_porcentaje<=100){
+      $('#musculo_porcentajeValid').show();
+      $('#musculo_porcentajeInvalid').hide();
+    }
+    else{
+      $('#musculo_porcentajeValid').hide();
+      $('#musculo_porcentajeInvalid').show();
+    }
+  }
+  function validarHuesoKilos(){
+    var hueso_kilos=$('#hueso_kilos').val();
+    if(hueso_kilos>=1 && hueso_kilos<=100){
+      $('#hueso_kilosValid').show();
+      $('#hueso_kilosInvalid').hide();
+    }
+    else{
+      $('#hueso_kilosValid').hide();
+      $('#hueso_kilosInvalid').show();
+    }
+  }
+  function validarAguaLitros(){
+    var agua_litros=$('#agua_litros').val();
+    if(agua_litros>=1 && agua_litros<=100){
+      $('#agua_litrosValid').show();
+      $('#agua_litrosInvalid').hide();
+    }
+    else{
+      $('#agua_litrosValid').hide();
+      $('#agua_litrosInvalid').show();
+    }
+  }
+  function validarCaracteristicasDelPaciente(){
+     validarPeso();
+     validarEstatura();
+     validarActividadFisica();
+     validarAlergias();
+     validarPorcentajeGrasa();
+     validarPorcentajeMusculo();
+     validarHuesoKilos();
+     validarAguaLitros();
+  }
+  function validarDescripcionDieta(){
+    var descripcion_dieta=$('#descripcion_dieta').val();
+    if(descripcion_dieta.length<1024){
+      $('#descripcion_dietaValid').show();
+      $('#descripcion_dietaInvalid').hide();
+    }
+    else{
+      $('#descripcion_dietaValid').hide();
+      $('#descripcion_dietaInvalid').show();
+    }
+  }
+  function validarObservaciones(){
+    var observaciones=$('#observaciones').val();
+    if(observaciones.length<1024){
+      $('#observacionesValid').show();
+      $('#observacionesInvalid').hide();
+    }
+    else{
+      $('#observacionesValid').hide();
+      $('#observacionesInvalid').show();
+    }
+  }
+  function validarConsulta(){
+    validarDescripcionDieta();
+    validarObservaciones();
   }
   function crearConsulta(){
     $.ajax({

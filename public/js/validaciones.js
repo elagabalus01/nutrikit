@@ -6,6 +6,14 @@ function validarLongitudMinima(input,longitud){
         return false;
     }
 }
+function validarLongitudRango(input,min,max){
+    if(input.length>=min && input.length<=max){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 function validarRegex(input,reguex){
     if(input.match(reguex)){
         return true;

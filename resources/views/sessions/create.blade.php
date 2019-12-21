@@ -23,13 +23,13 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input maxlength="50" type="email" class="form-control" id="email" name="email">
                     <div id="emailValid" class="valid-feedback">Aceptado</div>
                     <div id="emailInvalid" class="invalid-feedback">Correo no valido</div>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <input maxlength="32" type="password" class="form-control" id="password" name="password">
                     <div id="passwordValid" class="valid-feedback">Aceptado</div>
                     <div id="passwordInvalid" class="invalid-feedback">Contraseña no valida</div>
                 </div>
