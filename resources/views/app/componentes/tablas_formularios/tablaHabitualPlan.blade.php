@@ -9,12 +9,12 @@
   <tbody>
     <tr>
       <th>Verduras</th>
-      <td><input class="tableInput" type="number" name="habitual_verdura"></td>
+      <td><input min='0' max='500' class="tableInput" type="number" name="habitual_verdura"></td>
       <td>CálculoDeTabla</td>
     </tr>
     <tr>
       <th>Frutas</th>
-      <td><input class="tableInput" type="number" name="habitual_fruta"></td>
+      <td><input min='0' max='500' class="tableInput" type="number" name="habitual_fruta"></td>
       <td>CálculoDeTabla</td>
     </tr>
     <tr>
@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <th>Cereales</th>
-      <td><input class="tableInput" type="number" name="habitual_cereal"></td>
+      <td><input min='0' max='500' class="tableInput" type="number" name="habitual_cereal"></td>
       <td>CálculoDeTabla</td>
     </tr>
   </tbody>
