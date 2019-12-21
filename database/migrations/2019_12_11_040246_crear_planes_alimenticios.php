@@ -15,7 +15,7 @@ class CrearPlanesAlimenticios extends Migration
     {
         Schema::create('planesAlimenticios', function (Blueprint $table){
             $table->increments('id');
-            $table->smallInteger('consulta_id')->unsigned();
+            $table->integer('consulta_id')->unsigned();
             $table->smallInteger('cereales')->unsigned();
             $table->smallInteger('leguminosas')->unsigned();
             $table->smallInteger('verduras')->unsigned();
