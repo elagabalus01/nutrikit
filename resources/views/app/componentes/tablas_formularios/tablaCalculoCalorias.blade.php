@@ -10,35 +10,35 @@
   <tbody>
     <tr>
       <th>Cereales y tubérculos</th>
-      <td><input min='0' class="tableInput" type="number" name="plan_cereales"></td>
+      <td><input min='0' max='500' class="tableInput" type="number" name="plan_cereales"></td>
     </tr>
     <tr>
       <th>Leguminosas</th>
-      <td><input min='0' class="tableInput" type="number" name="plan_leguminosas"></td>
+      <td><input min='0' max='500'  class="tableInput" type="number" name="plan_leguminosas"></td>
     </tr>
     <tr>
       <th>Verduras</th>
-      <td><input min="0" class="tableInput" type="number" name="plan_verduras"></td>
+      <td><input min='0' max='500'  class="tableInput" type="number" name="plan_verduras"></td>
     </tr>
     <tr>
       <th>Frutas</th>
-      <td><input min='0' class="tableInput" type="number" name="plan_frutas"></td>
+      <td><input min='0' max='500'  class="tableInput" type="number" name="plan_frutas"></td>
     </tr>
     <tr>
       <th>Carnes</th>
-      <td><input min='0' class="tableInput" type="number" name="plan_carnes"></td>
+      <td><input min='0' max='500'  class="tableInput" type="number" name="plan_carnes"></td>
     </tr>
     <tr>
       <th>Lácteos</th>
-      <td><input min='0' class="tableInput" type="number" name="plan_lacteos"></td>
+      <td><input min='0' max='500'  class="tableInput" type="number" name="plan_lacteos"></td>
     </tr>
     <tr>
       <th>Grasas</th>
-      <td><input min='0' class="tableInput" type="number" name="plan_grasas"></td>
+      <td><input min='0' max='500'  class="tableInput" type="number" name="plan_grasas"></td>
     </tr>
     <tr>
       <th>Azúcares</th>
-      <td><input min='0' class="tableInput" type="number" name="plan_azucares"></td>
+      <td><input min='0' max='500'  class="tableInput" type="number" name="plan_azucares"></td>
     </tr>
     <tr>
       <th>Total</th>
