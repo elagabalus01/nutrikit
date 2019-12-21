@@ -1,14 +1,13 @@
 function validarLongitudMinima(input,longitud){
-    if(input.length>longitud){
+    if(input.length>=longitud){
         return true;
     }
     else{
         return false;
     }
 }
-function validarAlfaNumerico(input){
-    var letterNumber = /^[a-zA-Z0-9]+$/;
-    if(input.match(letterNumber)){
+function validarRegex(input,reguex){
+    if(input.match(reguex)){
         return true;
     }
     else{

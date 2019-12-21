@@ -24,16 +24,24 @@
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" name="email">
+                    <div id="emailValid" class="valid-feedback">Aceptado</div>
+                    <div id="emailInvalid" class="invalid-feedback">Correo no valido</div>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" id="password" name="password">
+                    <div id="passwordValid" class="valid-feedback">Aceptado</div>
+                    <div id="passwordInvalid" class="invalid-feedback">Contraseña no valida</div>
                 </div>
                 <div class="form-group">
-                    <button style="cursor:pointer" type="submit" class="btn btn-primary float-right">Iniciar sesión</button>
+                    <button id="login" style="cursor:pointer" type="submit" class="btn btn-primary float-right">Iniciar sesión</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/iniciar_sesion.js') }}"></script>
 @endsection
