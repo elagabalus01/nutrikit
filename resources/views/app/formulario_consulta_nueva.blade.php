@@ -212,6 +212,7 @@
     validarDatosDelPaciente();
     validarCaracteristicasDelPaciente();
     validarConsulta();
+    validarTablas();
   });
   function validarRFC(){
     var rfc=$('#rfc').val();
@@ -386,6 +387,22 @@
   function validarConsulta(){
     validarDescripcionDieta();
     validarObservaciones();
+  }
+  function validarTableInput(){
+    var valido=true;
+    $(".tableInput").each(function (item){
+      var valor=$(this).val();
+      if(valor>=0 && valor<=500 && valor.length>0){
+        $(this).css("background-color", "#549900");
+      }
+      else{
+        $(this).css("background-color", "#B22222");
+        valido=false;
+      }
+    });
+  }
+  function validarTablas(){
+    validarTableInput();
   }
   function crearConsulta(){
     $.ajax({
