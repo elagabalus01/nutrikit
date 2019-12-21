@@ -16,21 +16,21 @@ class CrearConsultas extends Migration
         Schema::create('consultas', function (Blueprint $table){
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('paciente_id');
+            $table->string('paciente_id',13);
             $table->integer('cita_id')->unsigned()
                                         ->nullable()
                                         ->default(null);
-            $table->string('descripcion_dieta');
-            $table->string('observaciones');
+            $table->text('descripcion_dieta');
+            $table->text('observaciones');
             $table->dateTime('fecha_hora');
-            $table->integer('edad_actual')->unsigned();
-            $table->float('peso_actual')->unsigned();
-            $table->integer('estatura_actual')->unsigned();
-            $table->string('actividad_fisica_actual');
-            $table->float('grasa_porcentaje');
-            $table->float('musculo_porcentaje');
-            $table->float('hueso_kilos');
-            $table->float('agua_litros');
+            $table->tinyInteger('edad_actual')->unsigned();
+            $table->float('peso_actual',5,2)->unsigned();
+            $table->tinyInteger('estatura_actual')->unsigned();
+            $table->string('actividad_fisica_actual',100);
+            $table->float('grasa_porcentaje',5,2);
+            $table->float('musculo_porcentaje',5,2);
+            $table->float('hueso_kilos',5,2);
+            $table->float('agua_litros',5,2);
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('paciente_id')->references('rfc')->on('pacientes')->onDelete('cascade');
