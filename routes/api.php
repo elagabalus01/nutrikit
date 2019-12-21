@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('animal','API\animalController')->middleware('auth:api');
-Route::resource('consulta','API\consultaController')->middleware('auth:api');
+Route::resource('consulta','API\ConsultaController')->middleware('auth:api');
 Route::post('autocomplete', 'API\CitaController@autocomplete');
 Route::resource('cita','API\CitaController')->middleware('auth:api');
-Route::post('paciente/{id}','API\consultaController@consultasPaciente')->middleware('auth:api');
+Route::post('paciente/{id}','API\ConsultaController@consultasPaciente')->middleware('auth:api');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

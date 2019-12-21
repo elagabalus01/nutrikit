@@ -24,7 +24,7 @@
     </div>
     <div class="col">
       <p>Sexo:
-        $cita->paciente->sexo
+        {{ $cita->paciente->sexo }}
       </p>
     </div>
     <div class="col">
