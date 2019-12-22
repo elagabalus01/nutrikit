@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col align-self-end">
         <p class="float-right">Fecha:
-        {{ Carbon\Carbon::now()->format('d/m/Y') }}
+        {{ $cita->fecha }}
         </p>
       </div>
     </div>
@@ -48,7 +48,7 @@
 
     <div class="row">
         <div class="col">
-          <label>Edad: EDAD_CALCULADO</label>
+          <label>Edad: {{ $cita->paciente->edad }}</label>
           <label>Años</label>
         </div>
         <div class="col">
@@ -186,5 +186,5 @@
 </div>
 @endsection
 @section('scripts')
-
+<script type="text/javascript" src="{{ asset('js/calculos_tablas.js') }}"></script>
 @endsection
