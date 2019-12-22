@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col align-self-end">
         <p class="float-right">Fecha:
-        {{ Carbon\Carbon::now()->format('d/m/Y') }}
+        {{ $consulta->fecha }}
         </p>
       </div>
     </div>
@@ -47,11 +47,11 @@
 
     <div class="row">
         <div class="col">
-          <label>Edad: EDAD_CALCULADO</label>
+          <label>Edad: {{ $consulta->edad_actual }}</label>
           <label>Años</label>
         </div>
         <div class="col">
-          <label>IMC: IMC_CALCULADO</label>
+          <label>IMC: {{ number_format($consulta->peso_actual/pow($consulta->estatura_actual/100,2),2) }}</label>
        </div>
     </div>
 
@@ -80,13 +80,13 @@
     <div class="row">
       <div class="col">
         <p>Peso:
-          {{ $consulta->paciente->peso }}
+          {{ $consulta->peso_actual }}
           <label>Kg</label>
         </p>
       </div>
       <div class="col">
         <p>Talla:
-          {{ $consulta->paciente->estatura }}
+          {{ $consulta->estatura_actual }}
           <label>cm</label>
         </p>
       </div>
@@ -95,7 +95,7 @@
     <div class="row">
       <div class="col">
         <p>Actividad física:
-          {{ $consulta->paciente->actividad_fisica }}
+          {{ $consulta->actividad_fisica_actual }}
         </p>
       </div>
       <div class="col">
@@ -109,13 +109,13 @@
     <div class="row">
         <div class="col">
           <p>Porcentaje de grasa:
-            {{ $consulta->paciente->grasa_porcentaje }}
+            {{ $consulta->grasa_porcentaje }}
             <label>%</label>
           </p>
         </div>
         <div class="col">
           <p>Porcentaje de músculo:
-            {{ $consulta->paciente->musculo_porcentaje }}
+            {{ $consulta->musculo_porcentaje }}
             <label>%</label>
           </p>        
         </div>
@@ -124,13 +124,13 @@
     <div class="row">
         <div class="col">
           <p>Hueso:
-            {{ $consulta->paciente->hueso }}
+            {{ $consulta->hueso_kilos }}
             <label>kg</label>
           </p>   
         </div>
         <div class="col">
           <p>Agua:
-            {{ $consulta->paciente->agua }}
+            {{ $consulta->agua_litros }}
             <label>L</label>
           </p> 
         </div>

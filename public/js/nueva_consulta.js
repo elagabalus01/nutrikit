@@ -50,7 +50,7 @@ function validarCorreo(){
 }
 function validarTelefono(){
   var telefono=$('#telefono').val();
-  if(validarLongitudMinima(telefono,4) && validarRegex(telefono,/^[0-9]+$/)){
+  if(validarLongitudMinima(telefono,10) && validarRegex(telefono,/^[0-9]+$/)){
     $('#telefonoValid').show();
     $('#telefonoInvalid').hide();
     return true;
