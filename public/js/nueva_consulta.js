@@ -11,7 +11,7 @@ $(':input').keyup(function(){
 });
 function validarRFC(){
   var rfc=$('#rfc').val();
-  if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9]+$/)){
+  if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-ZÑñÜü0-9]+$/)){
     $('#rfcValid').show();
     $('#rfcInvalid').hide();
     return true;

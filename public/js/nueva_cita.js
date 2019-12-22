@@ -45,7 +45,7 @@ $('#crearCita').on('click',function(){
 
 $("#searchRfc").change(function(){
   var rfc=$('#searchRfc').val();
-  if(validarRegex(rfc,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9]+$/) && validarLongitudMinima(rfc,13)){
+  if(validarRegex(rfc,/^[a-zA-ZÑñÜü0-9]+$/) && validarLongitudMinima(rfc,13)){
       $("#crearCita").attr("disabled", false);
   }
   else{

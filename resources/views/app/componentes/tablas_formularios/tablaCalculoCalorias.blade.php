@@ -1,4 +1,4 @@
-<table class="table table-responsive fcol">
+<table id="calculoCalorias" class="table table-responsive fcol">
   <thead>
     <th>Grupos de alimentos</th>
     <th>Equivalente</th>
