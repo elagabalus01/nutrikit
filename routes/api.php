@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('animal','API\animalController')->middleware('auth:api');
 Route::resource('consulta','API\ConsultaController')->middleware('auth:api');
 Route::post('autocomplete', 'API\CitaController@autocomplete');
 Route::resource('cita','API\CitaController')->middleware('auth:api');

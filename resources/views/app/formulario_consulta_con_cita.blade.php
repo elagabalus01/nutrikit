@@ -4,6 +4,7 @@
 @endsection
 @section('variables')
 <script>var api_token = "{{ Auth::user()->api_token }}" </script>
+<script>var citaID = "{{$cita->id}}" </script>
 @endsection
 @section('content')
 
@@ -50,7 +51,7 @@
           <label>Años</label>
         </div>
         <div class="col">
-          <label>IMC: IMC_CALCULADO</label>
+          <label>IMC: {{ number_format($cita->paciente->peso/pow($cita->paciente->estatura/100,2),2) }}</label>
        </div>
     </div>
 
@@ -68,7 +69,6 @@
           </label>
         </div>
     </div>
-
 
    <!-- Características del paciente --> 
     
@@ -114,26 +114,34 @@
     <div class="row">
         <div class="col">
           <label>Porcentaje de grasa:</label>
-          <input min='0' max='100' type="number" name="grasa_porcentaje">
+          <input min='0' max='100' type="number" id="grasa_porcentaje">
           <label>%</label>
+          <div id="grasa_porcentajeValid" class="valid-feedback">Aceptado</div>
+          <div id="grasa_porcentajeInvalid" class="invalid-feedback">Porcentaje no valido</div>
         </div>
         <div class="col">
           <label>Porcentaje de músculo:</label>
-          <input min='0' max='100' type="number" name="musculo_porcentaje">
+          <input min='0' max='100' type="number" id="musculo_porcentaje">
           <label>%</label>
+          <div id="musculo_porcentajeValid" class="valid-feedback">Aceptado</div>
+          <div id="musculo_porcentajeInvalid" class="invalid-feedback">Porcentaje no valido</div>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
           <label>Hueso:</label>
-          <input min='1' max='100' type="number" name="hueso_kilos">
+          <input min='1' max='100' type="number" id="hueso_kilos">
           <label>kg</label>
+          <div id="hueso_kilosValid" class="valid-feedback">Aceptado</div>
+          <div id="hueso_kilosInvalid" class="invalid-feedback">Peso no valido</div>
         </div>
         <div class="col">
           <label>Agua:</label>
-          <input min='1' max='100' type="number" name="agua_litros">
+          <input min='1' max='100' type="number" id="agua_litros">
           <label>L</label>
+          <div id="agua_litrosValid" class="valid-feedback">Aceptado</div>
+          <div id="agua_litrosInvalid" class="invalid-feedback">Cantidad no valida</div>
         </div>
     </div>    
 
@@ -147,14 +155,18 @@
     <div class="col">
       <label>Dieta habitual</label>
       <br>
-      <textarea rows="4" style="width:100%" name="descripcion_dieta"></textarea>
+      <textarea rows="4" style="width:100%" id="descripcion_dieta"></textarea>
+      <div id="descripcion_dietaValid" class="valid-feedback">Aceptado</div>
+      <div id="descripcion_dietaInvalid" class="invalid-feedback">Sólo se aceptan hasta 1024 carácteres</div>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <label>Observaciones</label>
       <br>
-      <textarea rows="4" style="width:100%" name="observaciones"></textarea>
+      <textarea rows="4" style="width:100%" id="observaciones"></textarea>
+      <div id="observacionesValid" class="valid-feedback">Aceptado</div>
+      <div id="observacionesInvalid" class="invalid-feedback">Sólo se aceptan hasta 1024 carácteres</div>
     </div>
   </div>
   <div class="row">
@@ -182,20 +194,14 @@
     <br>
   </div>
 </div>
+@include('app.componentes.mensajes.modalError')
+@include('app.componentes.mensajes.modalSuccess')
 @endsection
 @section('scripts')
+<script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/consulta_cita.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/calculos_tablas.js') }}"></script>
 <script type="text/javascript">
-  $(':input').keyup(function(){
-  validarConsulta();
-  if(validarCaracteristicasDelPaciente() &&
-  validarTablas()){
-    $("#crearConsulta").attr("disabled", false);
-  }
-  else{
-    $("#crearConsulta").attr("disabled", true);
-  }
-});
 
 // function validarCorreo(){
 //   var correo_electronico=$('#correo_electronico').val();
@@ -283,176 +289,6 @@
 //     return false;
 //   }
 // }
-function validarPorcentajeGrasa(){
-  var grasa_porcentaje=$('#grasa_porcentaje').val();
-  if(grasa_porcentaje>=1 && grasa_porcentaje<=100){
-    $('#grasa_porcentajeValid').show();
-    $('#grasa_porcentajeInvalid').hide();
-    return true;
-  }
-  else{
-    $('#grasa_porcentajeValid').hide();
-    $('#grasa_porcentajeInvalid').show();
-    return false;
-  }
-}
-function validarPorcentajeMusculo(){
-  var musculo_porcentaje=$('#musculo_porcentaje').val();
-  if(musculo_porcentaje>=1 && musculo_porcentaje<=100){
-    $('#musculo_porcentajeValid').show();
-    $('#musculo_porcentajeInvalid').hide();
-    return true;
-  }
-  else{
-    $('#musculo_porcentajeValid').hide();
-    $('#musculo_porcentajeInvalid').show();
-    return false;
-  }
-}
-function validarHuesoKilos(){
-  var hueso_kilos=$('#hueso_kilos').val();
-  if(hueso_kilos>=1 && hueso_kilos<=100){
-    $('#hueso_kilosValid').show();
-    $('#hueso_kilosInvalid').hide();
-    return true;
-  }
-  else{
-    $('#hueso_kilosValid').hide();
-    $('#hueso_kilosInvalid').show();
-    return false;
-  }
-}
-function validarAguaLitros(){
-  var agua_litros=$('#agua_litros').val();
-  if(agua_litros>=1 && agua_litros<=100){
-    $('#agua_litrosValid').show();
-    $('#agua_litrosInvalid').hide();
-    return true;
-  }
-  else{
-    $('#agua_litrosValid').hide();
-    $('#agua_litrosInvalid').show();
-    return false;
-  }
-}
-function validarCaracteristicasDelPaciente(){
-  if(validarPeso()&&validarEstatura()&&validarActividadFisica()&&
-   validarAlergias()&&validarPorcentajeGrasa()&&
-   validarPorcentajeMusculo()&&validarHuesoKilos()&&
-   validarAguaLitros()){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
-function validarDescripcionDieta(){
-  var descripcion_dieta=$('#descripcion_dieta').val();
-  if(descripcion_dieta.length<1024){
-    $('#descripcion_dietaValid').show();
-    $('#descripcion_dietaInvalid').hide();
-  }
-  else{
-    $('#descripcion_dietaValid').hide();
-    $('#descripcion_dietaInvalid').show();
-  }
-}
-function validarObservaciones(){
-  var observaciones=$('#observaciones').val();
-  if(observaciones.length<1024){
-    $('#observacionesValid').show();
-    $('#observacionesInvalid').hide();
-  }
-  else{
-    $('#observacionesValid').hide();
-    $('#observacionesInvalid').show();
-  }
-}
-function validarConsulta(){
-  validarDescripcionDieta();
-  validarObservaciones();
-}
-function validarTableInput(){
-  var valido=true;
-  $(".tableInput").each(function (item){
-    var valor=$(this).val();
-    if(valor>=0 && valor<=500 && valor.length>0){
-      $(this).css("background-color", "#549900");
-    }
-    else{
-      $(this).css("background-color", "#B22222");
-      valido=false;
-    }
-  });
-  return valido;
-}
-function validarTablas(){
-  if(validarTableInput()){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
-function crearConsulta(){
-  $.ajax({
-    headers:{
-      'Accept': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-      'Authorization': `Bearer ${api_token}`
-    },
-    url:'api/consulta',
-    type:'POST',
-    data:{
-      rfc:$('#rfc').val(),
-      nombre:$('#nombre').val(),
-      estatura:$('#estatura').val(),
-      peso:$('#peso').val(),
-      fecha_nacimiento:$('#fecha_nacimiento').val(),
-      sexo:$('#sexo').val(),
-      alergias:$('#alergias').val(),
-      observaciones:$('#observaciones').val(),
-      descripcion_dieta:$('#descripcion_dieta').val(),
-      actividad_fisica:$('#actividad_fisica').val(),
-      dieta_cereales:$('#dieta_cereales').val(),
-      dieta_leguminosas:$('#dieta_leguminosas').val(),
-      dieta_verduras:$('#dieta_verduras').val(),
-      dieta_frutas:$('#dieta_frutas').val(),
-      dieta_carnes:$('#dieta_carnes').val(),
-      dieta_lacteos:$('#dieta_lacteos').val(),
-      dieta_grasas:$('#dieta_grasas').val(),
-      dieta_azucares:$('#dieta_azucares').val(),
-      plan_cereales:$('#plan_cereales').val(),
-      plan_leguminosas:$('#plan_leguminosas').val(),
-      plan_verduras:$('#plan_verduras').val(),
-      plan_frutas:$('#plan_frutas').val(),
-      plan_carnes:$('#plan_carnes').val(),
-      plan_lacteos:$('#plan_lacteos').val(),
-      plan_grasas:$('#plan_grasas').val(),
-      plan_azucares:$('#plan_azucares').val(),
-      correo_electronico:$('#correo_electronico').val(),
-      telefono:$('#telefono').val(),
-      grasa_porcentaje:$('#grasa_porcentaje').val(),
-      musculo_porcentaje:$('#musculo_porcentaje').val(),
-      hueso_kilos:$('#hueso_kilos').val(),
-      agua_litros:$('#agua_litros').val(),
-    }
-  }).done(function(response){
-    if (response["success"]==false){
-        $('#errorMessage').empty();
-        $('#errorMessage').append(response['message']);
-        $('#errorGenerico').modal();
-    }
-    else{
-        $('#successMessage').empty();
-        $('#successMessage').append('La consulta fue almacenada correctamente');
-        $('#successGenerico').modal();
-        window.location.href='/app';
-    }
-  });
-}
-$('#crearConsulta').on('click',function(){
-  crearConsulta();
-});
+
 </script>
 @endsection
