@@ -33,5 +33,9 @@ class Paciente extends Model
         $fechaActual=Carbon::now();
         return $fechaDeNacimiento->diffInYears($fechaActual);
     }
+    public function getCumpleañosAttribute(){
+        $fechaDeNacimiento=Carbon::createFromFormat('Y-m-d',$this->fecha_nacimiento)->format('d/m/Y');
+        return $fechaDeNacimiento;
+    }
     public $timestamps = false;
 }

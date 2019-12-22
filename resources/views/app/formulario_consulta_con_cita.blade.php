@@ -40,7 +40,7 @@
       </div>
       <div class="col">
         <label>Fecha de nacimiento: 
-          {{ $cita->paciente->fecha_nacimiento }} 
+          {{ $cita->paciente->cumpleaños }} 
         </label>
       </div>
     </div>
