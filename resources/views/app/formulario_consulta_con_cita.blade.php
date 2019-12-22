@@ -6,101 +6,140 @@
 <script>var api_token = "{{ Auth::user()->api_token }}" </script>
 @endsection
 @section('content')
+
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h1>Datos del paciente</h1>
-    </div>
-    <div class="col-md-2 align-self-end">
-      <p class="float-right">RFC: {{ $cita->paciente->rfc }}</p>
-    </div>
-    <div class="col-md-2 align-self-end">
-      <p class="float-right">Fecha: {{ $cita->fecha }}</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <p>{{ $cita->paciente->nombre}}</p>
-    </div>
-    <div class="col">
-      <p>Sexo:
-        {{ $cita->paciente->sexo }}
-      </p>
-    </div>
-    <div class="col">
-      <p>IMC: calculado</p>
-    </div>
-  </div>
-  <div class="row" id="editables">
-    <div class="col-md-6" id="numbers">
-      <div class="row">
-        <div class="col">
-          Edad
-        </div>
-        <div class="col">
-          {{ $cita->paciente->edad }}
-        </div>
-        <div class="col">
-          Años
-        </div>
-        <div class="col">
-          <button>Editar</button>
-        </div>
+    <div class="row">
+      <div class="col align-self-end">
+        <p class="float-right">Fecha:
+        {{ Carbon\Carbon::now()->format('d/m/Y') }}
+        </p>
       </div>
-      <div class="row">
+    </div>
+
+<!-- Datos del paciente --> 
+
+    <div class="row">
+      <div class="col">
+        <h1>Datos del paciente</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p>RFC: {{ $cita->paciente->rfc }}</p>
+      </div>
+      <div class="col">
+        <p>Nombre: {{ $cita->paciente->nombre}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p>Sexo:
+            {{ $cita->paciente->sexo }}
+        </p>
+      </div>
+      <div class="col">
+        <p>Fecha de nacimiento:
+            {{ $cita->paciente->fecha_nacimiento }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
         <div class="col">
-          Peso
+          <label>Edad: EDAD_CALCULADO</label>
+          <label>Años</label>
         </div>
         <div class="col">
+          <label>IMC: IMC_CALCULADO</label>
+       </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col">
+          <p>Correo:
+            {{ $cita->paciente->correo_electronico }}
+            <button>Editar</button>
+          </p>
+        </div>        
+        <div class="col">
+          <p>Telefono:
+            {{ $cita->paciente->telefono }}
+            <button>Editar</button>
+          </p>
+        </div>
+    </div>
+
+
+   <!-- Características del paciente --> 
+    
+    <div class="row">
+      <div class="col">
+        <h1>Características del paciente</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p>Peso:
           {{ $cita->paciente->peso }}
-        </div>
-        <div class="col">
-          Kg
-        </div>
-        <div class="col">
+          <label>Kg</label>
           <button>Editar</button>
-        </div>
+        </p>
       </div>
-      <div class="row">
-        <div class="col">
-          Estatura
-        </div>
-        <div class="col">
+      <div class="col">
+        <p>Talla:
           {{ $cita->paciente->estatura }}
-        </div>
-        <div class="col">
-          cm
-        </div>
-        <div class="col">
+          <label>cm</label>
           <button>Editar</button>
-        </div>
+        </p>
       </div>
     </div>
-    <div class="col-md-6" id="text">
-      <div class="row">
-        <div class="col">
-          Alergias
-        </div>
-        <div class="col">
+
+    <div class="row">
+      <div class="col">
+        <p>Actividad física:
+          {{ $cita->paciente->actividad_fisica }}
+          <button>Editar</button>
+        </p>
+      </div>
+      <div class="col">
+        <p>Alergias:
           {{ $cita->paciente->alergias }}
-        </div>
-        <div class="col">
           <button>Editar</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          Actvidad fisicia
-        </div>
-        <div class="col">
-          {{ $cita->paciente->actividadFisica }}
-        </div>
-        <div class="col">
-          <button>Editar</button>
-        </div>
+        </p>
+
       </div>
     </div>
-  </div>
+
+    <div class="row">
+        <div class="col">
+          <label>Porcentaje de grasa:</label>
+          <input min='0' max='100' type="number" name="grasa_porcentaje">
+          <label>%</label>
+        </div>
+        <div class="col">
+          <label>Porcentaje de músculo:</label>
+          <input min='0' max='100' type="number" name="musculo_porcentaje">
+          <label>%</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+          <label>Hueso:</label>
+          <input min='1' max='100' type="number" name="hueso_kilos">
+          <label>kg</label>
+        </div>
+        <div class="col">
+          <label>Agua:</label>
+          <input min='1' max='100' type="number" name="agua_litros">
+          <label>L</label>
+        </div>
+    </div>    
+
+
   <div class="row">
     <div class="col">
       <h1>Consulta</h1>
