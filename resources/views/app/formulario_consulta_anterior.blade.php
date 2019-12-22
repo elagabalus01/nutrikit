@@ -7,89 +7,135 @@
 @endsection
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h1>Datos del paciente</h1>
+    <div class="row">
+      <div class="col align-self-end">
+        <p class="float-right">Fecha:
+        {{ Carbon\Carbon::now()->format('d/m/Y') }}
+        </p>
+      </div>
     </div>
-    <div class="col-md-2 align-self-end">
-      <p class="float-right">RFC: {{ $consulta->paciente->rfc }}</p>
+
+<!-- Datos del paciente --> 
+
+    <div class="row">
+      <div class="col">
+        <h1>Datos del paciente</h1>
+      </div>
     </div>
-    <div class="col-md-2 align-self-end">
-      <p class="float-right">Fecha: {{ $consulta->fecha }}</p>
+
+    <div class="row">
+      <div class="col">
+        <p>RFC: {{ $consulta->paciente->rfc }}</p>
+      </div>
+      <div class="col">
+        <p>Nombre: {{ $consulta->paciente->nombre}}</p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <p>{{ $consulta->paciente->nombre}}</p>
+
+    <div class="row">
+      <div class="col">
+        <p>Sexo:
+            {{ $consulta->paciente->sexo }}
+        </p>
+      </div>
+      <div class="col">
+        <p>Fecha de nacimiento:
+            {{ $consulta->paciente->fecha_nacimiento }}
+        </p>
+      </div>
     </div>
-    <div class="col">
-      <p>Sexo:
-        @if($consulta->paciente->sexo)
-        Masculino
-        @else
-        Femenino
-        @endif
-      </p>
-    </div>
-    <div class="col">
-      <label>IMC: {{ number_format($consulta->peso_actual/pow($consulta->estatura_actual/100,2),2) }}</label>
-    </div>
-  </div>
-  <div class="row" id="editables">
-    <div class="col-md-6" id="numbers">
-      <div class="row">
+
+    <div class="row">
         <div class="col">
-          <label class="float-right">Edad</label>
-        </div>
-        <div class="col-md-1">
-          {{ $consulta->edad_actual }}
-        </div>
-        <div class="col">
+          <label>Edad: EDAD_CALCULADO</label>
           <label>Años</label>
         </div>
+        <div class="col">
+          <label>IMC: IMC_CALCULADO</label>
+       </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col">
+          <p>Correo:
+            {{ $consulta->paciente->correo_electronico }}
+          </p>
+        </div>        
+        <div class="col">
+          <p>Telefono:
+            {{ $consulta->paciente->telefono }}
+          </p>
+        </div>
+    </div>
+
+
+   <!-- Características del paciente --> 
+    
+    <div class="row">
+      <div class="col">
+        <h1>Características del paciente</h1>
       </div>
-      <div class="row">
-        <div class="col">
-          <label class="float-right">Peso</label>
-        </div>
-        <div class="col-md-1">
-          {{ $consulta->peso_actual }}
-        </div>
-        <div class="col">
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p>Peso:
+          {{ $consulta->paciente->peso }}
           <label>Kg</label>
-        </div>
+        </p>
       </div>
-      <div class="row">
-        <div class="col">
-          <label class="float-right">Estatura</label>
-        </div>
-        <div class="col-md-1">
-          {{ $consulta->estatura_actual }}
-        </div>
-        <div class="col">
+      <div class="col">
+        <p>Talla:
+          {{ $consulta->paciente->estatura }}
           <label>cm</label>
-        </div>
+        </p>
       </div>
     </div>
-    <div class="col-md-6" id="text">
-      <div class="row">
-        <div class="col">
-          Alergias
-        </div>
-        <div class="col">
+
+    <div class="row">
+      <div class="col">
+        <p>Actividad física:
+          {{ $consulta->paciente->actividad_fisica }}
+        </p>
+      </div>
+      <div class="col">
+        <p>Alergias:
           {{ $consulta->paciente->alergias }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          Actvidad fisicia
-        </div>
-        <div class="col">
-          {{ $consulta->actividad_fisica_actual }}
-        </div>
+        </p>
+
       </div>
     </div>
-  </div>
+
+    <div class="row">
+        <div class="col">
+          <p>Porcentaje de grasa:
+            {{ $consulta->paciente->grasa_porcentaje }}
+            <label>%</label>
+          </p>
+        </div>
+        <div class="col">
+          <p>Porcentaje de músculo:
+            {{ $consulta->paciente->musculo_porcentaje }}
+            <label>%</label>
+          </p>        
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+          <p>Hueso:
+            {{ $consulta->paciente->hueso }}
+            <label>kg</label>
+          </p>   
+        </div>
+        <div class="col">
+          <p>Agua:
+            {{ $consulta->paciente->agua }}
+            <label>L</label>
+          </p> 
+        </div>
+    </div>    
+
   <div class="row">
     <div class="col">
       <h1>Consulta</h1>

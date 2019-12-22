@@ -65,11 +65,7 @@
           <label>Edad: EDAD_CALCULADO</label>
         </div>
         <div class="col">
-<<<<<<< HEAD
-          <label>IMC: IMC_CALCULADO</label>
-=======
           <label id="imc">IMC: -</label>
->>>>>>> 7de675b3464ab12260feb0ad03c2702aaa439f7d
         </div>
     </div>
 
