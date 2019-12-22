@@ -32,6 +32,7 @@ class consultaController extends BaseController
             'required' => 'El :attribute es un dato requerido.',
         ];
         $validator = Validator::make($input, [
+            // Validar todos los datos de la dieta
             'dieta_cereales'=>'required',
             'dieta_leguminosas'=>'required',
             'dieta_verduras'=>'required',

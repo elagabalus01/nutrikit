@@ -5,6 +5,7 @@
 @section('variables')
 <script>var api_token = "{{ Auth::user()->api_token }}" </script>
 <script>var citaID = "{{$cita->id}}" </script>
+<script>var rfc = "{{$cita->paciente->rfc}}" </script>
 @endsection
 @section('content')
 
@@ -57,16 +58,20 @@
 
     <div class="form-group row">
         <div class="col">
-          <label>Correo:
+          <label id="correo">Correo:
             {{ $cita->paciente->correo_electronico }}
-            <button>Editar</button>
           </label>
+          <input style="display:none;" id='correo_electronico' placeholder='correo'></input>
+          <button id="editarCorreo">Editar</button>
+          <button style="display:none;" id='aceptarCorreo'>Aceptar</button>
+          <div id="correo_electronicoValid" class="valid-feedback">Aceptado</div>
+          <div id="correo_electronicoInvalid" class="invalid-feedback">Correo no valido</div>
         </div>        
         <div class="col">
-          <label>Telefono:
+          <label id="telefono">Telefono:
             {{ $cita->paciente->telefono }}
-            <button>Editar</button>
           </label>
+          <button data-campo='telefono' class="editar">Editar</button>
         </div>
     </div>
 
@@ -80,34 +85,33 @@
 
     <div class="row">
       <div class="col">
-        <label>Peso:
+        <label id="peso">Peso:
           {{ $cita->paciente->peso }}
-          <label>Kg</label>
-          <button>Editar</button>
         </label>
+        <label>Kg</label>
+        <button data-campo='peso' class="editar">Editar</button>
       </div>
       <div class="col">
-        <label>Talla:
+        <label id="estatura">Talla:
           {{ $cita->paciente->estatura }}
-          <label>cm</label>
-          <button>Editar</button>
         </label>
+        <label>cm</label>
+        <button data-campo='estatura' class="editar">Editar</button>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        <label>Actividad física:
+        <label id="actividad_fisica">Actividad física:
           {{ $cita->paciente->actividad_fisica }}
-          <button>Editar</button>
         </label>
+        <button data-campo='actividad_fisica' class="editar">Editar</button>
       </div>
       <div class="col">
-        <label>Alergias:
+        <label id="alergias">Alergias:
           {{ $cita->paciente->alergias }}
-          <button>Editar</button>
         </label>
-
+        <button data-campo='alergias' class="editar">Editar</button>
       </div>
     </div>
 
@@ -202,20 +206,55 @@
 <script type="text/javascript" src="{{ asset('js/consulta_cita.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/calculos_tablas.js') }}"></script>
 <script type="text/javascript">
-
-// function validarCorreo(){
-//   var correo_electronico=$('#correo_electronico').val();
-//   if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.@]+$/)){
-//     $('#correo_electronicoValid').show();
-//     $('#correo_electronicoInvalid').hide();
-//     return true;
-//   }
-//   else{
-//     $('#correo_electronicoValid').hide();
-//     $('#correo_electronicoInvalid').show();
-//     return false;
-//   }
-// }
+console.log(rfc);
+function recuperarCorreo(){
+  console.log('Funcionando recuperarCorreo')
+  $.ajax({
+    headers:{
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Authorization': `Bearer ${api_token}`
+  },
+  url:`/api/pacientes/${api_token}/correo`,
+  type:'GET'
+  }).done(function(response){
+      if (response["success"]==true){
+        console.log(response["data"])
+      }
+      else{
+        console.log('No response')
+      }
+  });
+}
+$('#editarCorreo').click(function(){
+  $(this).hide();
+  $(this).siblings('#correo').hide();
+  recuperarCorreo();
+  $(this).siblings('#correo_electronico').show();
+  $(this).siblings('#aceptarCorreo').show();
+})
+$('#aceptarCorreo').click(function(){
+  var nuevoCorreo=$('#correo_electronico').val();
+  $('#correo').html(`Correo: ${nuevoCorreo}`);
+  $(this).hide();
+  $(this).siblings('#correo_electronico').hide();
+  $(this).siblings('#correo').show();
+  $(this).siblings('#editarCorreo').show();
+  $('#correo_electronicoValid').hide();
+})
+$('#correo_electronico').keyup(function(){
+  var correo_electronico=$(this).val();
+  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.@]+$/)){
+    $('#correo_electronicoValid').show();
+    $('#correo_electronicoInvalid').hide();
+    $('#aceptarCorreo').prop('disabled',false);
+  }
+  else{
+    $('#correo_electronicoValid').hide();
+    $('#correo_electronicoInvalid').show();
+    $('#aceptarCorreo').prop('disabled', true);
+  }
+});
 // function validarTelefono(){
 //   var telefono=$('#telefono').val();
 //   if(validarLongitudMinima(telefono,4) && validarRegex(telefono,/^[0-9]+$/)){
