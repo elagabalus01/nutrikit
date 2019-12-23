@@ -52,7 +52,7 @@
           <label>Años</label>
         </div>
         <div class="col">
-          <label>IMC: {{ number_format($cita->paciente->peso/pow($cita->paciente->estatura/100,2),2) }}</label>
+          <label id="imc">IMC: {{ number_format($cita->paciente->peso/pow($cita->paciente->estatura/100,2),2) }}</label>
        </div>
     </div>
 
@@ -68,10 +68,14 @@
           <div id="correo_electronicoInvalid" class="invalid-feedback">Correo no valido</div>
         </div>        
         <div class="col">
-          <label id="telefono">Telefono:
+          <label id="tel">Telefono:
             {{ $cita->paciente->telefono }}
           </label>
-          <button data-campo='telefono' class="editar">Editar</button>
+          <input style="display:none;" maxlength="10" placeholder='telefono' type="tel" id="telefono">
+          <button id="editarTel">Editar</button>
+          <button style="display:none;" id='aceptarTel'>Aceptar</button>
+          <div id="telefonoValid" class="valid-feedback">Aceptado</div>
+          <div id="telefonoInvalid" class="invalid-feedback">Telefono no valido</div>
         </div>
     </div>
 
@@ -85,33 +89,57 @@
 
     <div class="row">
       <div class="col">
-        <label id="peso">Peso:
+        <label id="peso_old">Peso:
           {{ $cita->paciente->peso }}
         </label>
+        <input style="display:none;" min='0.5' max='500' step="0.01" type="number" id="peso">
         <label>Kg</label>
-        <button data-campo='peso' class="editar">Editar</button>
+        
+        <button id="editarPeso">Editar</button>
+        <button style="display:none;" id='aceptarPeso'>Aceptar</button>
+
+        <div id="pesoValid" class="valid-feedback">Aceptado</div>
+        <div id="pesoInvalid" class="invalid-feedback">Peso no valido</div>
       </div>
       <div class="col">
-        <label id="estatura">Talla:
+        <label id="estatura_lab">Talla:
           {{ $cita->paciente->estatura }}
         </label>
+        <input style="display:none;" min='1' max='255' step="1" type="number" id="estatura">
         <label>cm</label>
-        <button data-campo='estatura' class="editar">Editar</button>
+
+        <button style="display:none;" id='aceptarEstatura'>Aceptar</button>
+        <button id="editarEstatura">Editar</button>
+
+        <div id="estaturaValid" class="valid-feedback">Aceptado</div>
+        <div id="estaturaInvalid" class="invalid-feedback">Estatura no valida</div>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        <label id="actividad_fisica">Actividad física:
+        <label id="actividad_fisica_lab">Actividad física:
           {{ $cita->paciente->actividad_fisica }}
         </label>
-        <button data-campo='actividad_fisica' class="editar">Editar</button>
+        <input style="display:none;" maxlength="100" type="text" id="actividad_fisica">
+        
+        <button id='editar_actividad_fisica'>Editar</button>
+        <button style="display:none;" id='aceptar_actividad_fisica'>Aceptar</button>
+        
+        <div id="actividad_fisicaValid" class="valid-feedback">Aceptado</div>
+        <div id="actividad_fisicaInvalid" class="invalid-feedback">Texto no valido</div>
       </div>
       <div class="col">
-        <label id="alergias">Alergias:
+        <label id="alergias_lab">Alergias:
           {{ $cita->paciente->alergias }}
         </label>
-        <button data-campo='alergias' class="editar">Editar</button>
+        <input style="display:none;" maxlength="100" type="text" id="alergias">
+        
+        <button id="editarAlergias">Editar</button>
+        <button style="display:none;" id='aceptarAlergias'>Aceptar</button>
+        
+        <div id="alergiasValid" class="valid-feedback">Aceptado</div>
+        <div id="alergiasInvalid" class="invalid-feedback">Texto no valido</div>
       </div>
     </div>
 
@@ -205,129 +233,5 @@
 <script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/consulta_cita.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/calculos_tablas.js') }}"></script>
-<script type="text/javascript">
-console.log(rfc);
-function recuperarCorreo(){
-  console.log('Funcionando recuperarCorreo')
-  $.ajax({
-    headers:{
-      'Accept': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-      'Authorization': `Bearer ${api_token}`
-  },
-  url:`/api/pacientes/${api_token}/correo`,
-  type:'GET'
-  }).done(function(response){
-      if (response["success"]==true){
-        console.log(response["data"])
-      }
-      else{
-        console.log('No response')
-      }
-  });
-}
-$('#editarCorreo').click(function(){
-  $(this).hide();
-  $(this).siblings('#correo').hide();
-  recuperarCorreo();
-  $(this).siblings('#correo_electronico').show();
-  $(this).siblings('#aceptarCorreo').show();
-})
-$('#aceptarCorreo').click(function(){
-  var nuevoCorreo=$('#correo_electronico').val();
-  $('#correo').html(`Correo: ${nuevoCorreo}`);
-  $(this).hide();
-  $(this).siblings('#correo_electronico').hide();
-  $(this).siblings('#correo').show();
-  $(this).siblings('#editarCorreo').show();
-  $('#correo_electronicoValid').hide();
-})
-$('#correo_electronico').keyup(function(){
-  var correo_electronico=$(this).val();
-  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.@]+$/)){
-    $('#correo_electronicoValid').show();
-    $('#correo_electronicoInvalid').hide();
-    $('#aceptarCorreo').prop('disabled',false);
-  }
-  else{
-    $('#correo_electronicoValid').hide();
-    $('#correo_electronicoInvalid').show();
-    $('#aceptarCorreo').prop('disabled', true);
-  }
-});
-// function validarTelefono(){
-//   var telefono=$('#telefono').val();
-//   if(validarLongitudMinima(telefono,4) && validarRegex(telefono,/^[0-9]+$/)){
-//     $('#telefonoValid').show();
-//     $('#telefonoInvalid').hide();
-//     return true;
-//   }
-//   else{
-//     $('#telefonoValid').hide();
-//     $('#telefonoInvalid').show();
-//     return false;
-//   }
-// }
-// function validarDatosDelPaciente(){
-//   if(validarRFC() && validarNombre() && validarCorreo() &&
-//   validarTelefono()){
-//     return true;
-//   }else{
-//     return false;
-//   }
-// }
-// function validarPeso(){
-//   var peso=$('#peso').val();
-//   if(peso>=0.5 && peso<=500){
-//     $('#pesoValid').show();
-//     $('#pesoInvalid').hide();
-//     return true;
-//   }
-//   else{
-//     $('#pesoValid').hide();
-//     $('#pesoInvalid').show();
-//     return false;
-//   }
-// }
-// function validarEstatura(){
-//   var estatura=$('#estatura').val();
-//   if(estatura>=1 && estatura<=255){
-//     $('#estaturaValid').show();
-//     $('#estaturaInvalid').hide();
-//     return true;
-//   }
-//   else{
-//     $('#estaturaValid').hide();
-//     $('#estaturaInvalid').show();
-//     return false;
-//   }
-// }
-// function validarActividadFisica(){
-//   var actividad_fisica=$('#actividad_fisica').val();
-//   if(validarRegex(actividad_fisica,/^[a-zA-Z ,]+$/) || actividad_fisica.length==0){
-//     $('#actividad_fisicaValid').show();
-//     $('#actividad_fisicaInvalid').hide();
-//     return true;
-//   }
-//   else{
-//     $('#actividad_fisicaValid').hide();
-//     $('#actividad_fisicaInvalid').show();
-//     return false;
-//   }
-// }
-// function validarAlergias(){
-//   var alergias=$('#alergias').val();
-//   if(validarRegex(alergias,/^[a-zA-Z ,]+$/) || alergias.length==0){
-//     $('#alergiasValid').show();
-//     $('#alergiasInvalid').hide();
-//     return true;
-//   }
-//   else{
-//     $('#alergiasValid').hide();
-//     $('#alergiasInvalid').show();
-//     return false;
-//   }
-// }
-
-</script>
+<script type="text/javascript" src="{{ asset('js/actualizaciones.js') }}"></script>
 @endsection

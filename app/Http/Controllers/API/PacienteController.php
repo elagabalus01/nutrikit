@@ -73,6 +73,14 @@ class PacienteController extends BaseController
             $paciente->save();
             return $this->sendDone('Las alergias fueron actualizadas');
         }
+        if(array_key_exists('correo',$input) ||
+            array_key_exists('telefono',$input) ||
+            array_key_exists('peso',$input) ||
+            array_key_exists('estatura',$input) ||
+            array_key_exists('actividad_fisica',$input) ||
+            array_key_exists('alergias',$input)){
+            return $this->sendErrorResponse([],'La peticion y el campo no coinciden');
+        }
         return $this->sendErrorResponse([],$campo.' no es un parametro aceptado');
     }
 }
