@@ -70,7 +70,7 @@
 
     <div class="form-group row">
         <div class="col">
-          <label id="edad">Edad: EDAD_CALCULADO</label>
+          <label id="edad">Edad: -</label>
         </div>
         <div class="col">
           <label id="imc">IMC: -</label>
