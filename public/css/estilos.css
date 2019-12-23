@@ -61,3 +61,6 @@
 table, th, td {
     text-align:center;
 }
+input[type="number"] {
+  text-align: center;
+}
