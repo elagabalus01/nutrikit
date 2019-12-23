@@ -58,3 +58,6 @@
 .modal-header-success .modal-title{
     color: white;
 }
+table, th, td {
+    text-align:center;
+}
