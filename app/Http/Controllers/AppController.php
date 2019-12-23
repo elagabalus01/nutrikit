@@ -14,6 +14,7 @@ class AppController extends Controller
         // Dispatch::where('user_id', Auth::id())->paginate(10); ejemplo para el futuro
         $citas=Cita::where('atendida',false)
                         ->whereDate('fecha_hora','=',Carbon::today()->toDateString())
+                        ->orderBy('fecha_hora', 'asc')
                         ->paginate(4);
         // $citas=Cita::where('atendida',false)->paginate(4);
         // $citas=Cita::paginate(4);
@@ -21,7 +22,8 @@ class AppController extends Controller
     }
     
     public function consultas(){
-        $consultas=Consulta::paginate(4);
+        $consultas=Consulta::orderBy('fecha_hora','desc')->paginate(4);
+        // $consultas=Consulta::paginate(4);
         return view('app.consultas_realizadas',compact('consultas'));
     }
     

@@ -41,8 +41,10 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $citas->onEachSide(7)->links() }}
         </div>
     </div>
+
     @else
     <div class="row">
         <div class="col">

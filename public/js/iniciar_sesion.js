@@ -3,7 +3,7 @@ $("#email,#password").keyup(function(){
   var contraseña=$('#password').val();
   var validaCorreo=false;
   var validaContraseña=false;
-  if(validarRegex(correo,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.@]+$/) && validarLongitudMinima(correo,5)){
+  if(validarRegex(correo,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+@[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+$/) && validarLongitudMinima(correo,5)){
     validaCorreo=true;
     console.log('This should be working');
     $('#emailValid').show();

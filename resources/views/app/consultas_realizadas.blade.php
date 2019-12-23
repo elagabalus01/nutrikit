@@ -33,6 +33,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $consultas->onEachSide(7)->links() }}
         </div>
     </div>
     @else

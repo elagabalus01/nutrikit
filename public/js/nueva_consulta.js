@@ -1,4 +1,4 @@
-$(':input').keyup(function(){
+$(':input').on('keyup keypress change click',function(){
   validarConsulta();
   if(validarDatosDelPaciente() &&
   validarCaracteristicasDelPaciente() &&
@@ -37,7 +37,7 @@ function validarNombre(){
 }
 function validarCorreo(){
   var correo_electronico=$('#correo_electronico').val();
-  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.@]+$/)){
+  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+@[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+$/)){
     $('#correo_electronicoValid').show();
     $('#correo_electronicoInvalid').hide();
     return true;

@@ -1,7 +1,7 @@
 /*
 Validaciones
 */
-$(':input').keyup(function(){
+$(':input').on('keyup keypress change click',function(){
   validarConsulta();
   if(validarCaracteristicasDelPaciente() && validarTablas()){
     $("#crearConsulta").attr("disabled", false);

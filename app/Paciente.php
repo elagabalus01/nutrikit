@@ -7,9 +7,11 @@ use Carbon\Carbon;
 
 class Paciente extends Model
 {
-    protected $table = 'pacientes';
-     protected $primaryKey = 'rfc';
+    protected $primaryKey = 'rfc';
     public $incrementing = false;
+    protected $keyType='string';
+    public $timestamps = false;
+    protected $table = 'pacientes';
     protected $fillable = [
         'rfc',
         'nombre',
@@ -37,5 +39,4 @@ class Paciente extends Model
         $fechaDeNacimiento=Carbon::createFromFormat('Y-m-d',$this->fecha_nacimiento)->format('d/m/Y');
         return $fechaDeNacimiento;
     }
-    public $timestamps = false;
 }
