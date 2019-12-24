@@ -11,7 +11,7 @@ $(':input').on('keyup keypress change click',function(){
 });
 function validarRFC(){
   var rfc=$('#rfc').val();
-  if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-ZÑñÜü0-9]+$/)){
+  if(validarLongitudMinima(rfc,13) && validarRegex(rfc,/^[a-zA-ZÑñÜü]{4}[0-9]{6}[a-zA-ZÑñÜü0-9]{3}$/)){
     $('#rfcValid').show();
     $('#rfcInvalid').hide();
     return true;
@@ -61,9 +61,26 @@ function validarTelefono(){
     return false;
   }
 }
+function validarFechaNacimiento(){
+  var fecha_nacimiento=new Date($('#fecha_nacimiento').val());
+  var min_fecha=new Date($('#fecha_nacimiento').attr('min'));
+  var max_fecha=new Date($('#fecha_nacimiento').attr('max'));
+
+  if(fecha_nacimiento>min_fecha && fecha_nacimiento<max_fecha){
+    $('#fecha_nacimientoValid').show();
+    $('#fecha_nacimientoInvalid').hide();
+    return true;
+  }
+  else{
+    $('#fecha_nacimientoValid').hide();
+    $('#fecha_nacimientoInvalid').show();
+    return false;
+  }
+}
+
 function validarDatosDelPaciente(){
   if(validarRFC() && validarNombre() && validarCorreo() &&
-  validarTelefono()){
+  validarTelefono()&&validarFechaNacimiento()){
     return true;
   }else{
     return false;

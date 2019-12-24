@@ -64,7 +64,9 @@
         </div>
         <div class="col">
           <label>Fecha de nacimiento:</label>
-          <input type="date" max="{{ Carbon\Carbon::now()->format('Y-m-d') }}" value="{{ Carbon\Carbon::now()->subYears(30)->format('Y-m-d') }}" id="fecha_nacimiento">
+          <input type="date" min="{{ Carbon\Carbon::now()->subYears(110)->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->format('Y-m-d') }}" value="{{ Carbon\Carbon::now()->subYears(30)->format('Y-m-d') }}" id="fecha_nacimiento">
+          <div id="fecha_nacimientoValid" class="valid-feedback">Aceptado</div>
+          <div id="fecha_nacimientoInvalid" class="invalid-feedback">Fecha no valida</div>   
        </div>
     </div>
 
