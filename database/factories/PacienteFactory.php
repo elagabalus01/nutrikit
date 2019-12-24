@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 $factory->define(Paciente::class, function (Faker $faker) {
     $gender = $faker->randomElement(['Masculino', 'Femenino']);
     return [
-        'rfc'=>$faker->regexify('[A-Za-z0-9]{12}'),
+        'rfc'=>$faker->regexify('[a-zA-ZÑñÜü]{4}[0-9]{6}[a-zA-ZÑñÜü0-9]{3}'),
         'nombre'=>$faker->name,
         'telefono'=>$faker->regexify('[0-9]{10}'),
         'correo_electronico'=>$faker->safeEmail,
