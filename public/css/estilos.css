@@ -21,7 +21,7 @@
     color: #ebebeb;
 }
 .navbar-custom .navbar-toggler-icon {
-    background-image:#ffff url(/menu.png);
+    background-image:url(/menu2.png);
 }
 .btn-success.custom-btn {
     background-color: #009900;
