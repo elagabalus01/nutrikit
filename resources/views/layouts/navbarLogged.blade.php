@@ -10,7 +10,8 @@
         @else
         <a class="nav-item nav-link" href="/app">Citas</a>
         @endif
-        @if(Request::path() === 'consultas')
+        
+        @if(preg_match('/^consultas\/*[0-9]*$/',Request::path()))
         <a class="nav-item nav-link active" href="/consultas">Consultas</a>
         @else
         <a class="nav-item nav-link" href="/consultas">Consultas</a>

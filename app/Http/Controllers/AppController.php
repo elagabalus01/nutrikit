@@ -21,10 +21,25 @@ class AppController extends Controller
         return view('app.citas_proximas',compact('citas'));
     }
     
-    public function consultas(){
-        $consultas=Consulta::orderBy('fecha_hora','desc')->paginate(4);
+    public function consultas($fecha=null){
+        if(is_null($fecha)){
+            $consultas=Consulta::orderBy('fecha_hora','desc')->paginate(4);
+            return view('app.consultas_realizadas',compact('consultas'));
+        }
+        else{
+            try{
+                $fecha=Carbon::createFromFormat('Ymd',$fecha);
+                // $consultas=Consulta::orderBy('fecha_hora','desc')->paginate(4);
+                $consultas=Consulta::whereDate('fecha_hora','=',$fecha->toDateString())
+                        ->orderBy('fecha_hora', 'asc')
+                        ->paginate(4);
+                return view('app.consultas_realizadas',compact('consultas'))->with('fecha',$fecha);
+            }
+            catch(\Exception $e){
+                 abort(404);
+            }
+        }
         // $consultas=Consulta::paginate(4);
-        return view('app.consultas_realizadas',compact('consultas'));
     }
     
     public function nuevaCita(){
@@ -51,8 +66,5 @@ class AppController extends Controller
         $consulta=Consulta::find($id);
         // $consultas=Paciente::find($id)->consultas::paginate(4);
         return view('app.formulario_consulta_anterior',['consulta'=>$consulta]);
-    }
-    public function formulario(){
-        return view('prueba_formulario');
     }
 }

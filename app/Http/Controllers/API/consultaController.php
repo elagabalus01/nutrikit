@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use App\Cita;
 use App\Consulta;
@@ -12,8 +14,16 @@ use App\PlanAlimenticio;
 use Carbon\Carbon;
 use Validator;
 
-class consultaController extends BaseController
+class ConsultaController extends BaseController
 {
+    public function formulario(){
+        $consultas=Consulta::whereDate('fecha_hora','=',Carbon::today()->toDateString())
+                        ->orderBy('fecha_hora', 'asc')
+                        ->paginate(1);
+
+        return Response::json(View::make('prueba_formulario', array('consultas' => $consultas))->render());
+        // return view('prueba_formulario',compact('consultas'));
+    }
     public function consultasPaciente($id){
         $consultas=Paciente::find($id)->consultas;
         return $this->sendResponse($consultas->toArray(),'Todas las consultas del paciente');

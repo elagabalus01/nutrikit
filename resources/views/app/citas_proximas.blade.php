@@ -33,7 +33,7 @@
                         </td>
                         <td>{{ $cita->fecha }} {{ $cita->hora }}</td>
                         <td>
-                            <a id="{{ $cita->id }}" class="consulta" href="consulta/{{ $cita->id }}">Atender</a>
+                            <a id="{{ $cita->id }}" class="consulta" href="consultaCita/{{ $cita->id }}">Atender</a>
                             /
                             <a id="{{ $cita->id }}" class="eliminar cita" href="#">Cancelar</a>
                         </td>

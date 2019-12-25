@@ -22,13 +22,12 @@ Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy'); //posiblmente se pueda cambiar a post
 
 Route::get('/app','AppController@index')->middleware('auth')->middleware('prevent-back-history');
-Route::get('/consultas','AppController@consultas')->middleware('auth')->middleware('prevent-back-history');
+Route::get('/consultas/{fecha?}','AppController@consultas')->middleware('auth')->middleware('prevent-back-history');
 Route::get('/nueva_cita','AppController@nuevaCita')->middleware('auth')->middleware('prevent-back-history');
 
 Route::get('/nuevaConsulta','AppController@nuevaConsulta')->middleware('auth')->middleware('prevent-back-history');
 
-Route::get('/consulta/{id}','AppController@consultaConCita');
+Route::get('/consultaCita/{id}','AppController@consultaConCita');
 
 Route::get('/pacientes/{id}','AppController@consultasPaciente');
-Route::get('/consultas/{id}','AppController@consulta');
-Route::get('/formulario','AppController@formulario');
+Route::get('/consulta/{id}','AppController@consulta');

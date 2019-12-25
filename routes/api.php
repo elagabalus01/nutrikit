@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('consulta','API\ConsultaController')->middleware('auth:api');
+Route::get('formulario','API\ConsultaController@formulario');
 Route::post('autocomplete', 'API\CitaController@autocomplete');
 Route::resource('cita','API\CitaController')->middleware('auth:api');
 Route::get('pacientes/{rfc}/{campo}', 'API\PacienteController@datos')->middleware('auth:api');
