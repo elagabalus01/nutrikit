@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col">
             <h1>Pacientes atendidos</h1>
-            <div class="row">
+            <div class="row" style="padding-bottom: 18px">
                 @if($fecha ?? false)
                 <div class="col-md-2">
                     <label>
@@ -25,7 +25,11 @@
                 <div class="col-md-8 text-right">
                 @endif
                     <label>Fecha:</label>
-                    <input min="{{ Carbon\Carbon::now()->subYears(20)->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->format('Y-m-d') }}" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}" type="date" id="fechaConsultas">
+                    @if($fecha ?? false)
+                    <input min="{{ Carbon\Carbon::now()->subYears(20)->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->format('Y-m-d') }}" value="{{ $fecha->format('Y-m-d')  }}" type="date" id="fechaConsultas">
+                    @else
+                    <input min="{{ Carbon\Carbon::now()->subYears(20)->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->format('Y-m-d') }}" value="{{  Carbon\Carbon::now()->format('Y-m-d') }}" type="date" id="fechaConsultas">
+                    @endif
                     <button class="btn btn-primary" id="irFecha">Ir</button>
                     <div id="fechaConsultasValid" class="valid-feedback">Aceptado</div>
                     <div id="fechaConsultasInvalid" class="invalid-feedback">Fecha no valida</div>   
@@ -78,10 +82,12 @@
         @endif
     </div
 ></div>
+@include('app.componentes.mensajes.modalError')
 @endsection
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/citas_consultas.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
+<script>var api_token = "{{ Auth::user()->api_token }}" </script>
 <script type="text/javascript">
     $('#fechaConsultas').on('keyup keypress change click',function(){
     console.log('Validadno');
@@ -112,14 +118,17 @@
         var fecha=$('#fechaConsultas').val().split('-').join('');
         window.location.href=`/consultas/${fecha}`;
     });
-    $("#searchRfc").on('keyup keydown change click focus',function(){
+    function validarRFC(){
       var rfc=$('#searchRfc').val();
-      if(validarRegex(rfc,/^[a-zA-ZÑñÜü]{4}[0-9]{6}[a-zA-ZÑñÜü0-9]{3}$/) && validarLongitudMinima(rfc,13)){
+      if(validarRegex(rfc,/^[a-zA-ZÑñÜü]{4}[0-9]{6}[a-zA-ZÑñÜü0-9]{3}$/) || validarLongitudMinima(rfc,13)){
           $("#ver").attr("disabled", false);
       }
       else{
           $("#ver").attr("disabled", true);
       }
+    }
+    $("#searchRfc").on('input propertychange paste autocompleteselect keyup keydown keypress change click focus',function(){
+        validarRFC();
     });
     $("#searchRfc").autocomplete({
         source: function(request, response){
@@ -131,14 +140,39 @@
                 dataType: "json",
                 success: function(data){
                     response(data);
-                }
+                },
             });
+        },
+        select: function(event, ui) {
+            $("#ver").attr("disabled", false);
         },
         minLength: 2,
     });
+    function checkRegisterRfc(rfc){
+        $.ajax({
+          headers:{
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Authorization': `Bearer ${api_token}`
+        },
+        url:`/api/paciente/check/${rfc}`,
+        type:'POST'
+        }).done(function(response){
+            if (response["success"]==false){
+                //Si hubo un error
+                console.log(response['message']);
+                $('#errorMessage').empty();
+                $('#errorMessage').append(response['message']);
+                $('#errorGenerico').modal();
+            }
+            else{
+                window.open(`/pacientes/${rfc}`,'_blank','toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=100,width=1100,height=700');
+            }
+        });
+    }
     $("#ver").click(function(){
         var rfc=$('#searchRfc').val();
-        window.open(`/pacientes/${rfc}`,'_blank','toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=100,width=1100,height=700');
+        checkRegisterRfc(rfc);
     });
 </script>
 @endsection

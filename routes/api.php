@@ -20,6 +20,7 @@ Route::resource('cita','API\CitaController')->middleware('auth:api');
 Route::get('pacientes/{rfc}/{campo}', 'API\PacienteController@datos')->middleware('auth:api');
 Route::post('pacientes/{rfc}/{campo}', 'API\PacienteController@actualizar')->middleware('auth:api');
 Route::post('paciente/{id}','API\ConsultaController@consultasPaciente')->middleware('auth:api');
+Route::post('paciente/check/{id}','API\PacienteController@check')->middleware('auth:api');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

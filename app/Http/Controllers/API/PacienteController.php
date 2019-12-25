@@ -11,6 +11,14 @@ use Validator;
 
 class PacienteController extends BaseController
 {
+    public function check($rfc){
+        if(!is_null(Paciente::find($rfc))){
+            return $this->sendDone('RFC encontrado');
+        }
+        else{
+            return $this->sendErrorResponse('RFC no registrado',[]);
+        }
+    }
     public function datos($rfc,$campo)
     {
         $paciente=Paciente::find($rfc);
