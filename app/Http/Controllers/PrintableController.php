@@ -18,8 +18,8 @@ class PrintableController extends Controller
         ->orderBy('fecha_hora', 'desc')
         ->get();
         $pdf=PDF::loadView('imprimibles.productividad',compact('consultas'))->setPaper('a4', 'landscape');
-        return $pdf->download('hora.pdf');
-        // return view('imprimibles.productividad',compact('consultas'));
+        // return $pdf->download('hora.pdf');
+        return view('imprimibles.productividad',compact('consultas'));
     }
 }
 

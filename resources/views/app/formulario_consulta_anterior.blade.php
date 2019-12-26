@@ -8,8 +8,14 @@
 @section('content')
 <div class="container">
     <div class="row">
+      <div class="col align-self-star">
+        <p class="float-left">
+          <b>Consulta:</b> {{ $consulta->cita_id ? 'Subsecuente' : 'Primera vez' }}
+        </p>
+      </div>
       <div class="col align-self-end">
-        <p class="float-right">Fecha:
+        <p class="float-right">
+          <b>Fecha:</b>
         {{ $consulta->fecha }}
         </p>
       </div>
