@@ -7,6 +7,7 @@ use App\Cita;
 use App\Consulta;
 use App\Paciente;
 use Carbon\Carbon;
+use PDF;
 
 class AppController extends Controller
 {
@@ -64,7 +65,8 @@ class AppController extends Controller
     
     public function consulta($id){
         $consulta=Consulta::find($id);
-        // $consultas=Paciente::find($id)->consultas::paginate(4);
+        // $pdf=PDF::loadView('app.formulario_consulta_anterior',['consulta'=>$consulta])->setPaper('a4', 'landscape');
+        // return $pdf->download('hora.pdf');
         return view('app.formulario_consulta_anterior',['consulta'=>$consulta]);
     }
 }
