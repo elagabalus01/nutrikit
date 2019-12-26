@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 $factory->define(Cita::class, function (Faker $faker) {
     $pacientes = App\Paciente::pluck('rfc')->toArray();
     return [
-        'fecha_hora'=>now(),
+        'fecha_hora'=>$faker->dateTimeBetween($startDate = 'now', $endDate = '+30 days'),
         'paciente_id'=>$faker->randomElement($pacientes),
     ];
 });

@@ -7,7 +7,12 @@
     <div class="row">
         <div class="col">
             <h1>Consultas anteriores</h1>
+            @if(is_null($paciente))
+            Huvo un error
+            @else
             <label>Paciente: {{ $paciente->nombre }}</label>
+            @endif
+
         </div>
     </div>
     @if(count($consultas)>0)

@@ -18,15 +18,15 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(Paciente::class, function (Faker $faker) {
-    $gender = $faker->randomElement(['Masculino', 'Femenino']);
+    $gender = $faker->randomElement(['Masculino', 'Femenino','Otro']);
     return [
-        'rfc'=>$faker->regexify('[a-zA-ZÑñÜü]{4}[0-9]{6}[a-zA-ZÑñÜü0-9]{3}'),
+        'rfc'=>$faker->regexify('[a-zA-Z]{4}[0-9]{6}[a-zA-Z0-9]{3}'),
         'nombre'=>$faker->name,
         'telefono'=>$faker->regexify('[0-9]{10}'),
         'correo_electronico'=>$faker->safeEmail,
-        'estatura'=>$faker->numberBetween($min = 1, $max = 50),
-        'peso'=>$faker->numberBetween($min = 1, $max = 50),
-        'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-30 years', $endDate = 'now'),
+        'estatura'=>$faker->numberBetween($min = 140, $max = 200),
+        'peso'=>$faker->numberBetween($min = 50, $max = 150),
+        'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-30 years', $endDate = '-13 years'),
         'sexo'=>$gender,
         'alergias'=>'No',
         'actividad_fisica'=>'ninguna',

@@ -17,10 +17,9 @@ class PrintableController extends Controller
         ->where('user_id','=',Auth::user()->id)
         ->orderBy('fecha_hora', 'desc')
         ->get();
-        // $consultas=Consulta::all();
-        // $pdf=PDF::loadView('imprimibles.productividad',compact('consultas'))->setPaper('a4', 'landscape');
-        // return $pdf->download('hora.pdf');
-        return view('imprimibles.productividad',compact('consultas'));
+        $pdf=PDF::loadView('imprimibles.productividad',compact('consultas'))->setPaper('a4', 'landscape');
+        return $pdf->download('hora.pdf');
+        // return view('imprimibles.productividad',compact('consultas'));
     }
 }
 

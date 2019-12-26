@@ -24,13 +24,15 @@ $factory->define(Consulta::class, function (Faker $faker) {
     $user=$faker->randomElement(User::pluck('id')->toArray());
     $cita=Cita::find($cita_id);
     $paciente=Paciente::find($cita->paciente_id);
+    $cita->atendida=true;
+    $cita->save();
     return [
         'user_id'=>$user,
         'cita_id'=>$cita_id,
         'paciente_id'=>$paciente->rfc,
         'descripcion_dieta'=>"Ninguna descripcion",
         'observaciones'=>"Ninguna observacion",
-        'fecha_hora'=>$faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
+        'fecha_hora'=>$cita->fecha_hora,
         'edad_actual'=>$paciente->edad,
         'peso_actual'=>$paciente->peso,
         'estatura_actual'=>$paciente->estatura,

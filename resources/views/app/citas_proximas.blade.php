@@ -95,84 +95,9 @@
 </div>
 @endsection
 @section('scripts')
-<script type="text/javascript" src="{{ asset('js/citas_consultas.js') }}"></script>
-<!-- <script>
-    $('#append').on('click',function(){
-        $('.container').html('<div class="row">'+
-        '<div class="col">'+
-            '<h1>Próximas citas</h1>'+
-            '<label id="insertar">Mi texto</label>'+
-            '<button id="append">Change</button>'+
-        '</div>'+
-    '</div>'+
-            '@if(count($citas)>0)'+
-    '<div class="row justify-content-center">'+
-        '<div class="col-md-9">'+
-            '<table class="table">'+
-                '<thead>'+
-                    '<tr>'+
-                        '<th>Paciente</th>'+
-                        '<th>Fecha</th>'+
-                        '<th>Acciones</th>'+
-                    '</tr>'+
-                '</thead>'+
-                '<tbody>'+
-                    '@foreach($citas as $cita)'+
-                    '<tr>'+
-                        '<td>'+
-                            '<a href="#" onclick="consultasAnteriores(\'{{ $cita->paciente->rfc }}\')">{{ $cita->paciente->nombre }}</a>'+
-                        '</td>'+
-                        '<td>{{ $cita->fecha }} {{ $cita->hora }}</td>'+
-                        '<td>'+
-                            '<a id="{{ $cita->id }}" class="consulta" href="consulta/{{ $cita->id }}">Atender?</a>'+
-                            '/'+
-                            '<a id="{{ $cita->id }}" class="eliminar cita" href="#">Cancelar</a>'+
-                        '</td>'+
-                    '</tr>'+
-                    '@endforeach'+
-                '</tbody>'+
-            '</table>'+
-        '</div>'+
-    '</div>'+
-    '@else'+
-    '<div class="row">'+
-        '<div class="col">'+
-            '<h3>No hay citas por atender hoy</h3>'+
-        '</div>'+
-    '</div>'+
-    '@endif')
-    });
-</script> -->
 <script type="text/javascript">
-    <script>var api_token = "{{ Auth::user()->api_token }}" </script>
-<script type="text/javascript">
-    $('#fechaCitas').on('keyup keypress change click',function(){
-      if(validarFechaConsultas()){
-        $("#irFecha").attr("disabled", false);
-      }
-      else{
-        $("#irFecha").attr("disabled", true);
-      }
-    });
-    function validarFechaConsultas(){
-      var fecha_consulta=new Date($('#fechaCitas').val());
-      var min_fecha=new Date($('#fechaCitas').attr('min'));
-      var max_fecha=new Date($('#fechaCitas').attr('max'));
-
-      if(fecha_consulta>=min_fecha && fecha_consulta<=max_fecha){
-        $('#fechaCitasValid').show();
-        $('#fechaCitasInvalid').hide();
-        return true;
-      }
-      else{
-        $('#fechaCitasValid').hide();
-        $('#fechaCitasInvalid').show();
-        return false;
-      }
-    }
-    $('#irFecha').click(function(){
-        var fecha=$('#fechaCitas').val().split('-').join('');
-        window.location.href=`/citas/${fecha}`;
-    });
+    <script>var api_token = "{{ Auth::user()->api_token }}"
 </script>
+<script type="text/javascript" src="{{ asset('js/citas_consultas.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/citas_proximas.js') }}"></script>
 @endsection

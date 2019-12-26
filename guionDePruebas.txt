@@ -1,5 +1,6 @@
-factory(App\Paciente::class,10)->create();
-factory(App\Cita::class,5)->create();
-factory(App\Consulta::class,5)->create();
-factory(App\PlanAlimenticio::class,5)->create();
-factory(App\DietaHabitual::class,5)->create();
+factory(App\User::class,20)->create();
+factory(App\Paciente::class,20)->create();
+factory(App\Cita::class,20)->create();
+factory(App\Consulta::class,10)->create();
+factory(App\PlanAlimenticio::class,10)->create();
+factory(App\DietaHabitual::class,10)->create();
