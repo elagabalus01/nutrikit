@@ -11,15 +11,31 @@ use PDF;
 
 class AppController extends Controller
 {
-    public function index(){
+    public function citas($fecha=null){
         // Dispatch::where('user_id', Auth::id())->paginate(10); ejemplo para el futuro
-        $citas=Cita::where('atendida',false)
-                        ->whereDate('fecha_hora','=',Carbon::today()->toDateString())
+        if(is_null($fecha)){
+            $citas=Cita::where('atendida',false)
+                    ->whereDate('fecha_hora','=',Carbon::today()->toDateString())
+                    ->orderBy('fecha_hora', 'asc')
+                    ->paginate(4);
+            return view('app.citas_proximas',compact('citas'));
+        }
+        else{
+            try{
+                $fecha=Carbon::createFromFormat('Ymd',$fecha);
+                // $consultas=Consulta::orderBy('fecha_hora','desc')->paginate(4);
+                $citas=Cita::whereDate('fecha_hora','=',$fecha->toDateString())
                         ->orderBy('fecha_hora', 'asc')
+                        ->where('atendida',false)
                         ->paginate(4);
+                return view('app.citas_proximas',compact('citas'))->with('fecha',$fecha);
+            }
+            catch(\Exception $e){
+                 abort(404);
+            }
+        }
         // $citas=Cita::where('atendida',false)->paginate(4);
         // $citas=Cita::paginate(4);
-        return view('app.citas_proximas',compact('citas'));
     }
     
     public function consultas($fecha=null){

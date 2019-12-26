@@ -216,7 +216,7 @@
   </div>
   <div class="row justify-content-end">
     <div class="col col-lg-1">
-      <button onclick="window.location.href='/app';" class="btn btn-danger float-right">Cancelar</button>
+      <button onclick="window.location.href='/citas';" class="btn btn-danger float-right">Cancelar</button>
     </div>
     <div class="col col-lg-1">
       <button disabled="true" id="crearConsulta" class="btn btn-primary float-right">Aceptar</button>

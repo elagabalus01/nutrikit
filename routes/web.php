@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect()->to('/app');
+    return redirect()->to('/citas');
 });
 Route::get('/register', 'RegistrationController@create')->middleware('guest')->middleware('prevent-back-history');
 Route::post('register', 'RegistrationController@store');
@@ -21,7 +21,9 @@ Route::get('/login', 'SessionsController@create')->name('login')->middleware('gu
 Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy'); //posiblmente se pueda cambiar a post
 
-Route::get('/app','AppController@index')->middleware('auth')->middleware('prevent-back-history');
+// Route::get('/app','AppController@index')->middleware('auth')->middleware('prevent-back-history');
+Route::get('/citas/{fecha?}','AppController@citas')->middleware('auth')->middleware('prevent-back-history');
+
 Route::get('/consultas/{fecha?}','AppController@consultas')->middleware('auth')->middleware('prevent-back-history');
 Route::get('/nueva_cita','AppController@nuevaCita')->middleware('auth')->middleware('prevent-back-history');
 

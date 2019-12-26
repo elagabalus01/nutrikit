@@ -166,7 +166,7 @@ function crearConsulta(){
       $('#successMessage').empty();
       $('#successMessage').append('La consulta fue almacenada correctamente');
       $('#successGenerico').modal();
-      window.location.href='/app';
+      window.location.href='/citas';
     }
   });
 }

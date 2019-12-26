@@ -20,7 +20,7 @@ class SessionsController extends Controller
             ]);
         }
         
-        return redirect()->to('/app');
+        return redirect()->to('/citas');
     }
     
     public function destroy()
