@@ -40,6 +40,7 @@
             </table>
         </div>
     </div>
+    {{ $consultas->links() }}
     @else
     <div class="row">
         <div class="col">

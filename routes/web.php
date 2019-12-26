@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return redirect()->to('/citas')->middleware('prevent-back-history');
-});
+    return redirect()->to('/citas');
+})->middleware('prevent-back-history');
 Route::get('/register', 'RegistrationController@create')->middleware('guest')->middleware('prevent-back-history');
 Route::post('register', 'RegistrationController@store');
 
@@ -29,7 +29,9 @@ Route::get('/nueva_cita','AppController@nuevaCita')->middleware('auth')->middlew
 
 Route::get('/nuevaConsulta','AppController@nuevaConsulta')->middleware('auth')->middleware('prevent-back-history');
 
-Route::get('/consultaCita/{id}','AppController@consultaConCita')->middleware('auth')->middleware('prevent-back-history');
+Route::get('/consultaCita/{id}','AppController@consultaConCita')->middleware('auth')
+->middleware('cita-atendida')
+->middleware('prevent-back-history');
 
 Route::get('/pacientes/{id}','AppController@consultasPaciente')->middleware('auth')->middleware('prevent-back-history');
 Route::get('/consulta/{id}','AppController@consulta')->middleware('auth')->middleware('prevent-back-history');
