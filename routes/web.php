@@ -36,4 +36,12 @@ Route::get('/consultaCita/{id}','AppController@consultaConCita')->middleware('au
 Route::get('/pacientes/{id}','AppController@consultasPaciente')->middleware('auth')->middleware('prevent-back-history');
 Route::get('/consulta/{id}','AppController@consulta')->middleware('auth')->middleware('prevent-back-history');
 
-Route::get('/productividad','PrintableController@generarProductividad')->middleware('auth');
+Route::get('/productividad','AppController@productividad')->middleware('auth');
+
+Route::get('/reporte/dia','PrintableController@reporteDia')->middleware('auth');
+Route::get('/reporte/mes','PrintableController@reporteMes')->middleware('auth');
+Route::get('/reporte/año','PrintableController@reporteYear')->middleware('auth');
+
+Route::get('/reporte/dia/{fecha}','PrintableController@generarReporteDia')->middleware('auth');
+Route::get('/reporte/mes/{mes}/{year}','PrintableController@generarReporteMes')->middleware('auth');
+Route::get('/reporte/año/{year}','PrintableController@generarReporteYear')->middleware('auth');

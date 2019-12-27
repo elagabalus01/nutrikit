@@ -66,6 +66,10 @@ class AppController extends Controller
     public function nuevaConsulta(){
         return view('app.formulario_consulta_nueva');
     }
+
+    public function productividad(){
+        return view('app.productividad');
+    }    
     
     public function consultaConCita($id){
         $cita=Cita::find($id);

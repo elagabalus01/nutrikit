@@ -21,6 +21,11 @@
         @else
         <a class="nav-item nav-link" href="/nueva_cita">Programar cita</a>
         @endif
+        @if(Request::path() === 'productividad')
+        <a class="nav-item nav-link active" href="/productividad">Productividad</a>
+        @else
+        <a class="nav-item nav-link" href="/productividad">Productividad</a>
+        @endif
     </div>
       <a class="nav-item nav-link my-2 my-lg-0 btn btn-success custom-btn" href="/logout">Cerrar sesión</a>
   </div>
