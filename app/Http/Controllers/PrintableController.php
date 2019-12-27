@@ -34,7 +34,7 @@ class PrintableController extends Controller
         if(count($consultas)<1){
             return redirect()->back()->withErrors(['No se realizaron consultas en ese periodo']);
         }
-        return $pdf->download('hora.pdf');
+        return $pdf->download('productividad-'.$fecha->toDateString().'.pdf');
         // return view('imprimibles.productividad',compact('consultas'));
     }
     public function generarReporteMes($mes,$year){
@@ -53,8 +53,8 @@ class PrintableController extends Controller
             return redirect()->back()->withErrors(['No se realizaron consultas en ese periodo']);
         }
         $pdf=PDF::loadView('imprimibles.productividad',compact('consultas'))->setPaper('a4', 'landscape');
-        // return $pdf->download('hora.pdf');
-        return view('imprimibles.productividad',compact('consultas'));
+        return $pdf->download('productividad'.'-'.$mes.'-'.$year.'.pdf');
+        // return view('imprimibles.productividad',compact('consultas'));
     }
     public function generarReporteYear($year){
         try{
@@ -71,8 +71,8 @@ class PrintableController extends Controller
             return redirect()->back()->withErrors(['No se realizaron consultas en ese periodo']);
         }
         $pdf=PDF::loadView('imprimibles.productividad',compact('consultas'))->setPaper('a4', 'landscape');
-        // return $pdf->download('hora.pdf');
-        return view('imprimibles.productividad',compact('consultas'));
+        return $pdf->download('productividad'.'-'.$year.'.pdf');
+        // return view('imprimibles.productividad',compact('consultas'));
     }
 
     public function generarProductividad(){
