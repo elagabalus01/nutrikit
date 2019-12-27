@@ -59,6 +59,11 @@
                 <th>RFC</th>
                 <th>Fecha</th>
                 <th>Sexo</th>
+                <th>IMC</th>
+                <th>% grasa</th>
+                <th>% musculo</th>
+                <th>Kg hueso</th>
+                <th>L agua</th>
                 <th>Primera vez</th>
                 <th>Subsecuente</th>
             </tr>
@@ -70,6 +75,11 @@
                 <td>{{ $consulta->paciente->rfc }}</td>
                 <td>{{ $consulta->fecha }}</td>
                 <td>{{ $consulta->paciente->sexo }}</td>
+                <td>{{ number_format($consulta->peso_actual/pow($consulta->estatura_actual/100,2),2) }}</td>
+                <td>{{ $consulta->grasa_porcentaje }}</td>
+                <td>{{ $consulta->musculo_porcentaje }}</td>
+                <td>{{ $consulta->hueso_kilos }}</td>
+                <td>{{ $consulta->agua_litros }}</td>
                 <td>{{ is_null($consulta->cita) ? 'x' : '' }}</td>
                 <td>{{ is_null($consulta->cita) ? '': 'x'  }}</td>
             </tr>
