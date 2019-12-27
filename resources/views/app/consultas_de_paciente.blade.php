@@ -8,7 +8,7 @@
         <div class="col">
             <h1>Consultas anteriores</h1>
             @if(is_null($paciente))
-            Huvo un error
+            Hubo un error
             @else
             <label>Paciente: {{ $paciente->nombre }}</label>
             @endif

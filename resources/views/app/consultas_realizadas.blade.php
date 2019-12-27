@@ -19,8 +19,8 @@
                 @else
                 <div class="col-md-4">
                     <label>Buscar paciente</label>
-                    <input maxlength="25" id="searchRfc" name="rfc" type="text" class="ui-autocomplete-input" placeholder="nombre o rfc" />
-                    <button disabled="true" class="btn btn-primary" id="ver">ver</button>
+                    <input maxlength="25" id="searchRfc" name="rfc" type="text" class="ui-autocomplete-input" placeholder="Nombre o RFC" />
+                    <button disabled="true" class="btn btn-primary" id="ver">Ver</button>
                 </div>
                 <div class="col-md-8 text-right">
                 @endif

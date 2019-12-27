@@ -61,7 +61,7 @@
           <label id="correo">Correo:
             {{ $cita->paciente->correo_electronico }}
           </label>
-          <input style="display:none;" id='correo_electronico' placeholder='correo'></input>
+          <input style="display:none;" id='correo_electronico' placeholder='Correo'></input>
           <button id="editarCorreo">Editar</button>
           <button style="display:none;" id='aceptarCorreo'>Aceptar</button>
           <div id="correo_electronicoValid" class="valid-feedback">Aceptado</div>
@@ -71,7 +71,7 @@
           <label id="tel">Telefono:
             {{ $cita->paciente->telefono }}
           </label>
-          <input style="display:none;" maxlength="10" placeholder='telefono' type="tel" id="telefono">
+          <input style="display:none;" maxlength="10" placeholder='Telefono' type="tel" id="telefono">
           <button id="editarTel">Editar</button>
           <button style="display:none;" id='aceptarTel'>Aceptar</button>
           <div id="telefonoValid" class="valid-feedback">Aceptado</div>

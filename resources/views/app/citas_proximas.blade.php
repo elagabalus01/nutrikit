@@ -88,7 +88,7 @@
     @if(!($fecha ?? false))
     <div class="row justify-content-start">
         <div class="col">
-            <h2>¿Sin previa cita? Haz click <a href="/nuevaConsulta">aqui</a></h2>
+            <h2>¿Sin previa cita? Haz click <a href="/nuevaConsulta">aquí</a></h2>
         </div>
     </div>
     @endif

@@ -19,7 +19,7 @@
   <div class="form-group row justify-content-center">
     <label class="col-md-2 col-form-label">RFC del paciente</label>
     <div class="col-md-3">
-        <input maxlength="13" id="searchRfc" name="rfc" type="text" class="form-control ui-autocomplete-input" placeholder="nombre o rfc del paciente" />
+        <input maxlength="13" id="searchRfc" name="rfc" type="text" class="form-control ui-autocomplete-input" placeholder="Nombre o RFC del paciente" />
     </div>
   </div>
   <div class="form-group row justify-content-center">

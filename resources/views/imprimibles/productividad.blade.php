@@ -74,10 +74,10 @@
                 <th>Fecha</th>
                 <th>Sexo</th>
                 <th>IMC</th>
-                <th>% grasa</th>
-                <th>% musculo</th>
-                <th>Kg hueso</th>
-                <th>L agua</th>
+                <th>% Grasa</th>
+                <th>% Musculo</th>
+                <th>Kg. Hueso</th>
+                <th>L. Agua</th>
                 <th>Primera vez</th>
                 <th>Subsecuente</th>
             </tr>
