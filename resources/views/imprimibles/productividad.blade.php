@@ -13,34 +13,48 @@
     }
     table, th, td {
         border: 1px solid black;
+        font-size: 15px;
     }
     .logo{
-        width: 200px;
+        width: 90px;
         float: left;
     }
     .logo_info{
-        height: 200px;
+        height: 100px;
     }
     .info{
+        position: absolute;
         text-align: center;
         height: 200px;
         width: 100%;
         vertical-align: middle;
+        font-size: 14px;
+        /*line-height: 14px;*/
+    }
+    .user_fecha{
+        padding-top: 12px;
+        width: 100%;
     }
 </style>
 
 <body>
     <div class="logo_info">
-        <div>
+        <!-- <div>
             <img class="logo" src="{{ public_path('nutrikit_logo.png') }}">
-        </div>
+        </div> -->
         <div class="info">
-            <p>Nombre del consultorio</p>
-            <p>Ubicacion</p>
+            <p>
+            SECRETARIA DE MARINA-ARMADA DE MÉXICO <br>
+            OFICIALIA MAYOR <br>
+            DIRECCIÓN GENERAL DE RECURSOS HUMANOS <br>
+            DIRECCION GENERAL ADJUNTA DE SANIDA NAVAL <br>
+            CLINICA NAVAL DE CUEMANCO <br>
+            CALZADA DEL HUESO No.7700 COL. GRANJAS COAPA DEL. TALPAN. CIUDAD DE MEXICO C.P. 14330 TELEFONOS 56246500 EXT.8984 LICENCIA SANITARIA 0901409009 <br>
+            </p>
         </div>
     </div>
 <br>
-<div>
+<div class="user_fecha">
     <label style="float: left;">
         Médico: {{ auth()->user()->nombre }}
     </label>
