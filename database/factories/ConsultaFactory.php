@@ -41,5 +41,8 @@ $factory->define(Consulta::class, function (Faker $faker) {
         'musculo_porcentaje'=>$faker->numberBetween($min = 1, $max = 50),
         'hueso_kilos'=>$faker->numberBetween($min = 1, $max = 50),
         'agua_litros'=>$faker->numberBetween($min = 1, $max = 50),
+        'proteinas_porcentaje'=>15,
+        'hidratos_porcentaje'=>60,
+        'lipidos_porcentaje'=>25,
     ];
 });
