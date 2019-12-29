@@ -1,14 +1,18 @@
-$(':input').on('keyup keypress change click',function(){
+function ralizarValidaciones(){
   validarConsulta();
-  validarPorcentajeMacros();
-  if(validarDatosDelPaciente() &&
-  validarCaracteristicasDelPaciente() &&
-  validarTablas()){
+  var datosPaciente=validarDatosDelPaciente();
+  var caracteristicasPaciente=validarCaracteristicasDelPaciente();
+  var tablas=validarTableInput();
+  var macros=validarPorcentajeMacros();
+  if(datosPaciente&&caracteristicasPaciente&&tablas&&macros){
     $("#crearConsulta").attr("disabled", false);
   }
   else{
     $("#crearConsulta").attr("disabled", true);
   }
+}
+$(':input').on('keyup keypress change click',function(){
+  ralizarValidaciones();
 });
 function validarRFC(){
   var rfc=$('#rfc').val();
@@ -243,14 +247,6 @@ function validarTableInput(){
   });
   return valido;
 }
-function validarTablas(){
-  if(validarTableInput() && validarPorcentajeMacros()){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
 function validarPorcentajeMacros(){
   var valido=true;
   var suma=0;
@@ -339,3 +335,4 @@ function crearConsulta(){
 $('#crearConsulta').on('click',function(){
   crearConsulta();
 });
+ralizarValidaciones();

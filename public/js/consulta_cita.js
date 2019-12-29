@@ -1,14 +1,20 @@
 /*
 Validaciones de front end
 */
-$(':input').on('keyup keypress change click',function(){
+function realizarValidaciones(){
   validarConsulta();
-  if(validarCaracteristicasDelPaciente() && validarTablas()){
+  var caracteristicasPaciente=validarCaracteristicasDelPaciente();
+  var tabla=validarTableInput();
+  var macros=validarPorcentajeMacros();
+  if(caracteristicasPaciente&&tabla&&macros){
     $("#crearConsulta").attr("disabled", false);
   }
   else{
     $("#crearConsulta").attr("disabled", true);
   }
+}
+$(':input').on('keyup keypress change click',function(){
+  realizarValidaciones();
 });
 function validarPorcentajeGrasa(){
   var grasa_porcentaje=$('#grasa_porcentaje').val();
@@ -117,8 +123,8 @@ function validarPorcentajeMacros(){
   var valido=true;
   var suma=0;
   $(".porcentajes_macros").each(function (item){
-    var valor=parseInt(($(this).val());
-    suma+=valor;
+    var valor=$(this).val();
+    suma+=parseInt(valor);
     if(valor>=0 && valor<=100 && valor.length>0){
       $(this).css("background-color", "#549900");
     }
@@ -128,7 +134,6 @@ function validarPorcentajeMacros(){
     }
   });
   if (suma!=100){
-    console.log(suma);
     $('#sumaPorcentajeValid').hide();
     $('#sumaPorcentajeInvalid').show();
     valido=false;
@@ -202,3 +207,4 @@ function crearConsulta(){
 $('#crearConsulta').on('click',function(){
   crearConsulta();
 });
+realizarValidaciones();
