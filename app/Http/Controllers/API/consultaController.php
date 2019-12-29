@@ -88,6 +88,10 @@ class ConsultaController extends BaseController
                 'musculo_porcentaje' => 'required',
                 'hueso_kilos' => 'required',
                 'agua_litros' => 'required',
+                // Se valida que esten los porcentajes
+                'proteinas_porcentaje' => 'required',
+                'hidratos_porcentaje' => 'required',
+                'lipidos_porcentaje' => 'required',
             ],$messages);
             if($validator->fails()){
                 return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
@@ -145,6 +149,10 @@ class ConsultaController extends BaseController
             'musculo_porcentaje' => $input['musculo_porcentaje'],
             'hueso_kilos' => $input['hueso_kilos'],
             'agua_litros' => $input['agua_litros'],
+            // Se valida que esten los porcentajes
+            'proteinas_porcentaje' => $input['proteinas_porcentaje'],
+            'hidratos_porcentaje' => $input['hidratos_porcentaje'],
+            'lipidos_porcentaje' => $input['lipidos_porcentaje'],
         ]);
         $dietaHabitual=DietaHabitual::create([
             'cereales' => $input['dieta_cereales'],

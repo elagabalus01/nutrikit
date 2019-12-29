@@ -1,5 +1,6 @@
 $(':input').on('keyup keypress change click',function(){
   validarConsulta();
+  validarPorcentajeMacros();
   if(validarDatosDelPaciente() &&
   validarCaracteristicasDelPaciente() &&
   validarTablas()){
@@ -35,19 +36,6 @@ function validarNombre(){
     return false;
   }
 }
-function validarCorreo(){
-  var correo_electronico=$('#correo_electronico').val();
-  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+@[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+$/)){
-    $('#correo_electronicoValid').show();
-    $('#correo_electronicoInvalid').hide();
-    return true;
-  }
-  else{
-    $('#correo_electronicoValid').hide();
-    $('#correo_electronicoInvalid').show();
-    return false;
-  }
-}
 function validarTelefono(){
   var telefono=$('#telefono').val();
   if(validarLongitudMinima(telefono,10) && validarRegex(telefono,/^[0-9]+$/)){
@@ -61,6 +49,20 @@ function validarTelefono(){
     return false;
   }
 }
+function validarCorreo(){
+  var correo_electronico=$('#correo_electronico').val();
+  if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+@[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+$/)){
+    $('#correo_electronicoValid').show();
+    $('#correo_electronicoInvalid').hide();
+    return true;
+  }
+  else{
+    $('#correo_electronicoValid').hide();
+    $('#correo_electronicoInvalid').show();
+    return false;
+  }
+}
+
 function validarFechaNacimiento(){
   var fecha_nacimiento=new Date($('#fecha_nacimiento').val());
   var min_fecha=new Date($('#fecha_nacimiento').attr('min'));
@@ -79,8 +81,8 @@ function validarFechaNacimiento(){
 }
 
 function validarDatosDelPaciente(){
-  if(validarRFC() && validarNombre() && validarCorreo() &&
-  validarTelefono()&&validarFechaNacimiento()){
+  if(validarRFC() && validarNombre() &&
+  validarTelefono()&&validarCorreo() && validarFechaNacimiento()){
     return true;
   }else{
     return false;
@@ -242,12 +244,37 @@ function validarTableInput(){
   return valido;
 }
 function validarTablas(){
-  if(validarTableInput()){
+  if(validarTableInput() && validarPorcentajeMacros()){
     return true;
   }
   else{
     return false;
   }
+}
+function validarPorcentajeMacros(){
+  var valido=true;
+  var suma=0;
+  $(".porcentajes_macros").each(function (item){
+    var valor=$(this).val();
+    suma+=parseInt(valor);
+    if(valor>=0 && valor<=100 && valor.length>0){
+      $(this).css("background-color", "#549900");
+    }
+    else{
+      $(this).css("background-color", "#B22222");
+      valido=false;
+    }
+  });
+  if (suma!=100){
+    console.log(suma);
+    $('#sumaPorcentajeValid').hide();
+    $('#sumaPorcentajeInvalid').show();
+    valido=false;
+  }else{
+    $('#sumaPorcentajeInvalid').hide();
+    $('#sumaPorcentajeValid').show();
+  }
+  return valido;
 }
 function crearConsulta(){
   $.ajax({
@@ -291,6 +318,9 @@ function crearConsulta(){
       musculo_porcentaje:$('#musculo_porcentaje').val(),
       hueso_kilos:$('#hueso_kilos').val(),
       agua_litros:$('#agua_litros').val(),
+      proteinas_porcentaje:$('#proteinas_porcentaje').val(),
+      hidratos_porcentaje:$('#hidratos_porcentaje').val(),
+      lipidos_porcentaje:$('#lipidos_porcentaje').val(),
     }
   }).done(function(response){
     if (response["success"]==false){

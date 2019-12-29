@@ -23,6 +23,9 @@ class Consulta extends Model
         'musculo_porcentaje',
         'hueso_kilos',
         'agua_litros',
+        'proteinas_porcentaje',
+        'hidratos_porcentaje',
+        'lipidos_porcentaje',
     ];
     public $timestamps = false;
     public function user(){

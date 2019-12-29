@@ -31,6 +31,9 @@ class CrearConsultas extends Migration
             $table->float('musculo_porcentaje',5,2);
             $table->float('hueso_kilos',5,2);
             $table->float('agua_litros',5,2);
+            $table->tinyInteger('proteinas_porcentaje')->unsigned();
+            $table->tinyInteger('hidratos_porcentaje')->unsigned();
+            $table->tinyInteger('lipidos_porcentaje')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('paciente_id')->references('rfc')->on('pacientes')->onDelete('cascade');

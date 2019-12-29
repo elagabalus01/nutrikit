@@ -96,15 +96,19 @@ $("#calculoCalorias").change(function(){
   });
   $('#hidratos_suma').html(total);
 
+  var proteinas_porcentaje=$('#proteinas_porcentaje').val()/100;
+  var hidratos_porcentaje=$('#hidratos_porcentaje').val()/100;
+  var lipidos_porcentaje=$('#lipidos_porcentaje').val()/100;
+
   var calorias_totales=$('#energia_suma').html();
-  $('#gramos_proteina').html((calorias_totales*0.15/4).toFixed(2));
-  $('#calorias_proteina').html((calorias_totales*0.15).toFixed(2));
+  $('#gramos_proteina').html((calorias_totales*proteinas_porcentaje/4).toFixed(2));
+  $('#calorias_proteina').html((calorias_totales*proteinas_porcentaje).toFixed(2));
 
-  $('#gramos_hidratos').html((calorias_totales*0.6/4).toFixed(2));
-  $('#calorias_hidratos').html((calorias_totales*0.6).toFixed(2));
+  $('#gramos_hidratos').html((calorias_totales*hidratos_porcentaje/4).toFixed(2));
+  $('#calorias_hidratos').html((calorias_totales*hidratos_porcentaje).toFixed(2));
 
-  $('#gramos_lipidos').html((calorias_totales*0.25/9).toFixed(2));
-  $('#calorias_lipidos').html((calorias_totales*0.25).toFixed(2));
+  $('#gramos_lipidos').html((calorias_totales*lipidos_porcentaje/9).toFixed(2));
+  $('#calorias_lipidos').html((calorias_totales*lipidos_porcentaje).toFixed(2));
 
   total=0;
   $("#resumen tr:not(:last-child) td:nth-child(3)").each(function () {
@@ -121,4 +125,43 @@ $("#calculoCalorias").change(function(){
     total += parseFloat(val);
   });
   $('#calorias_suma').html(total.toFixed(2));
+});
+
+$('#resumen').change(function(){
+  var proteinas_porcentaje=$('#proteinas_porcentaje').val()/100;
+  var hidratos_porcentaje=$('#hidratos_porcentaje').val()/100;
+  var lipidos_porcentaje=$('#lipidos_porcentaje').val()/100;
+
+  var calorias_totales=$('#energia_suma').html();
+  $('#gramos_proteina').html((calorias_totales*proteinas_porcentaje/4).toFixed(2));
+  $('#calorias_proteina').html((calorias_totales*proteinas_porcentaje).toFixed(2));
+
+  $('#gramos_hidratos').html((calorias_totales*hidratos_porcentaje/4).toFixed(2));
+  $('#calorias_hidratos').html((calorias_totales*hidratos_porcentaje).toFixed(2));
+
+  $('#gramos_lipidos').html((calorias_totales*lipidos_porcentaje/9).toFixed(2));
+  $('#calorias_lipidos').html((calorias_totales*lipidos_porcentaje).toFixed(2));
+
+  total=0;
+  $("#resumen tr:not(:last-child) td:nth-child(3)").each(function () {
+    var val = $(this).html();
+    val = val.replace('-',0);
+    total += parseFloat(val);
+  });
+  $('#gramos_suma').html(total.toFixed(2));
+
+  total=0;
+  $("#resumen tr:not(:last-child) td:nth-child(4)").each(function () {
+    var val = $(this).html();
+    val = val.replace('-',0);
+    total += parseFloat(val);
+  });
+  $('#calorias_suma').html(total.toFixed(2));
+
+  total=0;
+  $("#resumen tr:not(:last-child) td:nth-child(2)").each(function () {
+    var val = parseInt($(this).children('input').val());
+    total += val;
+  });
+  $('#porcentaje_suma').html(`${total}%`);
 });

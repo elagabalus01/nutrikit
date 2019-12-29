@@ -1,5 +1,5 @@
 /*
-Validaciones
+Validaciones de front end
 */
 $(':input').on('keyup keypress change click',function(){
   validarConsulta();
@@ -12,8 +12,7 @@ $(':input').on('keyup keypress change click',function(){
 });
 function validarPorcentajeGrasa(){
   var grasa_porcentaje=$('#grasa_porcentaje').val();
-  if(grasa_porcentaje>=1 && grasa_porcentaje<=100)
-  {
+  if(grasa_porcentaje>=1 && grasa_porcentaje<=100){
     $('#grasa_porcentajeValid').show();
     $('#grasa_porcentajeInvalid').hide();
     return true;
@@ -99,6 +98,7 @@ function validarConsulta(){
   validarDescripcionDieta();
   validarObservaciones();
 }
+
 function validarTableInput(){
   var valido=true;
   $(".tableInput").each(function (item){
@@ -113,8 +113,33 @@ function validarTableInput(){
   });
   return valido;
 }
+function validarPorcentajeMacros(){
+  var valido=true;
+  var suma=0;
+  $(".porcentajes_macros").each(function (item){
+    var valor=parseInt(($(this).val());
+    suma+=valor;
+    if(valor>=0 && valor<=100 && valor.length>0){
+      $(this).css("background-color", "#549900");
+    }
+    else{
+      $(this).css("background-color", "#B22222");
+      valido=false;
+    }
+  });
+  if (suma!=100){
+    console.log(suma);
+    $('#sumaPorcentajeValid').hide();
+    $('#sumaPorcentajeInvalid').show();
+    valido=false;
+  }else{
+    $('#sumaPorcentajeInvalid').hide();
+    $('#sumaPorcentajeValid').show();
+  }
+  return valido;
+}
 function validarTablas(){
-  if(validarTableInput()){
+  if(validarTableInput()&&validarPorcentajeMacros()){
     return true;
   }
   else{
@@ -155,6 +180,9 @@ function crearConsulta(){
       plan_lacteos:$('#plan_lacteos').val(),
       plan_grasas:$('#plan_grasas').val(),
       plan_azucares:$('#plan_azucares').val(),
+      proteinas_porcentaje:$('#proteinas_porcentaje').val(),
+      hidratos_porcentaje:$('#hidratos_porcentaje').val(),
+      lipidos_porcentaje:$('#lipidos_porcentaje').val(),
     }
   }).done(function(response){
     if (response["success"]==false){

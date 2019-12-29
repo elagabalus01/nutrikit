@@ -8,19 +8,19 @@
   <tbody>
     <tr>
       <th>Proteína</th>
-      <td>15%</td>
+      <td id="proteinas_porcentaje" data-porcentaje='{{ $consulta->proteinas_porcentaje }}'>{{ $consulta->proteinas_porcentaje }} %</td>
       <td id="gramos_proteina">-</td>
       <td id="calorias_proteina">-</td>
     </tr>
     <tr>
       <th>HdC</th>
-      <td>60%</td>
+      <td id="hidratos_porcentaje" data-porcentaje='{{ $consulta->hidratos_porcentaje }}'>{{ $consulta->hidratos_porcentaje }} %</td>
       <td id="gramos_hidratos">-</td>
       <td id="calorias_hidratos">-</td>
     </tr>
     <tr>
       <th>Lípidos</th>
-      <td>25%</td>
+      <td id="lipidos_porcentaje" data-porcentaje='{{ $consulta->lipidos_porcentaje }}'>{{ $consulta->lipidos_porcentaje }} %</td>
       <td id="gramos_lipidos">-</td>
       <td id="calorias_lipidos">-</td>
     </tr>
