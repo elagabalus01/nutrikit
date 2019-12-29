@@ -1,4 +1,4 @@
-<mxfile host="www.draw.io" modified="2019-12-29T18:33:00.819Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36" etag="aXTEHpvXJHgKtrskZHO4" version="12.4.7" type="gitlab">
+<mxfile host="www.draw.io" modified="2019-12-29T18:35:15.500Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36" etag="ed_Qkhlf7TVxk9rKYhta" version="12.4.7" type="gitlab">
   <diagram id="oVE6bmWussB_9HKteIKD" name="Page-1">
     <mxGraphModel dx="868" dy="492" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -238,7 +238,7 @@
         <mxCell id="2s8YdPj9PMtGRqdCx3QO-8" value="" style="shape=partialRectangle;top=0;left=0;bottom=0;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;part=1;fontSize=12;" parent="2s8YdPj9PMtGRqdCx3QO-7" vertex="1" connectable="0">
           <mxGeometry width="30" height="26" as="geometry"/>
         </mxCell>
-        <mxCell id="vAoyn03S1e-QY3mQzIIS-1" value="proteina_porcentaje" style="shape=partialRectangle;top=0;left=0;right=0;bottom=0;align=left;verticalAlign=top;fillColor=none;spacingLeft=34;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;dropTarget=0;fontSize=12;" vertex="1" parent="abFm9yk0dOPrLD0_e7VD-40">
+        <mxCell id="vAoyn03S1e-QY3mQzIIS-1" value="proteinas_porcentaje" style="shape=partialRectangle;top=0;left=0;right=0;bottom=0;align=left;verticalAlign=top;fillColor=none;spacingLeft=34;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;dropTarget=0;fontSize=12;" vertex="1" parent="abFm9yk0dOPrLD0_e7VD-40">
           <mxGeometry y="414" width="170" height="26" as="geometry"/>
         </mxCell>
         <mxCell id="vAoyn03S1e-QY3mQzIIS-2" value="" style="shape=partialRectangle;top=0;left=0;bottom=0;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[];portConstraint=eastwest;part=1;fontSize=12;" vertex="1" connectable="0" parent="vAoyn03S1e-QY3mQzIIS-1">
