@@ -30,8 +30,8 @@ class RegistrationController extends Controller
             ]);
         }
         $user = User::create([
-            'nombre' => $request['nombre'],
-            'email' => $request['email'],
+            'nombre' => ucwords($request['nombre']),
+            'email' => strtolower($request['email']),
             'password' => Hash::make($request['password']),
             'api_token' => Str::random(60),
         ]);

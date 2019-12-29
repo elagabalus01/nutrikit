@@ -102,7 +102,7 @@ class ConsultaController extends BaseController
             }
             $correo_electronico='';
             if(array_key_exists('correo_electronico',$input) && strlen($input['correo_electronico'])>0){
-                $correo_electronico=$input['correo_electronico'];
+                $correo_electronico=strtolower($input['correo_electronico']);
             }
             $alergias='';
             if(array_key_exists('alergias',$input) && strlen($input['alergias'])>0){
@@ -113,14 +113,14 @@ class ConsultaController extends BaseController
                 $actividad_fisica=$input['actividad_fisica'];
             }
             $paciente=Paciente::create([
-                'rfc' => $input['rfc'],
-                'nombre' => $input['nombre'],
+                'rfc' => strtoupper($input['rfc']),
+                'nombre' => ucwords($input['nombre']),
                 'telefono' => $telefono,
                 'correo_electronico' => $correo_electronico,
                 'estatura'=> $input['estatura'],
                 'peso' => $input['peso'],
                 'fecha_nacimiento' => $input['fecha_nacimiento'],
-                'sexo' => $input['sexo'],
+                'sexo' => ucwords($input['sexo']),
                 'alergias' => $alergias,
                 'actividad_fisica' => $actividad_fisica,
             ]);

@@ -11,6 +11,9 @@ $("#searchRfc").autocomplete({
             }
         });
     },
+    select: function(event, ui) {
+        $("#crearCita").attr("disabled", false);
+    },
     minLength: 2,
 });
 function crearCita(){

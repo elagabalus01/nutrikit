@@ -14,7 +14,7 @@ $("#nombre,#email,#password").keyup(function(){
     $('#nombreValid').hide();
     $('#nombreInvalid').show();
   }
-  if(validarRegex(correo,/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+@[a-zA-ZÑñÁáÉéÍíÓóÚúÜü0-9-_.]+$/) && validarLongitudMinima(correo,5)){
+  if(validarRegex(correo,/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+\.[a-zA-Z0-9-_.]+$/) && validarLongitudMinima(correo,5)){
     validaCorreo=true;
     $('#emailValid').show();
     $('#emailInvalid').hide();

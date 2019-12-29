@@ -52,7 +52,7 @@ class PacienteController extends BaseController
             return $this->sendErrorResponse([],'El rfc no esta registrado');
         }
         if($campo=='correo' && array_key_exists('correo',$input)){
-            $paciente->correo_electronico=$input['correo'];
+            $paciente->correo_electronico=strtolower($input['correo']);
             $paciente->save();
             return $this->sendDone('El correo fue actualizado');
         }
