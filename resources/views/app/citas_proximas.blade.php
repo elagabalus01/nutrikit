@@ -96,7 +96,7 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-    <script>var api_token = "{{ Auth::user()->api_token }}"
+    var api_token = "{{ Auth::user()->api_token }}"
 </script>
 <script type="text/javascript" src="{{ asset('js/citas_consultas.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/citas_proximas.js') }}"></script>

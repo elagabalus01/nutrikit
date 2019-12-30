@@ -5,7 +5,6 @@ $("#email,#password").keyup(function(){
   var validaContraseña=false;
   if(validarRegex(correo,/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+\.[a-zA-Z0-9-_.]+$/) && validarLongitudMinima(correo,5)){
     validaCorreo=true;
-    console.log('This should be working');
     $('#emailValid').show();
     $('#emailInvalid').hide();
   }
