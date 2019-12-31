@@ -22,7 +22,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <label><b>Selecciona el tipo de reporte:</b></label>
+      <label>Selecciona el tipo de reporte:</label>
       <select id="tipoReporteMenu">
           <option value="dia">Día</option>
           <option value="mes">Mes</option>

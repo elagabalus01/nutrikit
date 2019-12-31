@@ -81,14 +81,14 @@
     @else
     <div class="row">
         <div class="col">
-            <h3>No hay citas por atender</h3>
+            <h3>Por el momento no hay citas por atender...</h3>
         </div>
     </div>
     @endif
     @if(!($fecha ?? false))
     <div class="row justify-content-start">
         <div class="col">
-            <h2>¿Sin previa cita? Haz click <a href="/nuevaConsulta">aquí</a></h2>
+            <h2>¿Paciente nuevo? Haz click <a href="/nuevaConsulta">aquí</a> para registrarlo y darle una consulta.</h2>
         </div>
     </div>
     @endif
