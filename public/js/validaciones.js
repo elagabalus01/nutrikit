@@ -1,3 +1,4 @@
+// Validaciones
 function validarLongitudMinima(input,longitud){
     if(input.length>=longitud){
         return true;

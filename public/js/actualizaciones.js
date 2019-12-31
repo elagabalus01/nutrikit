@@ -1,6 +1,7 @@
 /*
 Actualizacion del correo electronico con validacion de frontend
 */
+// Se recupera el correo electronico actual
 function recuperarCorreo(){
   $.ajax({
     headers:{
@@ -19,6 +20,7 @@ function recuperarCorreo(){
     }
   });
 }
+// Se actualiza el correo electronico mediante la API
 function actualizarCorreo(nuevoCorreo){
   $.ajax({
     headers:{
@@ -38,6 +40,7 @@ function actualizarCorreo(nuevoCorreo){
     }
   });
 }
+// Boton para editar 
 $('#editarCorreo').click(function(){
   $(this).hide();
   $(this).siblings('#correo').hide();
@@ -45,6 +48,7 @@ $('#editarCorreo').click(function(){
   $(this).siblings('#correo_electronico').show();
   $(this).siblings('#aceptarCorreo').show();
 })
+// Boton para aceptar
 $('#aceptarCorreo').click(function(){
   var nuevoCorreo=$('#correo_electronico').val();
   $('#correo').html(`Correo: ${nuevoCorreo}`);
@@ -55,6 +59,7 @@ $('#aceptarCorreo').click(function(){
   $('#correo_electronicoValid').hide();
   actualizarCorreo(nuevoCorreo);
 })
+// Validacion del correo electronico
 $('#correo_electronico').keyup(function(){
   var correo_electronico=$(this).val();
   if(validarLongitudMinima(correo_electronico,4) && validarRegex(correo_electronico,/^[a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+\.[a-zA-Z0-9-_.]+$/)){

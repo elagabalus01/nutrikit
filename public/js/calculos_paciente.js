@@ -1,12 +1,15 @@
+// IMC
 function calcularIMC(){
     var imc=$('#peso').val()/Math.pow($('#estatura').val()/100,2);
     if($('#estatura').val()>0){
         $('#imc').html(`IMC: ${imc.toFixed(2)}`);
     }
 }
+// Se calcula el imc
 $('#estatura,#peso').change(function(){
     calcularIMC();
 });
+// Edad
 $('#fecha_nacimiento').change(function(){
     var fecha_nacimiento=$(this).val();
     var hoy = new Date();
