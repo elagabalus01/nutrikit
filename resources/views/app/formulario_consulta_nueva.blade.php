@@ -138,7 +138,7 @@
     </div>
     <div class="col">
       <label>Porcentaje de músculo:</label>
-      <input min='0' step="0.01" max='100' type="number" id="musculo_porcentaje">
+      <input min='1' step="0.01" max='100' type="number" id="musculo_porcentaje">
       <label>%</label>
       <div id="musculo_porcentajeValid" class="valid-feedback">Aceptado</div>
       <div id="musculo_porcentajeInvalid" class="invalid-feedback">Porcentaje no valido</div>

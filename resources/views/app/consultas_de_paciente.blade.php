@@ -12,7 +12,6 @@
             @else
             <label>Paciente: {{ $paciente->nombre }}</label>
             @endif
-
         </div>
     </div>
     @if(count($consultas)>0)

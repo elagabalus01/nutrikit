@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <th>Total</th>
-      <td id="porcentaje_suma">-</td>
+      <td id="porcentaje_suma">100%</td>
       <td id="gramos_suma">-</td>
       <td id="calorias_suma">-</td>
     </tr>
