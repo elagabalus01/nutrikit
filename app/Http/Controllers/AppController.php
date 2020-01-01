@@ -77,7 +77,8 @@ class AppController extends Controller
     }
     
     public function consultasPaciente($rfc){
-        $consultas=Consulta::where('paciente_id',$rfc)->paginate(4);
+        $consultas=Consulta::where('paciente_id',$rfc)->orderBy('fecha_hora', 'desc')
+        ->paginate(4);
         $paciente=Paciente::find($rfc);
         // $consultas=Paciente::find($id)->consultas::paginate(4);
         return view('app.consultas_de_paciente',compact('paciente','consultas'));

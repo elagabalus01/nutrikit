@@ -21,8 +21,9 @@ class Paciente extends Model
         'peso',
         'fecha_nacimiento',
         'sexo',
-        'alergias',
         'actividad_fisica',
+        'alergias',
+        'enfermedades',
     ];
     public function citas(){
         return $this->hasMany('App\Cita');

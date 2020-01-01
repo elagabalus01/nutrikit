@@ -33,6 +33,8 @@
                         <td>{{ $consulta->user->nombre }}</td>
                         <td>
                             <a class="consulta" href="/consulta/{{ $consulta->id }}">Ver</a>
+                            /
+                            <a class="consulta" href="/nota/{{ $consulta->id }}">Nota médica</a>
                         </td>
                     </tr>
                     @endforeach

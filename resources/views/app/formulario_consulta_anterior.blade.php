@@ -108,10 +108,15 @@
         <p>Alergias:
           {{ $consulta->paciente->alergias }}
         </p>
-
       </div>
     </div>
-
+    <div class="row">
+      <div class="col">
+        <p>Enfermedades:
+          {{ $consulta->enfermedades_actual }}
+        </p>
+      </div>
+    </div>
     <div class="row">
         <div class="col">
           <p>Porcentaje de grasa:
@@ -145,6 +150,11 @@
   <div class="row">
     <div class="col">
       <h1>Consulta</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label><b>Motivo de la consulta:</b> {{ $consulta->motivo }}</label>
     </div>
   </div>
   <div class="row">

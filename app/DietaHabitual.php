@@ -18,5 +18,13 @@ class DietaHabitual extends Model
         'grasas',
         'azucares',
     ];
+
     public $timestamps = false;
+
+    public function getTotalCaloriasAttribute(){
+        return $this->cereales*70+$this->leguminosas*105+
+        $this->verduras*25+$this->frutas*60+$this->carnes*75+
+        $this->lacteos*145+$this->grasas*45+
+        $this->azucares*20;
+    }
 }

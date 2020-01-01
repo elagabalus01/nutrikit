@@ -22,8 +22,9 @@ class CrearPacientes extends Migration
             $table->float('peso',5,2)->unsigned();
             $table->date('fecha_nacimiento');
             $table->string('sexo',9);
-            $table->string('alergias',100);
             $table->string('actividad_fisica',100);
+            $table->string('alergias',100);
+            $table->string('enfermedades',100);
 
             $table->primary('rfc');
         });

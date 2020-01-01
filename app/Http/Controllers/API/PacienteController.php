@@ -43,6 +43,9 @@ class PacienteController extends BaseController
         if($campo=='alergias'){
             return $this->sendResponse($paciente->alergias, 'Alergias recuperadas exitosamente');
         }
+        if($campo=='enfermedades'){
+            return $this->sendResponse($paciente->enfermedades, 'Enfermedades recuperadas exitosamente');
+        }
         return $this->sendErrorResponse([],$campo.' no es un parametro aceptado');
     }
     public function actualizar(Request $request,$rfc,$campo){
@@ -81,11 +84,17 @@ class PacienteController extends BaseController
             $paciente->save();
             return $this->sendDone('Las alergias fueron actualizadas');
         }
+        if($campo=='enfermedades' && array_key_exists('enfermedades',$input)){
+            $paciente->enfermedades=$input['enfermedades'];
+            $paciente->save();
+            return $this->sendDone('Las enfermedades fueron actualizadas');
+        }
         if(array_key_exists('correo',$input) ||
             array_key_exists('telefono',$input) ||
             array_key_exists('peso',$input) ||
             array_key_exists('estatura',$input) ||
             array_key_exists('actividad_fisica',$input) ||
+            array_key_exists('enfermedades',$input) ||
             array_key_exists('alergias',$input)){
             return $this->sendErrorResponse([],'La peticion y el campo no coinciden');
         }

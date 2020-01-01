@@ -45,3 +45,5 @@ Route::get('/reporte/año','PrintableController@reporteYear')->middleware('auth'
 Route::get('/reporte/dia/{fecha}','PrintableController@generarReporteDia')->middleware('auth');
 Route::get('/reporte/mes/{mes}/{year}','PrintableController@generarReporteMes')->middleware('auth');
 Route::get('/reporte/año/{year}','PrintableController@generarReporteYear')->middleware('auth');
+
+Route::get('/nota/{rfc}','PrintableController@generarNota')->middleware('auth');

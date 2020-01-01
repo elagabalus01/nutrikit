@@ -43,5 +43,6 @@
 @endsection
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/validaciones.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/noLogged/validacionesNoLogged.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/iniciar_sesion.js') }}"></script>
 @endsection

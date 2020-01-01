@@ -338,7 +338,7 @@ $('#aceptar_actividad_fisica').click(function(){
 })
 $('#actividad_fisica').keyup(function(){
   var actividad_fisica=$('#actividad_fisica').val();
-  if(validarRegex(actividad_fisica,/^[a-zA-Z ,]+$/) || actividad_fisica.length==0){
+  if(validarRegex(actividad_fisica,/^[a-zA-Z ,ÑñÁáÉéÍíÓóÚúÜü.]+$/) || actividad_fisica.length==0){
     $('#actividad_fisicaValid').show();
     $('#actividad_fisicaInvalid').hide();
     $('#aceptar_actividad_fisica').prop('disabled',false);
@@ -407,7 +407,7 @@ $('#aceptarAlergias').click(function(){
 })
 $('#alergias').keyup(function(){
   var alergias=$('#alergias').val();
-  if(validarRegex(alergias,/^[a-zA-Z ,]+$/) || alergias.length==0){
+  if(validarRegex(alergias,/^[a-zA-Z ,ÑñÁáÉéÍíÓóÚúÜü.]+$/) || alergias.length==0){
     $('#alergiasValid').show();
     $('#alergiasInvalid').hide();
     $('#aceptarAlergias').prop('disabled',false);
@@ -416,6 +416,75 @@ $('#alergias').keyup(function(){
     $('#alergiasValid').hide();
     $('#alergiasInvalid').show();
     $('#aceptarAlergias').prop('disabled',true);
+  }
+})
+/*
+Actualizacion de enfermedades con validaciones de frontend
+*/
+function recuperarEnfermedades(){
+  $.ajax({
+    headers:{
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Authorization': `Bearer ${api_token}`
+    },
+    url:`/api/pacientes/${rfc}/enfermedades`,
+    type:'GET'
+  }).done(function(response){
+    if (response["success"]==true){
+      $('#enfermedades').val(response["data"]);
+    }
+    else{
+      console.log('No response')
+    }
+  });
+}
+function actualizarEnfermadades(nuevaEnfermedad){
+  $.ajax({
+    headers:{
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Authorization': `Bearer ${api_token}`
+    },
+    url:`/api/pacientes/${rfc}/enfermedades`,
+    type:'POST',
+    data:{enfermedades:nuevaEnfermedad}
+  }).done(function(response){
+    if (response["success"]==true){
+    }
+    else{
+      console.log('No funciono')
+    }
+  });
+}
+$('#editarEnfermedades').click(function(){
+  $(this).hide();
+  $(this).siblings('#enfermedades_lab').hide();
+  recuperarEnfermedades();
+  $(this).siblings('#enfermedades').show();
+  $(this).siblings('#aceptarEnfermedades').show();
+})
+$('#aceptarEnfermedades').click(function(){
+  var nuevaEnfermedad=$('#enfermedades').val();
+  $('#enfermedades_lab').html(`Enfermedades: ${nuevaEnfermedad}`);
+  $(this).hide();
+  $(this).siblings('#enfermedades').hide();
+  $(this).siblings('#enfermedades_lab').show();
+  $(this).siblings('#editarEnfermedades').show();
+  $('#enfermedadesValid').hide();
+  actualizarEnfermadades(nuevaEnfermedad);
+})
+$('#enfermedades').keyup(function(){
+  var enfermedades=$('#enfermedades').val();
+  if(validarRegex(enfermedades,/^[a-zA-Z ,ÑñÁáÉéÍíÓóÚúÜü.]+$/) || enfermedades.length==0){
+    $('#enfermedadesValid').show();
+    $('#enfermedadesInvalid').hide();
+    $('#aceptarEnfermedades').prop('disabled',false);
+  }
+  else{
+    $('#enfermedadesValid').hide();
+    $('#enfermedadesInvalid').show();
+    $('#aceptarEnfermedades').prop('disabled',true);
   }
 })
 /*

@@ -88,6 +88,7 @@ class ConsultaController extends BaseController
                 'musculo_porcentaje' => 'required',
                 'hueso_kilos' => 'required',
                 'agua_litros' => 'required',
+                'motivo' => 'required',
                 // Se valida que esten los porcentajes
                 'proteinas_porcentaje' => 'required',
                 'hidratos_porcentaje' => 'required',
@@ -104,13 +105,17 @@ class ConsultaController extends BaseController
             if(array_key_exists('correo_electronico',$input) && strlen($input['correo_electronico'])>0){
                 $correo_electronico=strtolower($input['correo_electronico']);
             }
+            $actividad_fisica='';
+            if(array_key_exists('actividad_fisica',$input) && strlen($input['actividad_fisica'])>0){
+                $actividad_fisica=$input['actividad_fisica'];
+            }
             $alergias='';
             if(array_key_exists('alergias',$input) && strlen($input['alergias'])>0){
                 $alergias=$input['alergias'];
             }
-            $actividad_fisica='';
-            if(array_key_exists('actividad_fisica',$input) && strlen($input['actividad_fisica'])>0){
-                $actividad_fisica=$input['actividad_fisica'];
+            $enfermedades='';
+            if(array_key_exists('enfermedades',$input) && strlen($input['enfermedades'])>0){
+                $enfermedades=$input['enfermedades'];
             }
             $paciente=Paciente::create([
                 'rfc' => strtoupper($input['rfc']),
@@ -121,8 +126,9 @@ class ConsultaController extends BaseController
                 'peso' => $input['peso'],
                 'fecha_nacimiento' => $input['fecha_nacimiento'],
                 'sexo' => ucwords($input['sexo']),
-                'alergias' => $alergias,
                 'actividad_fisica' => $actividad_fisica,
+                'alergias' => $alergias,
+                'enfermedades' => $enfermedades,
             ]);
             $fecha_hora=Carbon::now()->format('Y-m-d H:i');
         }
@@ -138,6 +144,7 @@ class ConsultaController extends BaseController
             'user_id' => Auth::user()->id,
             'paciente_id' => $paciente->rfc,
             'cita_id' => $cita_id,
+            'motivo' => $input['motivo'],
             'descripcion_dieta' => $descripcion_dieta,
             'observaciones' => $observaciones,
             'fecha_hora' => $fecha_hora,
@@ -145,6 +152,7 @@ class ConsultaController extends BaseController
             'peso_actual' => $paciente->peso,
             'estatura_actual' => $paciente->estatura,
             'actividad_fisica_actual' => $paciente->actividad_fisica,
+            'enfermedades_actual' => $paciente->enfermedades,
             'grasa_porcentaje' => $input['grasa_porcentaje'],
             'musculo_porcentaje' => $input['musculo_porcentaje'],
             'hueso_kilos' => $input['hueso_kilos'],

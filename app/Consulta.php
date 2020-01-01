@@ -9,16 +9,18 @@ class Consulta extends Model
 {
     protected $table='consultas';
     protected $fillable=[
+        'fecha_hora',
         'user_id',
         'paciente_id',
         'cita_id',
+        'motivo',
         'descripcion_dieta',
         'observaciones',
-        'fecha_hora',
         'edad_actual',
         'peso_actual',
         'estatura_actual',
         'actividad_fisica_actual',
+        'enfermedades_actual',
         'grasa_porcentaje',
         'musculo_porcentaje',
         'hueso_kilos',

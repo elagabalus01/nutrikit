@@ -20,6 +20,7 @@ class CrearConsultas extends Migration
             $table->integer('cita_id')->unsigned()
                                         ->nullable()
                                         ->default(null);
+            $table->string('motivo',100);
             $table->text('descripcion_dieta');
             $table->text('observaciones');
             $table->dateTime('fecha_hora');
@@ -27,6 +28,7 @@ class CrearConsultas extends Migration
             $table->float('peso_actual',5,2)->unsigned();
             $table->tinyInteger('estatura_actual')->unsigned();
             $table->string('actividad_fisica_actual',100);
+            $table->string('enfermedades_actual',100);
             $table->float('grasa_porcentaje',5,2);
             $table->float('musculo_porcentaje',5,2);
             $table->float('hueso_kilos',5,2);
