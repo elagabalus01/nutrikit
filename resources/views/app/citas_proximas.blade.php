@@ -58,13 +58,15 @@
                         <td>{{ $cita->fecha }} {{ $cita->hora }}</td>
                         <td>
                             @if($fecha ?? false)
-                                @if($fecha->isToday())
+                                @if($fecha->isToday() && Carbon\Carbon::now()->addHour()->gt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
                                 <a id="{{ $cita->id }}" class="consulta" href="consultaCita/{{ $cita->id }}">Atender</a>
                                 /
                                 @endif
                             @else
-                            <a id="{{ $cita->id }}" class="consulta" href="consultaCita/{{ $cita->id }}">Atender</a>
-                            /
+                                @if(Carbon\Carbon::now()->addHour()->gt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
+                                <a id="{{ $cita->id }}" class="consulta" href="consultaCita/{{ $cita->id }}">Atender</a>
+                                /
+                                @endif
                             @endif
                             <a id="{{ $cita->id }}" class="eliminar cita" href="#">Cancelar</a>
                         </td>

@@ -67,6 +67,13 @@ class CitaController extends BaseController
                 return $this->sendErrorResponse("La cita se traslapa",[]);
             }
         }
+        $citas_dia=Cita::whereDate('fecha_hora','=',$cita_inicio)->get();
+        foreach ($citas_dia as $cita){
+            if($input['paciente_id']==$cita->paciente_id)
+            {
+                return $this->sendErrorResponse("Ya hay una cita hoy para ese paciente",[]);
+            }
+        }
         $cita=Cita::create([
             'paciente_id' => $input['paciente_id'],
             'fecha_hora'=> $input['fecha_hora'],
