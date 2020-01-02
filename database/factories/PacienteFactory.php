@@ -28,7 +28,8 @@ $factory->define(Paciente::class, function (Faker $faker) {
         'peso'=>$faker->numberBetween($min = 50, $max = 150),
         'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-30 years', $endDate = '-13 years'),
         'sexo'=>$gender,
+        'actividad_fisica'=>'Ninguna',
         'alergias'=>'No',
-        'actividad_fisica'=>'ninguna',
+        'alergias'=>'Ninguna',
     ];
 });

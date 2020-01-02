@@ -64,7 +64,7 @@ class AppController extends Controller
     }
     
     public function nuevaConsulta(){
-        return view('app.formulario_consulta_nueva');
+        return view('app.formularios.consulta_nueva');
     }
 
     public function productividad(){
@@ -73,7 +73,7 @@ class AppController extends Controller
     
     public function consultaConCita($id){
         $cita=Cita::find($id);
-        return view('app.formulario_consulta_con_cita',['cita'=>$cita]);
+        return view('app.formularios.consulta_con_cita',['cita'=>$cita]);
     }
     
     public function consultasPaciente($rfc){
@@ -88,6 +88,6 @@ class AppController extends Controller
         $consulta=Consulta::find($id);
         // $pdf=PDF::loadView('app.formulario_consulta_anterior',['consulta'=>$consulta])->setPaper('a4', 'landscape');
         // return $pdf->download('hora.pdf');
-        return view('app.formulario_consulta_anterior',['consulta'=>$consulta]);
+        return view('app.formularios.consulta_anterior',['consulta'=>$consulta]);
     }
 }

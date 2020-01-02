@@ -79,7 +79,8 @@ function validarPorcentajeMacros(){
 /* Validaciones de caracteristicas del paciente */
 function validarPorcentajeGrasa(){
   var grasa_porcentaje=$('#grasa_porcentaje').val();
-  if(grasa_porcentaje>=1 && grasa_porcentaje<=100){
+  console.log(grasa_porcentaje);
+  if(grasa_porcentaje>=0 && grasa_porcentaje<=100 && grasa_porcentaje.length>0){
     $('#grasa_porcentajeValid').show();
     $('#grasa_porcentajeInvalid').hide();
     return true;
@@ -92,7 +93,7 @@ function validarPorcentajeGrasa(){
 }
 function validarPorcentajeMusculo(){
   var musculo_porcentaje=$('#musculo_porcentaje').val();
-  if(musculo_porcentaje>=1 && musculo_porcentaje<=100){
+  if(musculo_porcentaje>=0 && musculo_porcentaje<=100 && musculo_porcentaje.length>0){
     $('#musculo_porcentajeValid').show();
     $('#musculo_porcentajeInvalid').hide();
     return true;

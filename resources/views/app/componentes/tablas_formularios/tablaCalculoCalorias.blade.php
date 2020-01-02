@@ -75,7 +75,7 @@
     <tr>
       <th>Total</th>
       <td></td>
-      <td id="energia_suma">100%</td>
+      <td id="energia_suma">-</td>
       <td id="proteina_suma">-</td>
       <td id="lipidos_suma">-</td>
       <td id="hidratos_suma">-</td>
