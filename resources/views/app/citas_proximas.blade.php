@@ -35,16 +35,14 @@
                     <div id="fechaCitasValid" class="valid-feedback">Aceptado</div>
                     <div id="fechaCitasInvalid" class="invalid-feedback">Fecha no valida</div>   
                 </div>
-            <!-- <label id="insertar">Mi texto</label>
-            <button id="append">Change</button> -->
             </div>
         </div>
     </div>
     @if(count($citas)>0)
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <table class="table">
-                <thead>
+            <table class="table table-striped">
+                <thead class="thead-blue">
                     <tr>
                         <th>Paciente</th>
                         <th>Fecha</th>

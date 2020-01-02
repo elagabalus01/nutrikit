@@ -17,8 +17,8 @@
     @if(count($consultas)>0)
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <table class="table">
-                <thead>
+            <table class="table table-striped">
+                <thead class="thead-blue">
                     <tr>
                         <th>Fecha</th>
                         <th>Médico</th>
