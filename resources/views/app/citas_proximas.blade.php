@@ -27,9 +27,9 @@
                 @endif
                     <label>Fecha:</label>
                     @if($fecha ?? false)
-                    <input min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYears(20)->format('Y-m-d') }}" value="{{ $fecha->format('Y-m-d')  }}" type="date" id="fechaCitas">
+                    <input min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYear()->format('Y-m-d') }}" value="{{ $fecha->format('Y-m-d')  }}" type="date" id="fechaCitas">
                     @else
-                    <input min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYears(20)->format('Y-m-d') }}" value="{{  Carbon\Carbon::now()->format('Y-m-d') }}" type="date" id="fechaCitas">
+                    <input min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->addYear()->format('Y-m-d') }}" value="{{  Carbon\Carbon::now()->format('Y-m-d') }}" type="date" id="fechaCitas">
                     @endif
                     <button class="btn btn-primary" id="irFecha">Ir</button>
                     <div id="fechaCitasValid" class="valid-feedback">Aceptado</div>
@@ -58,12 +58,12 @@
                         <td>{{ $cita->fecha }} {{ $cita->hora }}</td>
                         <td>
                             @if($fecha ?? false)
-                                @if($fecha->isToday() && Carbon\Carbon::now()->addHour()->gt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
+                                @if($fecha->isToday() && Carbon\Carbon::now()->addMinutes(30)->gt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
                                 <a id="{{ $cita->id }}" class="consulta" href="consultaCita/{{ $cita->id }}">Atender</a>
                                 /
                                 @endif
                             @else
-                                @if(Carbon\Carbon::now()->addHour()->gt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
+                                @if(Carbon\Carbon::now()->addMinutes(30)->gt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
                                 <a id="{{ $cita->id }}" class="consulta" href="consultaCita/{{ $cita->id }}">Atender</a>
                                 /
                                 @endif

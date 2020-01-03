@@ -25,7 +25,9 @@
   <div class="form-group row justify-content-center">
     <label class="col-md-2 col-form-label">Fecha y hora</label>
     <div class="col-md-3">
-        <input class="form-control" id="fechaHora" type="datetime-local" min="{{ substr(Carbon\Carbon::now()->toAtomString(),0,16) }}" value="{{ substr(Carbon\Carbon::now()->toAtomString(),0,16) }}" id="dia_hora">
+      <input class="form-control" id="fechaHora" type="datetime-local" min="{{ substr(Carbon\Carbon::now()->toAtomString(),0,16) }}" value="{{ substr(Carbon\Carbon::now()->toAtomString(),0,16) }}" max="{{ str_replace(' ','T',Carbon\Carbon::now()->addYear()->format('Y-m-d H:i')) }}" id="dia_hora">
+      <div id="fechaValid" class="valid-feedback">Aceptado</div>
+      <div id="fechaInvalid" class="invalid-feedback">Fecha no válida</div>   
     </div>
   </div>
   <div class="row justify-content-center">

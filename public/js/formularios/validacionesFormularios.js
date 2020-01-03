@@ -79,7 +79,6 @@ function validarPorcentajeMacros(){
 /* Validaciones de caracteristicas del paciente */
 function validarPorcentajeGrasa(){
   var grasa_porcentaje=$('#grasa_porcentaje').val();
-  console.log(grasa_porcentaje);
   if(grasa_porcentaje>=0 && grasa_porcentaje<=100 && grasa_porcentaje.length>0){
     $('#grasa_porcentajeValid').show();
     $('#grasa_porcentajeInvalid').hide();
