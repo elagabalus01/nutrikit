@@ -1,7 +1,7 @@
 /* Validaciones de la nota medica*/
 function validarMotivo(){
   var motivo=$('#motivo').val();
-  if(validarRegex(motivo,/^[a-zA-Z ,]+$/) && validarLongitudMinima(motivo,8)){
+  if(validarRegex(motivo,/^[a-zA-Z  ,ÑñÁáÉéÍíÓóÚúÜü.:;]+$/) && validarLongitudMinima(motivo,8)){
     $('#motivoValid').show();
     $('#motivoInvalid').hide();
   }
