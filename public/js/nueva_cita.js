@@ -67,7 +67,7 @@ function validarFecha(){
   var fecha=new Date($('#fechaHora').val());
   var min_fecha=new Date($('#fechaHora').attr('min'));
   var max_fecha=new Date($('#fechaHora').attr('max'));
-  if(fecha>min_fecha && fecha<max_fecha){
+  if(fecha>=min_fecha && fecha<=max_fecha){
     return true;
   }
   else{
