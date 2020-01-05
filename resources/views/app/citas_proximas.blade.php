@@ -51,6 +51,7 @@
                 </thead>
                 <tbody>
                     @foreach($citas as $cita)
+                    @if(Carbon\Carbon::now()->subMinutes(20)->lt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
                     <tr>
                         <td>
                             <a href="#" onclick="consultasAnteriores('{{ $cita->paciente->rfc }}')">{{ $cita->paciente->nombre }}</a>
@@ -71,6 +72,11 @@
                             <a id="{{ $cita->id }}" class="eliminar cita" href="#">Cancelar</a>
                         </td>
                     </tr>
+                    @else
+                    @php
+                    $cita->delete()
+                    @endphp
+                    @endif
                     @endforeach
                 </tbody>
             </table>
