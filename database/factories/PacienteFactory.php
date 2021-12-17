@@ -30,6 +30,6 @@ $factory->define(Paciente::class, function (Faker $faker) {
         'sexo'=>$gender,
         'actividad_fisica'=>'Ninguna',
         'alergias'=>'No',
-        'alergias'=>'Ninguna',
+        'enfermedades'=>'Ninguna',
     ];
 });
