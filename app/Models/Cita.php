@@ -1,20 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 class Cita extends Model
 {
-    protected $table='citas';
+    protected $table='cita';
     protected $fillable=[
         'fecha_hora',
-        'paciente_id',
+        'id_paciente',
     ];
     public $timestamps = false;
     public function paciente(){
-        return $this->hasOne('App\Paciente','rfc','paciente_id');
+        return $this->hasOne('App\Models\Paciente','rfc','id_paciente');
     }
     public function getFechaAttribute(){
         return Carbon::createFromFormat('Y-m-d H:i:s',$this->fecha_hora)->format('d/m/Y');
@@ -24,3 +24,5 @@ class Cita extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s',$this->fecha_hora)->format('H:i');
     }
 }
+
+?>

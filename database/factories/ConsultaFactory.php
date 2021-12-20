@@ -1,50 +1,46 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Cita;
-use App\Paciente;
-use App\Consulta;
-use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+use App\Models\Cita;
+use App\Models\Paciente;
+use App\Models\Consulta;
+use App\Models\Medico;
+use App\Models\Macros;
+use App\Models\ComposicionCorporal;
+use App\Models\InfoPaciente;
+use App\Models\Alimentacion;
+
 
 $factory->define(Consulta::class, function (Faker $faker) {
-    $cita_id=$faker->randomElement(Cita::pluck('id')->toArray());
-    $user=$faker->randomElement(User::pluck('id')->toArray());
-    $cita=Cita::find($cita_id);
-    $paciente=Paciente::find($cita->paciente_id);
+    $medico=$faker->randomElement(Medico::pluck('id')->toArray());
+    $id_cita=$faker->randomElement(Cita::pluck('id')->toArray());
+    $cita=Cita::find($id_cita);
+    $paciente=Paciente::find($cita->id_paciente);
     $cita->atendida=true;
     $cita->save();
+    $macros=$faker->unique()->numberBetween(1,Macros::count());
+    $habitual=$faker->unique()->numberBetween(1,Alimentacion::count());
+    $plan=$faker->unique()->numberBetween(1,Alimentacion::count());
+    echo $paciente->rfc.PHP_EOL;
+    $composicion=ComposicionCorporal::where('rfc_paciente', '=', $paciente->rfc)->firstOrFail()->id;
+    $info=InfoPaciente::where('rfc_paciente', '=', $paciente->rfc)->firstOrFail()->id;
     return [
-        'user_id'=>$user,
-        'paciente_id'=>$paciente->rfc,
-        'cita_id'=>$cita_id,
+        'id_medico'=>$medico,
+        'id_paciente'=>$paciente->rfc,
+        'id_cita'=>$id_cita,
+        'id_composicion_corporal'=>$composicion,
+        'id_info_paciente'=>$info,
+        'id_macros'=>$macros,
+        'id_dieta_habitual'=>$habitual,
+        'id_plan_alimenticio'=>$plan,
         'motivo'=>"Para educación nutricional, reducción de peso, y modificación en cambio de hábitos",
         'descripcion_dieta'=>"Ninguna descripcion",
         'observaciones'=>"Ninguna observacion",
-        'fecha_hora'=>$cita->fecha_hora,
-        'edad_actual'=>$paciente->edad,
-        'peso_actual'=>$paciente->peso,
-        'estatura_actual'=>$paciente->estatura,
-        'actividad_fisica_actual'=>$paciente->actividad_fisica,
-        'enfermedades_actual'=>$paciente->enfermedades,
-        'grasa_porcentaje'=>$faker->numberBetween($min = 0, $max = 50),
-        'musculo_porcentaje'=>$faker->numberBetween($min = 0, $max = 50),
-        'hueso_kilos'=>$faker->numberBetween($min = 1, $max = 50),
-        'agua_litros'=>$faker->numberBetween($min = 1, $max = 50),
-        'proteinas_porcentaje'=>15,
-        'hidratos_porcentaje'=>60,
-        'lipidos_porcentaje'=>25,
+        'fecha_hora'=>$cita->fecha_hora
     ];
 });
+
+?>

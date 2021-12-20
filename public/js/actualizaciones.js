@@ -1,6 +1,27 @@
 /*
 Actualizacion del correo electronico con validacion de frontend
 */
+
+// Función para recuperar un campo
+function recuperarCampo(campo,id){
+  $.ajax({
+    headers:{
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Authorization': `Bearer ${api_token}`
+    },
+    url:`/api/pacientes/${rfc}/${campo}`,
+    type:'POST'
+  }).done(function(response){
+    if (response["success"]==true){
+      $(`#${id}`).val(response["data"]);
+    }
+    else{
+      console.log('No response')
+    }
+  });
+}
+
 // Se recupera el correo electronico actual
 function recuperarCorreo(){
   $.ajax({

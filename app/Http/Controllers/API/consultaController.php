@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
-use App\Cita;
-use App\Consulta;
-use App\Paciente;
-use App\DietaHabitual;
-use App\PlanAlimenticio;
+use App\Models\Cita;
+use App\Models\Consulta;
+use App\Models\Paciente;
+use App\Models\Alimentacion;
+use App\Models\InfoPaciente;
+use App\Models\ComposicionCorporal;
+use App\Models\Macros;
+use App\Http\Controllers\API\ValidatorFactory;
 use Carbon\Carbon;
 use Validator;
 
@@ -38,62 +41,23 @@ class ConsultaController extends BaseController
     {
         $input = $request->all();
         $cita_id=Null;
-        $messages = [
-            'required' => 'El :attribute es un dato requerido.',
-        ];
-        $validator = Validator::make($input, [
-            // Validar todos los datos de la dieta
-            'dieta_cereales'=>'required',
-            'dieta_leguminosas'=>'required',
-            'dieta_verduras'=>'required',
-            'dieta_frutas'=>'required',
-            'dieta_carnes'=>'required',
-            'dieta_lacteos'=>'required',
-            'dieta_grasas'=>'required',
-            'dieta_azucares'=>'required',
-            // Validar todos los datos del plan
-            'plan_cereales'=>'required',
-            'plan_leguminosas'=>'required',
-            'plan_verduras'=>'required',
-            'plan_frutas'=>'required',
-            'plan_carnes'=>'required',
-            'plan_lacteos'=>'required',
-            'plan_grasas'=>'required',
-            'plan_azucares'=>'required',
-        ],$messages);
+        $validator=ValidatorFactory::dietaValidator($input);
         if($validator->fails()){
             return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
         }
+
         if(array_key_exists('cita_id',$input)){
+            // Si es una cita con cita ya se tienen los datos del usuario
             $cita_id=$input['cita_id'];
             $cita=Cita::find($cita_id);
             $paciente=$cita->paciente;
+            $info_paciente=$paciente->info;
             $fecha_hora=$cita->fecha_hora;
             $cita->atendida=true;
             $cita->save();
         }
         else{
-            $messages = [
-            'required' => ':attribute es un dato requerido.',
-            'unique' => ':attribute ya esta registrado.',
-            ];
-            $validator = Validator::make($input, [
-                'rfc' => 'required|unique:pacientes,rfc',
-                'nombre' => 'required',
-                'estatura' => 'required',
-                'peso' => 'required',
-                'fecha_nacimiento' => 'required',
-                'sexo' => 'required',
-                'grasa_porcentaje' => 'required',
-                'musculo_porcentaje' => 'required',
-                'hueso_kilos' => 'required',
-                'agua_litros' => 'required',
-                'motivo' => 'required',
-                // Se valida que esten los porcentajes
-                'proteinas_porcentaje' => 'required',
-                'hidratos_porcentaje' => 'required',
-                'lipidos_porcentaje' => 'required',
-            ],$messages);
+            $validator=ValidatorFactory::pacienteValidator($input);
             if($validator->fails()){
                 return $this->sendErrorResponse($validator->errors()->first(),$validator->errors());
             }
@@ -120,12 +84,17 @@ class ConsultaController extends BaseController
             $paciente=Paciente::create([
                 'rfc' => strtoupper($input['rfc']),
                 'nombre' => ucwords($input['nombre']),
+                'paterno' => 'santander',
+                'materno' => 'martonez',
                 'telefono' => $telefono,
                 'correo_electronico' => $correo_electronico,
-                'estatura'=> $input['estatura'],
-                'peso' => $input['peso'],
                 'fecha_nacimiento' => $input['fecha_nacimiento'],
                 'sexo' => ucwords($input['sexo']),
+            ]);
+            $info_paciente=InfoPaciente::create([
+                'rfc_paciente'=>strtoupper($input['rfc']),
+                'estatura'=> $input['estatura'],
+                'peso' => $input['peso'],
                 'actividad_fisica' => $actividad_fisica,
                 'alergias' => $alergias,
                 'enfermedades' => $enfermedades,
@@ -140,29 +109,21 @@ class ConsultaController extends BaseController
         if(array_key_exists('observaciones',$input) && strlen($input['observaciones'])>0){
             $observaciones=$input['observaciones'];
         }
-        $consulta = Consulta::create([
-            'user_id' => Auth::user()->id,
-            'paciente_id' => $paciente->rfc,
-            'cita_id' => $cita_id,
-            'motivo' => $input['motivo'],
-            'descripcion_dieta' => $descripcion_dieta,
-            'observaciones' => $observaciones,
-            'fecha_hora' => $fecha_hora,
-            'edad_actual' => $paciente->edad,
-            'peso_actual' => $paciente->peso,
-            'estatura_actual' => $paciente->estatura,
-            'actividad_fisica_actual' => $paciente->actividad_fisica,
-            'enfermedades_actual' => $paciente->enfermedades,
+        $macros=Macros::create([
+            'proteinas' => $input['proteinas_porcentaje'],
+            'hidratos' => $input['hidratos_porcentaje'],
+            'lipidos' => $input['lipidos_porcentaje'],
+        ]);
+
+        $composicion=ComposicionCorporal::create([
+            'rfc_paciente'=>strtoupper($paciente->rfc),
             'grasa_porcentaje' => $input['grasa_porcentaje'],
             'musculo_porcentaje' => $input['musculo_porcentaje'],
             'hueso_kilos' => $input['hueso_kilos'],
             'agua_litros' => $input['agua_litros'],
-            // Se valida que esten los porcentajes
-            'proteinas_porcentaje' => $input['proteinas_porcentaje'],
-            'hidratos_porcentaje' => $input['hidratos_porcentaje'],
-            'lipidos_porcentaje' => $input['lipidos_porcentaje'],
         ]);
-        $dietaHabitual=DietaHabitual::create([
+        
+        $dietaHabitual=Alimentacion::create([
             'cereales' => $input['dieta_cereales'],
             'leguminosas' => $input['dieta_leguminosas'],
             'verduras' => $input['dieta_verduras'],
@@ -170,10 +131,9 @@ class ConsultaController extends BaseController
             'carnes' => $input['dieta_carnes'],
             'lacteos' => $input['dieta_lacteos'],
             'grasas' => $input['dieta_grasas'],
-            'azucares' => $input['dieta_azucares'],
-            'consulta_id' => $consulta->id,
+            'azucares' => $input['dieta_azucares']
         ]);
-        $planAlimenticio=PlanAlimenticio::create([
+        $planAlimenticio=Alimentacion::create([
             'cereales' => $input['plan_cereales'],
             'leguminosas' => $input['plan_leguminosas'],
             'verduras' => $input['plan_verduras'],
@@ -181,8 +141,21 @@ class ConsultaController extends BaseController
             'carnes' => $input['plan_carnes'],
             'lacteos' => $input['plan_lacteos'],
             'grasas' => $input['plan_grasas'],
-            'azucares' => $input['plan_azucares'],
-            'consulta_id' => $consulta->id,
+            'azucares' => $input['plan_azucares']
+        ]);
+        $consulta = Consulta::create([
+            'id_medico' => Auth::user()->id,
+            'id_paciente' => $paciente->rfc,
+            'id_cita' => $cita_id,
+            'id_composicion_corporal' => $composicion->id,
+            'id_macros' => $macros->id,
+            'id_info_paciente' => $info_paciente->id,
+            'id_plan_alimenticio'=> $planAlimenticio->id,
+            'id_dieta_habitual'=> $dietaHabitual->id,
+            'motivo' => $input['motivo'],
+            'descripcion_dieta' => $descripcion_dieta,
+            'observaciones' => $observaciones,
+            'fecha_hora' => $fecha_hora,
         ]);
         return $this->sendResponse($consulta->toArray(), 'Consulta almacenada correctamente');
     }

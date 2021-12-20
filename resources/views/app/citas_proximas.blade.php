@@ -1,4 +1,4 @@
-@extends('layouts.plantillaLogged')
+@extends('layouts.main')
 @section('titulo')
 <title>NUTRIKIT</title>
 @endsection

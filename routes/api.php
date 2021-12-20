@@ -13,17 +13,27 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('consulta','API\ConsultaController')->middleware('auth:api');
-Route::get('formulario','API\ConsultaController@formulario');
-Route::post('autocomplete', 'API\CitaController@autocomplete');
-Route::resource('cita','API\CitaController')->middleware('auth:api');
-Route::get('pacientes/{rfc}/{campo}', 'API\PacienteController@datos')->middleware('auth:api');
-Route::post('pacientes/{rfc}/{campo}', 'API\PacienteController@actualizar')->middleware('auth:api');
-Route::post('paciente/{id}','API\ConsultaController@consultasPaciente')->middleware('auth:api');
-Route::post('paciente/check/{id}','API\PacienteController@check')->middleware('auth:api');
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(
+    [
+        'namespace' => 'API',
+        'middleware'=>'auth:api'
+    ],
+    function(){
+        Route::post('/autocomplete', 'CitaController@autocomplete');
+        Route::resource('/cita','CitaController');
+        Route::resource('/consulta','ConsultaController');
+        Route::get('/formulario','ConsultaController@formulario');
+        Route::post('/paciente/{id}','ConsultaController@consultasPaciente');
+        Route::post('/paciente/check/{id}','PacienteController@check');
+        // No se utiliza esta ruta
+        Route::post('/api/pacientes/{rfc}/{campo}', 'API/PacienteController@datos');
+        
+        Route::post('/pacientes/{rfc}/{campo}', 'PacienteController@actualizar');
+        Route::get('/user', function (Request $request) {
+            return $request->user();
+        });
+    }
+);
 
 // Prueba para subir una foto al servidor
 Route::post('/upload','PhotoController@uploadPic');

@@ -9,6 +9,11 @@ $("#searchRfc").autocomplete({
             data: {
                 term : request.term,
             },
+            headers:{
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': `Bearer ${api_token}`
+            },
             dataType: "json",
             success: function(data){
                 response(data);
@@ -32,7 +37,7 @@ function crearCita(){
     },
     url:'api/cita',
     type:'POST',
-    data:{paciente_id:$('#searchRfc').val(),fecha_hora:$('#fechaHora').val().replace('T',' ')}
+    data:{id_paciente:$('#searchRfc').val(),fecha_hora:$('#fechaHora').val().replace('T',' ')}
     }).done(function(response){
         if (response["success"]==false){
             //Si hubo un error

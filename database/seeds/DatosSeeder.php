@@ -20,13 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Medico::class,5)->create();
-        factory(Paciente::class,5)->create();
-        factory(Alimentacion::class,10)->create();
-        factory(Cita::class,5)->create();
         factory(ComposicionCorporal::class,5)->create();
-        factory(InfoPaciente::class,5)->create();
-        factory(Macros::class,5)->create();
     }
 }
 

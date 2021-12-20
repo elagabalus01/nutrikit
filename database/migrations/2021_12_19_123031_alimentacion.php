@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearPlanesAlimenticios extends Migration
+class Alimentacion extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CrearPlanesAlimenticios extends Migration
      */
     public function up()
     {
-        Schema::create('planesAlimenticios', function (Blueprint $table){
+        Schema::create('alimentacion',function(Blueprint $table){
             $table->increments('id');
-            $table->integer('consulta_id')->unsigned();
             $table->smallInteger('cereales')->unsigned();
             $table->smallInteger('leguminosas')->unsigned();
             $table->smallInteger('verduras')->unsigned();
@@ -24,8 +23,6 @@ class CrearPlanesAlimenticios extends Migration
             $table->smallInteger('lacteos')->unsigned();
             $table->smallInteger('grasas')->unsigned();
             $table->smallInteger('azucares')->unsigned();
-
-            $table->foreign('consulta_id')->references('id')->on('consultas')->onDelete('cascade');
         });
     }
 
@@ -36,6 +33,6 @@ class CrearPlanesAlimenticios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('planesAlimenticios');
+        Schema::dropIfExists('alimentacion');
     }
 }

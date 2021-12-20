@@ -1,4 +1,4 @@
-@extends('layouts.plantillaNoLog')
+@extends('layouts.main')
 @section('titulo')
 <title>NUTRIKIT</title>
 @endsection
@@ -52,7 +52,7 @@
       <label>Años</label>
     </div>
     <div class="col">
-      <label id="imc">IMC: {{ number_format($cita->paciente->peso/pow($cita->paciente->estatura/100,2),2) }}</label>
+      <label id="imc">IMC: {{ number_format($cita->paciente->info->peso/pow($cita->paciente->info->estatura/100,2),2) }}</label>
     </div>
   </div>
 
@@ -90,7 +90,7 @@
   <div class="row">
     <div class="col">
       <label id="peso_old">Peso:
-        {{ $cita->paciente->peso }}
+        {{ $cita->paciente->info->peso }}
       </label>
       <input style="display:none;" min='0.5' max='500' step="0.01" type="number" id="peso">
       <label>Kg</label>
@@ -103,7 +103,7 @@
     </div>
     <div class="col">
       <label id="estatura_lab">Talla:
-        {{ $cita->paciente->estatura }}
+        {{ $cita->paciente->info->estatura }}
       </label>
       <input style="display:none;" min='1' max='255' step="1" type="number" id="estatura">
       <label>cm</label>
@@ -119,7 +119,7 @@
   <div class="row">
     <div class="col">
       <label id="actividad_fisica_lab">Actividad física:
-        {{ $cita->paciente->actividad_fisica }}
+        {{ $cita->paciente->info->actividad_fisica }}
       </label>
       <input style="display:none;" maxlength="100" type="text" id="actividad_fisica">
 
@@ -131,7 +131,7 @@
     </div>
     <div class="col">
       <label id="alergias_lab">Alergias:
-        {{ $cita->paciente->alergias }}
+        {{ $cita->paciente->info->alergias }}
       </label>
       <input style="display:none;" maxlength="100" type="text" id="alergias">
 
@@ -145,7 +145,7 @@
   <div class="row">
     <div class="col">
       <label id="enfermedades_lab">Enfermedades:
-        {{ $cita->paciente->enfermedades }}
+        {{ $cita->paciente->info->enfermedades }}
       </label>
       <input style="display:none;" maxlength="100" type="text" id="enfermedades">
 

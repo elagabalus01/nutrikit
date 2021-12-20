@@ -1,4 +1,4 @@
-@extends('layouts.plantillaNoLog')
+@extends('layouts.main')
 @section('titulo')
 <title>NUTRIKIT</title>
 @endsection
@@ -29,7 +29,7 @@
                     @foreach($consultas as $consulta)
                     <tr>
                         <td>{{ $consulta->fecha}} {{ $consulta->hora }}</td>
-                        <td>{{ $consulta->user->nombre }}</td>
+                        <td>{{ $consulta->medico->nombre }}</td>
                         <td>
                             <a class="consulta" href="/consulta/{{ $consulta->id }}">Ver</a>
                             /

@@ -1,4 +1,4 @@
-@extends('layouts.plantillaNoLog')
+@extends('layouts.main')
 @section('titulo')
 <title>NUTRIKIT</title>
 @endsection
@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col align-self-star">
         <p class="float-left">
-          <b>Consulta:</b> {{ $consulta->cita_id ? 'Subsecuente' : 'Primera vez' }}
+          <b>Consulta:</b> {{ $consulta->id_cita ? 'Subsecuente' : 'Primera vez' }}
         </p>
       </div>
       <div class="col align-self-end">
@@ -53,11 +53,12 @@
 
     <div class="row">
         <div class="col">
-          <label>Edad: {{ $consulta->edad_actual }}</label>
+          <!-- <label>Edad: {{ $consulta->edad_actual }}</label> -->
+          <label>Edad: CORRGIE BASE DE DATOS</label>
           <label>Años</label>
         </div>
         <div class="col">
-          <label>IMC: {{ number_format($consulta->peso_actual/pow($consulta->estatura_actual/100,2),2) }}</label>
+          <label>IMC: {{ number_format($consulta->info_paciente->peso/pow($consulta->info_paciente->estatura/100,2),2) }}</label>
        </div>
     </div>
 
@@ -86,13 +87,13 @@
     <div class="row">
       <div class="col">
         <p>Peso:
-          {{ $consulta->peso_actual }}
+          {{ $consulta->info_paciente->peso }}
           <label>Kg</label>
         </p>
       </div>
       <div class="col">
         <p>Talla:
-          {{ $consulta->estatura_actual }}
+          {{ $consulta->info_paciente->estatura }}
           <label>cm</label>
         </p>
       </div>
@@ -101,32 +102,32 @@
     <div class="row">
       <div class="col">
         <p>Actividad física:
-          {{ $consulta->actividad_fisica_actual }}
+          {{ $consulta->info_paciente->actividad_fisica }}
         </p>
       </div>
       <div class="col">
         <p>Alergias:
-          {{ $consulta->paciente->alergias }}
+          {{ $consulta->info_paciente->alergias }}
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <p>Enfermedades:
-          {{ $consulta->enfermedades_actual }}
+          {{ $consulta->info_paciente->enfermedades }}
         </p>
       </div>
     </div>
     <div class="row">
         <div class="col">
           <p>Porcentaje de grasa:
-            {{ $consulta->grasa_porcentaje }}
+            {{ $consulta->composicion_corporal->grasa_porcentaje }}
             <label>%</label>
           </p>
         </div>
         <div class="col">
           <p>Porcentaje de músculo:
-            {{ $consulta->musculo_porcentaje }}
+            {{ $consulta->composicion_corporal->musculo_porcentaje }}
             <label>%</label>
           </p>        
         </div>
@@ -135,13 +136,13 @@
     <div class="row">
         <div class="col">
           <p>Hueso:
-            {{ $consulta->hueso_kilos }}
+            {{ $consulta->composicion_corporal->hueso_kilos }}
             <label>kg</label>
           </p>   
         </div>
         <div class="col">
           <p>Agua:
-            {{ $consulta->agua_litros }}
+            {{ $consulta->composicion_corporal->agua_litros }}
             <label>L</label>
           </p> 
         </div>

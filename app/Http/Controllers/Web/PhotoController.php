@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 
-class PhotoController extends BaseController
+class PhotoController extends Controller
 {
     public function uploadPic(Request $request){
         $fileName="user_image.jpg";

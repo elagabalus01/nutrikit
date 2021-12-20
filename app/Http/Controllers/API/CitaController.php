@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Cita;
-use App\Paciente;
+use App\Models\Cita;
+use App\Models\Paciente;
 use Carbon\Carbon;
 use Validator;
 
@@ -14,6 +14,8 @@ class CitaController extends BaseController
     public function autocomplete(Request $request){
         $search = $request->get('term');
         $data = Paciente::where('nombre','LIKE',"%".$search."%")
+                ->orWhere('paterno','LIKE',"%".$search."%")
+                ->orWhere('materno','LIKE',"%".$search."%")
                 ->orWhere('rfc','LIKE',"%".$search."%")
                 ->get();
         $items = array();
@@ -22,6 +24,7 @@ class CitaController extends BaseController
         }
         return response()->json($items);
     }
+    
     public function index()
     {
         $cita = Cita::all();
@@ -36,13 +39,14 @@ class CitaController extends BaseController
             'exists' => ':attribute no esta registrado.',
         ];
         $rules=[
-            'paciente_id' => 'required|exists:pacientes,rfc',
+            'id_paciente' => 'required|exists:paciente,rfc',
             'fecha_hora' => 'required',
         ];
         $validator = Validator::make($input,$rules,$messages);
         if($validator->fails()){
             return $this->sendErrorResponse( $validator->errors()->first(),$validator->errors());
         }
+        $id_paciente=$input['id_paciente'];
         try {
             $cita_inicio=Carbon::createFromFormat('Y-m-d H:i',$input['fecha_hora']);
         } catch (\Exception $e) {
@@ -69,13 +73,13 @@ class CitaController extends BaseController
         }
         $citas_dia=Cita::whereDate('fecha_hora','=',$cita_inicio)->get();
         foreach ($citas_dia as $cita){
-            if($input['paciente_id']==$cita->paciente_id)
+            if($id_paciente==$cita->paciente_id)
             {
                 return $this->sendErrorResponse("Ya hay una cita hoy para ese paciente",[]);
             }
         }
         $cita=Cita::create([
-            'paciente_id' => $input['paciente_id'],
+            'id_paciente' => $id_paciente,
             'fecha_hora'=> $input['fecha_hora'],
         ]);
         return $this->sendDone('La cita fue creada correctamente');

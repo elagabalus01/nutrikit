@@ -1,4 +1,4 @@
-@extends('layouts.plantillaNoLog')
+@extends('layouts.main')
 @section('titulo')
 <title>Registro</title>
 @endsection
@@ -19,15 +19,26 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="POST" action="/register">
+            <form method="POST" action="/signup">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="name">Nombre completo del médico:</label>
-                    <input maxlength="64" type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo">
+                    <label for="name">Nombre:</label>
+                    <input maxlength="64" type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombres(s)">
                     <div id="nombreValid" class="valid-feedback">Aceptado</div>
                     <div id="nombreInvalid" class="invalid-feedback">Nombre no valido</div>
                 </div>
-         
+                <div class="form-group">
+                    <label for="name">Apellido paterno:</label>
+                    <input maxlength="64" type="text" class="form-control" id="paterno" name="paterno" placeholder="Apellido paterno">
+                    <div id="nombreValid" class="valid-feedback">Aceptado</div>
+                    <div id="nombreInvalid" class="invalid-feedback">Nombre no valido</div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Apellido materno:</label>
+                    <input maxlength="64" type="text" class="form-control" id="materno" name="materno" placeholder="Apellido materno">
+                    <div id="nombreValid" class="valid-feedback">Aceptado</div>
+                    <div id="nombreInvalid" class="invalid-feedback">Nombre no valido</div>
+                </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input maxlength="50" type="email" class="form-control" id="email" name="email" placeholder="ejemplo@dominio.com">

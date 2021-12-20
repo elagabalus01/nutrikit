@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +14,7 @@ class RegistrationController extends Controller
 {
     public function create()
     {
-        return view('registration.create');
+        return view('public.signup');
     }
     public function store(Request $request)
     {
@@ -38,7 +38,7 @@ class RegistrationController extends Controller
         auth()->login($user);
         $userPrueba = Auth::user();
 
-        return redirect()->to('/login');
+        return redirect()->to('/app');
     }
 
 }

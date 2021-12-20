@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearCitas extends Migration
+class Macros extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CrearCitas extends Migration
      */
     public function up()
     {
-        Schema::create('cita', function (Blueprint $table){
+        Schema::create('macros',function(Blueprint $table){
             $table->increments('id');
-            $table->dateTime('fecha_hora');
-            $table->boolean('atendida')->default(false);
-            $table->string('id_paciente',13);
-            $table->foreign('id_paciente')->references('rfc')->on('paciente')->onDelete('cascade');
+            $table->tinyInteger('proteinas')->unsigned();
+            $table->tinyInteger('hidratos')->unsigned();
+            $table->tinyInteger('lipidos')->unsigned();
         });
     }
 
@@ -29,6 +28,6 @@ class CrearCitas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cita');
+        Schema::dropIfExists('macros');
     }
 }

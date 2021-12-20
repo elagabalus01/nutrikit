@@ -1,14 +1,13 @@
 <?php
 
-namespace App;
-
+namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class PlanAlimenticio extends Model
+class Alimentacion extends Model
 {
-    protected $table='planesAlimenticios';
+    public $timestamps = false;
+    protected $table='alimentacion';
     protected $fillable=[
-        'consulta_id',
         'cereales',
         'leguminosas',
         'verduras',
@@ -18,7 +17,6 @@ class PlanAlimenticio extends Model
         'grasas',
         'azucares',
     ];
-    public $timestamps = false;
 
     public function getTotalCaloriasAttribute(){
         return $this->cereales*70+$this->leguminosas*105+
@@ -27,3 +25,5 @@ class PlanAlimenticio extends Model
         $this->azucares*20;
     }
 }
+
+?>

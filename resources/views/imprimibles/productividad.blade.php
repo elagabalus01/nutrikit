@@ -47,7 +47,7 @@
             SECRETARIA DE MARINA-ARMADA DE MÉXICO <br>
             OFICIALIA MAYOR <br>
             DIRECCIÓN GENERAL DE RECURSOS HUMANOS <br>
-            DIRECCION GENERAL ADJUNTA DE SANIDA NAVAL <br>
+            DIRECCION GENERAL ADJUNTA DE SANIDAD NAVAL <br>
             CLINICA NAVAL DE CUEMANCO <br>
             CALZADA DEL HUESO No.7700 COL. GRANJAS COAPA DEL. TALPAN. CIUDAD DE MEXICO C.P. 14330 TELEFONOS 56246500 EXT.8984 LICENCIA SANITARIA 0901409009 <br>
             </p>
@@ -89,11 +89,11 @@
                 <td>{{ $consulta->paciente->rfc }}</td>
                 <td>{{ $consulta->fecha }}</td>
                 <td>{{ $consulta->paciente->sexo }}</td>
-                <td>{{ number_format($consulta->peso_actual/pow($consulta->estatura_actual/100,2),2) }}</td>
-                <td>{{ $consulta->grasa_porcentaje }}</td>
-                <td>{{ $consulta->musculo_porcentaje }}</td>
-                <td>{{ $consulta->hueso_kilos }}</td>
-                <td>{{ $consulta->agua_litros }}</td>
+                <td>{{ number_format($consulta->info_paciente->peso/pow($consulta->info_paciente->estatura/100,2),2) }}</td>
+                <td>{{ $consulta->composicion_corporal->grasa_porcentaje }}</td>
+                <td>{{ $consulta->composicion_corporal->musculo_porcentaje }}</td>
+                <td>{{ $consulta->composicion_corporal->hueso_kilos }}</td>
+                <td>{{ $consulta->composicion_corporal->agua_litros }}</td>
                 <td>{{ is_null($consulta->cita) ? 'x' : '' }}</td>
                 <td>{{ is_null($consulta->cita) ? '': 'x'  }}</td>
             </tr>

@@ -1,9 +1,9 @@
-@extends('layouts.plantillaNoLog')
+@extends('layouts.main')
 @section('titulo')
 <title>Iniciar sesión</title>
 @endsection
 @section('buttonNavbar')
-<a class="nav-item nav-link btn btn-success custom-btn" href="/register">Registrarse</a>
+<a class="nav-item nav-link btn btn-success custom-btn" href="/signup">Registrarse</a>
 @endsection
 @section('content')
 @if($errors->any())

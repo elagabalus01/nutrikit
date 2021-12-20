@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Cita;
+use App\Models\Cita;
 
 class CitaAtendida
 {

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Cita;
-use App\Paciente;
+use App\Models\Cita;
+use App\Models\Paciente;
+use App\Models\InfoPaciente;
+
 use Carbon\Carbon;
 use Validator;
 
@@ -51,53 +53,50 @@ class PacienteController extends BaseController
     public function actualizar(Request $request,$rfc,$campo){
         $input = $request->all();
         $paciente=Paciente::find($rfc);
+        $info_paciente=InfoPaciente::where('rfc_paciente','=',$paciente->rfc)
+            ->orderBy('created_at', 'asc')
+            ->get()->first();
         if(is_null($paciente)){
             return $this->sendErrorResponse([],'El rfc no esta registrado');
         }
-        if($campo=='correo' && array_key_exists('correo',$input)){
-            $paciente->correo_electronico=strtolower($input['correo']);
-            $paciente->save();
-            return $this->sendDone('El correo fue actualizado');
+        if(!array_key_exists($campo,$input)){
+            return $this->sendErrorResponse([],'No se envió el dato correspondiente al campo');
         }
-        if($campo=='telefono' && array_key_exists('telefono',$input)){
-            $paciente->telefono=$input['telefono'];
-            $paciente->save();
-            return $this->sendDone('El telefono fue actualizado');
+        $dato=$input[$campo];
+        switch ($campo) {
+            case 'correo':
+                $paciente->correo_electronico=strtolower($dato);
+                break;
+            case 'telefono':
+                $paciente->telefono=$dato;
+                break;
+            case 'peso':
+                $info_paciente->peso=$dato;
+                // $paciente->info->peso=$dato;
+                break;
+            case 'estatura':
+                $info_paciente->estatura=$dato;
+                // $paciente->info->estatura=$dato;
+                break;
+            case 'actividad_fisica':
+                $info_paciente->actividad_fisica=$dato;
+                // $paciente->info->actividad_fisica=$dato;
+                break;
+            case 'alergias':
+                $info_paciente->alergias=$dato;
+                // $paciente->info->alergias=$dato;
+                break;
+            case 'enfermedades':
+                $info_paciente->enfermedades=$dato;
+                // $paciente->info->enfermedades=$dato;
+                break;
+            default:
+                return $this->sendErrorResponse([],$campo.' no es un parametro aceptado');
+                break;
         }
-        if($campo=='peso' && array_key_exists('peso',$input)){
-            $paciente->peso=$input['peso'];
-            $paciente->save();
-            return $this->sendDone('El peso fue actualizado');
-        }
-        if($campo=='estatura' && array_key_exists('estatura',$input)){
-            $paciente->estatura=$input['estatura'];
-            $paciente->save();
-            return $this->sendDone('La estatura fue actualizado');
-        }
-        if($campo=='actividad_fisica' && array_key_exists('actividad_fisica',$input)){
-            $paciente->actividad_fisica=$input['actividad_fisica'];
-            $paciente->save();
-            return $this->sendDone('La actividad fisica fue actualizado');
-        }
-        if($campo=='alergias' && array_key_exists('alergias',$input)){
-            $paciente->alergias=$input['alergias'];
-            $paciente->save();
-            return $this->sendDone('Las alergias fueron actualizadas');
-        }
-        if($campo=='enfermedades' && array_key_exists('enfermedades',$input)){
-            $paciente->enfermedades=$input['enfermedades'];
-            $paciente->save();
-            return $this->sendDone('Las enfermedades fueron actualizadas');
-        }
-        if(array_key_exists('correo',$input) ||
-            array_key_exists('telefono',$input) ||
-            array_key_exists('peso',$input) ||
-            array_key_exists('estatura',$input) ||
-            array_key_exists('actividad_fisica',$input) ||
-            array_key_exists('enfermedades',$input) ||
-            array_key_exists('alergias',$input)){
-            return $this->sendErrorResponse([],'La peticion y el campo no coinciden');
-        }
-        return $this->sendErrorResponse([],$campo.' no es un parametro aceptado');
+        $paciente->save();
+        $info_paciente->save();
+        return $this->sendDone('El campo '.$campo.' fue actualizado');
+        
     }
 }

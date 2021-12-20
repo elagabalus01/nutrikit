@@ -26,10 +26,10 @@
     <p>
         P: Paciente {{ strtolower($consulta->paciente->sexo) }} de {{ $consulta->paciente->edad }} años que acude a consulta de nutrición<br>
         S: {{ $consulta->motivo }} <br>
-        O: con un peso de {{ $consulta->peso_actual }} kg y un IMC de {{ number_format($consulta->peso_actual/pow($consulta->estatura_actual/100,2),2) }} kg/m2.<br>
-        Enfermedades: {{ $consulta->enfermedades_actual }}<br>
-        Intolerancia o alergia: {{ $consulta->paciente->alergias }}<br>
-        Actividad física: {{ $consulta->actividad_fisica_actual }}<br>
+        O: con un peso de {{ $consulta->info_paciente->peso }} kg y un IMC de {{ number_format($consulta->info_paciente->peso/pow($consulta->info_paciente->estatura/100,2),2) }} kg/m2.<br>
+        Enfermedades: {{ $consulta->info_paciente->enfermedades }}<br>
+        Intolerancia o alergia: {{ $consulta->info_paciente->alergias }}<br>
+        Actividad física: {{ $consulta->info_paciente->actividad_fisica }}<br>
     </p>
     <p>
         A: dieta habitual de {{ $consulta->dietaHabitual->total_calorias }} kcal.

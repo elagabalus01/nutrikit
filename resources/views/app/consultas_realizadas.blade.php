@@ -1,4 +1,4 @@
-@extends('layouts.plantillaLogged')
+@extends('layouts.main')
 @section('titulo')
 <title>NUTRIKIT</title>
 @endsection
@@ -57,7 +57,7 @@
                             </td>
 
                             <td>{{ $consulta->fecha }} {{ $consulta->hora }}</td>
-                            <td>{{ $consulta->user->nombre }}</td>
+                            <td>{{ $consulta->medico->nombre }}</td>
                         </tr>
                         @endforeach
                     </tbody>

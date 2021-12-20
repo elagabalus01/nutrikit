@@ -1,26 +1,19 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Cita;
-use App\Paciente;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+use App\Models\Cita;
+use App\Models\Paciente;
 
 $factory->define(Cita::class, function (Faker $faker) {
-    $pacientes = App\Paciente::pluck('rfc')->toArray();
+    $paciente = $faker->unique()->randomElement(Paciente::pluck('rfc')->toArray());
+
+    print $paciente.PHP_EOL;
     return [
-        'fecha_hora'=>$faker->dateTimeBetween($startDate = '-30 days', $endDate = 'now'),
-        'paciente_id'=>$faker->randomElement($pacientes),
+        'fecha_hora'=>$faker->dateTimeBetween($startDate = '-30 days', $endDate = '-1 days'),
+        'id_paciente'=>$paciente,
     ];
 });
+
+?>

@@ -1,4 +1,4 @@
-@extends('layouts.plantillaLogged')
+@extends('layouts.main')
 @section('titulo')
     <title>Crear una nueva cita</title>
 @endsection
@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <div class="container">
-  @if(count(App\Paciente::all())>0)
+  @if(App\Models\Paciente::count()>0)
   <div class="row">
     <div class="col-md-8">
       <h1>Datos del paciente y selección de fecha</h1>

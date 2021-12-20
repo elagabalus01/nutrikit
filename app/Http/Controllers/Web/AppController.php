@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
-use App\Cita;
-use App\Consulta;
-use App\Paciente;
+use App\Models\Cita;
+use App\Models\Consulta;
+use App\Models\Paciente;
 use Carbon\Carbon;
 use PDF;
 
@@ -38,6 +38,10 @@ class AppController extends Controller
         // $citas=Cita::paginate(4);
     }
     
+    public function nuevaCita(){
+        return view('app.cita_nueva');
+    }
+
     public function consultas($fecha=null){
         if(is_null($fecha)){
             $consultas=Consulta::orderBy('fecha_hora','desc')->paginate(4);
@@ -59,9 +63,6 @@ class AppController extends Controller
         // $consultas=Consulta::paginate(4);
     }
     
-    public function nuevaCita(){
-        return view('app.cita_nueva');
-    }
     
     public function nuevaConsulta(){
         return view('app.formularios.consulta_nueva');
@@ -77,7 +78,7 @@ class AppController extends Controller
     }
     
     public function consultasPaciente($rfc){
-        $consultas=Consulta::where('paciente_id',$rfc)->orderBy('fecha_hora', 'desc')
+        $consultas=Consulta::where('id_paciente',$rfc)->orderBy('fecha_hora', 'desc')
         ->paginate(4);
         $paciente=Paciente::find($rfc);
         // $consultas=Paciente::find($id)->consultas::paginate(4);
