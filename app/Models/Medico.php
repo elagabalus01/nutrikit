@@ -27,6 +27,10 @@ class Medico extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function getNombreCompletoAttribute(){
+        return $this->nombre." ".$this->paterno." ".$this->materno;
+    }
 }
 
 ?>

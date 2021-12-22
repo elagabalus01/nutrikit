@@ -3,7 +3,7 @@ Actualizacion del correo electronico con validacion de frontend
 */
 
 // Función para recuperar un campo
-function recuperarCampo(campo,id){
+function recuperarCampo(campo,input){
   $.ajax({
     headers:{
       'Accept': 'application/json',
@@ -14,7 +14,7 @@ function recuperarCampo(campo,id){
     type:'POST'
   }).done(function(response){
     if (response["success"]==true){
-      $(`#${id}`).val(response["data"]);
+      $(`#${input}`).val(response["data"]);
     }
     else{
       console.log('No response')
@@ -22,53 +22,69 @@ function recuperarCampo(campo,id){
   });
 }
 
-// Se recupera el correo electronico actual
-function recuperarCorreo(){
+// Se actualiza el campo mediante la API
+function actualizarCampo(campo,dato){
   $.ajax({
     headers:{
       'Accept': 'application/json',
       'X-Requested-With': 'XMLHttpRequest',
       'Authorization': `Bearer ${api_token}`
     },
-    url:`/api/pacientes/${rfc}/correo`,
-    type:'GET'
-  }).done(function(response){
-    if (response["success"]==true){
-      $('#correo_electronico').val(response["data"]);
-    }
-    else{
-      console.log('No response')
-    }
-  });
-}
-// Se actualiza el correo electronico mediante la API
-function actualizarCorreo(nuevoCorreo){
-  $.ajax({
-    headers:{
-      'Accept': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-      'Authorization': `Bearer ${api_token}`
-    },
-    url:`/api/pacientes/${rfc}/correo`,
+    url:`/api/pacientes/${rfc}/${campo}`,
     type:'POST',
-    data:{correo:nuevoCorreo}
+    data:{`${campo}`:dato}
   }).done(function(response){
     if (response["success"]==true){
-      console.log('Funciono la actualizarCorreo')
+      console.log('Actualización del campo '+campo+' exitosa');
     }
     else{
-      console.log('No funciono')
+      console.log('Error al actualizar el campo: '+campo);
     }
   });
 }
+// Habilita/deshabilitar edición
 // Boton para editar 
-$('#editarCorreo').click(function(){
+/*
+id: El id de la label
+input_id: El id de la entrada de datos oculta
+campo:El campo a editar
+*/
+function toggleEdit(editar_btn,input,aceptar_btn,campo){
+  $(`#${editar_btn}`).click(function(){
+    $(this).hide(); //Hide the button
+    $(this).siblings(`#${campo}`).hide(); //Hide the label
+    recuperarCampo(campo,input); //Puts the last data in the input field
+    $(this).siblings(`#${input}`).show();
+    $(this).siblings(`#${aceptar_btn}`).show();
+    $(this).siblings('#validation').show();
+  })
+}
+
+// Boton para aceptar
+function (input){
+  var dato=$(`#${input}`).val();
+  $('#correo').html(`Correo: ${nuevoCorreo}`);
   $(this).hide();
-  $(this).siblings('#correo').hide();
-  recuperarCorreo();
-  $(this).siblings('#correo_electronico').show();
-  $(this).siblings('#aceptarCorreo').show();
+  $(this).siblings('#correo_electronico').hide();
+  $(this).siblings('#correo').show();
+  $(this).siblings('#editarCorreo').show();
+  $('#correo_electronicoValid').hide();
+  actualizarCampo(nuevoCorreo);
+}
+$('#aceptarCorreo').click(function(){
+  var nuevoCorreo=$('#correo_electronico').val();
+  $('#correo').html(`Correo: ${nuevoCorreo}`);
+  $(this).hide();
+  $(this).siblings('#correo_electronico').hide();
+  $(this).siblings('#correo').show();
+  $(this).siblings('#editarCorreo').show();
+  $('#correo_electronicoValid').hide();
+  actualizarCampo(nuevoCorreo);
 })
+
+toggleEdit('editarCorreo','correo_electronico','aceptarCorreo','correo');
+
+
 // Boton para aceptar
 $('#aceptarCorreo').click(function(){
   var nuevoCorreo=$('#correo_electronico').val();

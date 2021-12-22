@@ -81,11 +81,15 @@ class ConsultaController extends BaseController
             if(array_key_exists('enfermedades',$input) && strlen($input['enfermedades'])>0){
                 $enfermedades=$input['enfermedades'];
             }
+            $materno='';
+            if(array_key_exists('materno',$input) && strlen($input['materno'])>0){
+                $materno=ucwords($input['materno']);
+            }
             $paciente=Paciente::create([
                 'rfc' => strtoupper($input['rfc']),
                 'nombre' => ucwords($input['nombre']),
-                'paterno' => 'santander',
-                'materno' => 'martonez',
+                'paterno' => ucwords($input['paterno']),
+                'materno' => $materno,
                 'telefono' => $telefono,
                 'correo_electronico' => $correo_electronico,
                 'fecha_nacimiento' => $input['fecha_nacimiento'],
@@ -122,7 +126,7 @@ class ConsultaController extends BaseController
             'hueso_kilos' => $input['hueso_kilos'],
             'agua_litros' => $input['agua_litros'],
         ]);
-        
+
         $dietaHabitual=Alimentacion::create([
             'cereales' => $input['dieta_cereales'],
             'leguminosas' => $input['dieta_leguminosas'],
@@ -165,7 +169,7 @@ class ConsultaController extends BaseController
         if (is_null($consulta)) {
             return $this->sendError('No se encontró la consulta con ese id');
         }
-        
+
         return $this->sendResponse($consulta->toArray(), 'Consulta encontrada');
     }
 
@@ -177,7 +181,7 @@ class ConsultaController extends BaseController
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        
+
         $validator = Validator::make($input, [
             'nombre' => 'required|unique:animales,nombre'
         ]);

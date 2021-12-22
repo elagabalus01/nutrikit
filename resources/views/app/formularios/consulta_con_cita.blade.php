@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <!-- Datos del paciente --> 
+  <!-- Datos del paciente -->
 
   <div class="row">
     <div class="col">
@@ -31,7 +31,7 @@
       <label>RFC: {{ $cita->paciente->rfc }}</label>
     </div>
     <div class="col">
-      <label>Nombre: {{ $cita->paciente->nombre}}</label>
+      <label>Nombre: {{ $cita->paciente->nombre_completo}}</label>
     </div>
   </div>
 
@@ -40,8 +40,8 @@
       <label>Sexo: {{ $cita->paciente->sexo }}</label>
     </div>
     <div class="col">
-      <label>Fecha de nacimiento: 
-        {{ $cita->paciente->cumpleaños }} 
+      <label>Fecha de nacimiento:
+        {{ $cita->paciente->cumpleaños }}
       </label>
     </div>
   </div>
@@ -66,7 +66,7 @@
       <button style="display:none;" id='aceptarCorreo'>Aceptar</button>
       <div id="correo_electronicoValid" class="valid-feedback">Aceptado</div>
       <div id="correo_electronicoInvalid" class="invalid-feedback">Correo no valido</div>
-    </div>        
+    </div>
     <div class="col">
       <label id="tel">Telefono:
         {{ $cita->paciente->telefono }}
@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <!-- Características del paciente --> 
+  <!-- Características del paciente -->
 
   <div class="row">
     <div class="col">

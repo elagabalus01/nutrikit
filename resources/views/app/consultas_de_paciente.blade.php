@@ -10,7 +10,7 @@
             @if(is_null($paciente))
             Hubo un error
             @else
-            <label>Paciente: {{ $paciente->nombre }}</label>
+            <label>Paciente: {{ $paciente->nombre_completo }}</label>
             @endif
         </div>
     </div>
@@ -29,7 +29,7 @@
                     @foreach($consultas as $consulta)
                     <tr>
                         <td>{{ $consulta->fecha}} {{ $consulta->hora }}</td>
-                        <td>{{ $consulta->medico->nombre }}</td>
+                        <td>{{ $consulta->medico->nombre_completo }}</td>
                         <td>
                             <a class="consulta" href="/consulta/{{ $consulta->id }}">Ver</a>
                             /

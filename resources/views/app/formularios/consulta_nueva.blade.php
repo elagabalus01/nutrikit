@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <!-- Datos del paciente --> 
+  <!-- Datos del paciente -->
 
   <div class="row">
     <div class="col">
@@ -33,6 +33,18 @@
     <div class="col">
       <label>Nombre:</label>
       <input maxlength="64" class="inputNombre" type="text" id="nombre">
+      <div id="nombreValid" class="valid-feedback">Aceptado</div>
+      <div id="nombreInvalid" class="invalid-feedback">Nombre no valido</div>
+    </div>
+    <div class="col">
+      <label>Apellido paterno:</label>
+      <input maxlength="64" class="inputNombre" type="text" id="paterno">
+      <div id="nombreValid" class="valid-feedback">Aceptado</div>
+      <div id="nombreInvalid" class="invalid-feedback">Nombre no valido</div>
+    </div>
+    <div class="col">
+      <label>Apellido materno:</label>
+      <input maxlength="64" class="inputNombre" type="text" id="materno">
       <div id="nombreValid" class="valid-feedback">Aceptado</div>
       <div id="nombreInvalid" class="invalid-feedback">Nombre no valido</div>
     </div>
@@ -66,7 +78,7 @@
       <label>Fecha de nacimiento:</label>
       <input type="date" min="{{ Carbon\Carbon::now()->subYears(110)->format('Y-m-d') }}" max="{{ Carbon\Carbon::now()->format('Y-m-d') }}" value="{{ Carbon\Carbon::now()->subYears(30)->format('Y-m-d') }}" id="fecha_nacimiento">
       <div id="fecha_nacimientoValid" class="valid-feedback">Aceptado</div>
-      <div id="fecha_nacimientoInvalid" class="invalid-feedback">Fecha no valida</div>   
+      <div id="fecha_nacimientoInvalid" class="invalid-feedback">Fecha no valida</div>
     </div>
   </div>
 
@@ -79,7 +91,7 @@
     </div>
   </div>
 
-  <!-- Características del paciente --> 
+  <!-- Características del paciente -->
 
   <div class="row">
     <div class="col">
@@ -130,7 +142,7 @@
 
   <!-- Aqui comienzan porcentajes -->
   @include('app.componentes.formulario.porcentajes')
-  
+
   <!-- Aqui comienza la nota médica -->
   @include('app.componentes.formulario.notaMedica')
   <div class="row justify-content-end">

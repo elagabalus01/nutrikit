@@ -34,6 +34,10 @@ class Paciente extends Model
         return $this->hasMany('App\Models\InfoPaciente','rfc_paciente','rfc');
     }
 
+    public function getNombreCompletoAttribute(){
+        return $this->nombre." ".$this->paterno." ".$this->materno;
+    }
+
     public function getInfoAttribute(){
         return InfoPaciente::where('rfc_paciente','=',$this->rfc)
             ->orderBy('created_at', 'asc')

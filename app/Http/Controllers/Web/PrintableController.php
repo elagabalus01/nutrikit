@@ -89,7 +89,7 @@ class PrintableController extends Controller
     public function generarNota($id){
         $consulta=Consulta::find($id);
         $pdf=PDF::loadView('imprimibles.notaMedica',compact('consulta'))->setPaper('a4');
-        return $pdf->download('consulta'.'-'.str_replace(' ','-',$consulta->paciente->nombre).'-'.str_replace('/','-',$consulta->fecha).'.pdf');
+        return $pdf->download('consulta'.'-'.str_replace(' ','-',$consulta->paciente->nombre_completo).'-'.str_replace('/','-',$consulta->fecha).'.pdf');
         // return view('imprimibles.notaMedica',compact('consulta'));
     }
 }
