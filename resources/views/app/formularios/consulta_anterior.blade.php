@@ -21,7 +21,7 @@
       </div>
     </div>
 
-<!-- Datos del paciente --> 
+<!-- Datos del paciente -->
 
     <div class="row">
       <div class="col">
@@ -34,7 +34,7 @@
         <p>RFC: {{ $consulta->paciente->rfc }}</p>
       </div>
       <div class="col">
-        <p>Nombre: {{ $consulta->paciente->nombre}}</p>
+        <p>Nombre: {{ $consulta->paciente->nombre_completo}}</p>
       </div>
     </div>
 
@@ -67,7 +67,7 @@
           <p>Correo:
             {{ $consulta->paciente->correo_electronico }}
           </p>
-        </div>        
+        </div>
         <div class="col">
           <p>Telefono:
             {{ $consulta->paciente->telefono }}
@@ -76,8 +76,8 @@
     </div>
 
 
-   <!-- Características del paciente --> 
-    
+   <!-- Características del paciente -->
+
     <div class="row">
       <div class="col">
         <h1>Características del paciente</h1>
@@ -129,7 +129,7 @@
           <p>Porcentaje de músculo:
             {{ $consulta->composicion_corporal->musculo_porcentaje }}
             <label>%</label>
-          </p>        
+          </p>
         </div>
     </div>
 
@@ -138,15 +138,15 @@
           <p>Hueso:
             {{ $consulta->composicion_corporal->hueso_kilos }}
             <label>kg</label>
-          </p>   
+          </p>
         </div>
         <div class="col">
           <p>Agua:
             {{ $consulta->composicion_corporal->agua_litros }}
             <label>L</label>
-          </p> 
+          </p>
         </div>
-    </div>    
+    </div>
 
   <div class="row">
     <div class="col">

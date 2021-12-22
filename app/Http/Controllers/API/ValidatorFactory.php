@@ -35,6 +35,7 @@ class ValidatorFactory{
         return Validator::make($input, [
             'rfc' => 'required|unique:paciente,rfc',
             'nombre' => 'required',
+            'paterno' => 'required',
             'estatura' => 'required',
             'peso' => 'required',
             'fecha_nacimiento' => 'required',

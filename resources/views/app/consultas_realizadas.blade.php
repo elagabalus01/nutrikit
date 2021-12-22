@@ -32,7 +32,7 @@
                     @endif
                     <button class="btn btn-primary" id="irFecha">Ir</button>
                     <div id="fechaConsultasValid" class="valid-feedback">Aceptado</div>
-                    <div id="fechaConsultasInvalid" class="invalid-feedback">Fecha no valida</div>   
+                    <div id="fechaConsultasInvalid" class="invalid-feedback">Fecha no valida</div>
                 </div>
             </div>
         </div>
@@ -53,11 +53,11 @@
                         @foreach($consultas as $consulta)
                         <tr>
                             <td>
-                                <a href="#" onclick="consultasAnteriores('{{ $consulta->paciente->rfc }}')">{{ $consulta->paciente->nombre }}</a>
+                                <a href="#" onclick="consultasAnteriores('{{ $consulta->paciente->rfc }}')">{{ $consulta->paciente->nombre_completo }}</a>
                             </td>
 
                             <td>{{ $consulta->fecha }} {{ $consulta->hora }}</td>
-                            <td>{{ $consulta->medico->nombre }}</td>
+                            <td>{{ $consulta->medico->nombre_completo }}</td>
                         </tr>
                         @endforeach
                     </tbody>

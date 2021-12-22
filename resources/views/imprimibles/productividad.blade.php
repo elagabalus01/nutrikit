@@ -56,7 +56,7 @@
 <br>
 <div class="user_fecha">
     <label style="float: left;">
-        Médico: {{ auth()->user()->nombre }}
+        Médico: {{ auth()->user()->nombre_completo }}
     </label>
     <label style="float: right;">
         {{ Carbon\Carbon::now()->format('d-m-Y H:i:s') }}
@@ -85,7 +85,7 @@
         <tbody>
             @foreach($consultas as $consulta)
             <tr>
-                <td class='nombre'>{{ $consulta->paciente->nombre }}</td>
+                <td class='nombre'>{{ $consulta->paciente->nombre_completo }}</td>
                 <td>{{ $consulta->paciente->rfc }}</td>
                 <td>{{ $consulta->fecha }}</td>
                 <td>{{ $consulta->paciente->sexo }}</td>

@@ -189,6 +189,8 @@ function crearConsulta(){
     data:{
       rfc:$('#rfc').val(),
       nombre:$('#nombre').val(),
+      paterno:$('#paterno').val(),
+      materno:$('#materno').val(),
       estatura:$('#estatura').val(),
       peso:$('#peso').val(),
       fecha_nacimiento:$('#fecha_nacimiento').val(),

@@ -20,11 +20,11 @@ class CitaController extends BaseController
                 ->get();
         $items = array();
         foreach($data as $paciente){
-            $items[] = array('label'=>$paciente->rfc." ".$paciente->nombre,'value'=>$paciente->rfc);
+            $items[] = array('label'=>$paciente->rfc." ".$paciente->nombre_completo,'value'=>$paciente->rfc);
         }
         return response()->json($items);
     }
-    
+
     public function index()
     {
         $cita = Cita::all();
@@ -90,7 +90,7 @@ class CitaController extends BaseController
         if (is_null($cita)) {
             return $this->sendError('No se encontró la cita con ese id');
         }
-        
+
         return $this->sendResponse($cita->toArray(), 'Cita encontrada');
     }
 
@@ -102,7 +102,7 @@ class CitaController extends BaseController
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        
+
         $validator = Validator::make($input, [
             'nombre' => 'required|unique:animales,nombre'
         ]);

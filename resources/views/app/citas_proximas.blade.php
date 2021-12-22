@@ -33,7 +33,7 @@
                     @endif
                     <button class="btn btn-primary" id="irFecha">Ir</button>
                     <div id="fechaCitasValid" class="valid-feedback">Aceptado</div>
-                    <div id="fechaCitasInvalid" class="invalid-feedback">Fecha no valida</div>   
+                    <div id="fechaCitasInvalid" class="invalid-feedback">Fecha no valida</div>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                     @if(Carbon\Carbon::now()->subMinutes(20)->lt(Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$cita->fecha_hora)) )
                     <tr>
                         <td>
-                            <a href="#" onclick="consultasAnteriores('{{ $cita->paciente->rfc }}')">{{ $cita->paciente->nombre }}</a>
+                            <a href="#" onclick="consultasAnteriores('{{ $cita->paciente->rfc }}')">{{ $cita->paciente->nombre_completo }}</a>
                         </td>
                         <td>{{ $cita->fecha }} {{ $cita->hora }}</td>
                         <td>
